@@ -1,6 +1,6 @@
 ---
 title: PostTesting
-date: 2025-03-05 HH:MM:SS +/-TTTT
+date: 2025-03-05
 categories: [Test Category]
 tags: [test, post, python]     # TAG names should always be lowercase
 ---
