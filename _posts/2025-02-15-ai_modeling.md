@@ -25,7 +25,8 @@ math: true
 - `Loss Function`이란 모델이 예측한 값과 실제 값의 차이를 측정하는 함수이다. 이를 통해 모델의 성능을 평가하고 모델이 어떤 방향으로 개선되어야 하는지 알려주는 역할을 한다. <br/>
 즉, 바꿔 말하면 모델이 예측한 값과 실제 값의 차이인 `Loss Function`이 0에 가까울 수록 최소가 될 수록 해당 모델은 좋은 모델이 된다.
 
-- 최소값을 찾기 위한 가장 좋은 도구는 미분이다.<br/> 우리가 실제 값을 $Y$, 예측값을 $\hat Y$라고 한다면 $f(x_1, x_2, \cdots, x_n) = |Y - \hat Y|$로 `Loss function`을 수학적 함수로 정의할 수 있다.<br/> 따라서 미분이 가능하다.
+- 최소값을 찾기 위한 가장 좋은 도구는 미분이다.<br/>
+우리가 실제 값을 $Y$, 예측값을 $\hat Y$라고 한다면 $f(x_1, x_2, \cdots, x_n) = |Y - \hat Y|$로 `Loss function`을 수학적 함수로 정의할 수 있다.<br/> 따라서 미분이 가능하다.
 
 - `Loss Function`의 종류 : MSE(Mean Squared Error), Binary Cross-Entropy, Categorical Cross-Entropy 등이 있으며 해당 내용은 생략
 
@@ -40,10 +41,10 @@ math: true
 ### Gradient Descent(경사 하강법)
 - Gradient Descent(경사 하강법)란 함수의 최소값을 찾는 최적화 알고리즘이다. 해당 방법은 주로 머신러닝과 딥러닝에서 Loss Function을 최소화하는데 사용된다. Global Minimum을 찾기 위해 가장 빠르게 감소하는 지점을 찾아 움직이는 방법이다.
 
-- 주요 개념은 함수의 Gradient $\nabla f$를 찾는다. 가장 빠르게 증가하는 방향으로 움직이는 벡터가 $\nabla f$이므로 가장 빠르게 감소하는 벡터인 $-\nabla f$ 를 이용해 함수의 최소값을 찾아나가면 된다.
+- 주요 개념은 함수의 Gradient $\nabla f$ 를 찾는다. 가장 빠르게 증가하는 방향으로 움직이는 벡터가 $\nabla f$ 이므로 가장 빠르게 감소하는 벡터인 $-\nabla f$ 를 이용해 함수의 최소값을 찾아나가면 된다.
 
-- 1차 선형 근사식인 Newton's method를 기반으로 Gradient Descent를 업데이트 한다.<br/> Newton's Method: $x_{n+1} = x_n - \frac{f(x_0)}{f'(x_0)}$<br/>
-    Gradient Descent : $X_{n+1} = X_n -\alpha \nabla f(X_n)$<br/>
+- 1차 선형 근사식인 Newton's method를 기반으로 Gradient Descent를 업데이트 한다.<br/> Newton's Method: $x_{n+1} = x_n - \frac{f(x_0)}{f'(x_0)}$ <br/>
+    Gradient Descent : $X_{n+1} = X_n -\alpha \nabla f(X_n)$ <br/>
     ![alt-text](/assets/images/Gradient_descent.gif)<br/>
     > 출처: [wikimedia](https://commons.wikimedia.org/wiki/File:Gradient_descent.gif)
     

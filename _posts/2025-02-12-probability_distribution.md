@@ -17,7 +17,7 @@ math: true
     표본공간 안에 있는 원소들이 모두 떨어져 있다.
 
     $$
-    f : \Omega(이산 표본공간) \rarr [0,\;1]\\
+    f : \Omega(이산 표본공간) \rightarrow [0,\;1]\\
     \displaystyle\sum_{x\,\in\, \Omega}f(x)\,=\,1
     $$
 
@@ -32,7 +32,7 @@ math: true
     시행의 결과가 실수값(연속된 값)
 
     $$
-    f : \Omega(연속 표본공간) \rarr [0,\;\infin)\\
+    f : \Omega(연속 표본공간) \rightarrow [0,\;\infin)\\
     \int_{x\,\in\, \Omega}f(x)\,=\,1
     $$
 
