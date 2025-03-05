@@ -2,7 +2,7 @@
 title: Pre-Trained Model
 date: 2025-03-04
 categories: [Today I Learn, 6th Week]
-tags: [python, pytorch]
+tags: [python, tensorflow, pytorch]
 math: true
 ---
 
