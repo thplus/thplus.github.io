@@ -115,7 +115,7 @@ math: true
   ```
   [2. 4. 6.]
   ```
-  ![alt text](/assets/lib/images/broadcasting.png)<br/>
+  ![alt text](/assets/images/broadcasting.png)<br/>
   [General broadcasting rules](https://numpy.org/doc/stable/user/basics.broadcasting.html)<br/>
   When operating on two arrays, NumPy compares their shapes element-wise. It starts with the trailing (i.e. rightmost) dimension and works its way left. Two dimensions are compatible when
   1. they are equal, or
