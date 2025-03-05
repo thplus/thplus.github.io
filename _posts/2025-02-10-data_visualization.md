@@ -2,7 +2,7 @@
 title: Data 시각화
 date: 2025-02-10
 categories: [Today I Learn, 3rd Week]
-tags: [python, pandas, matplotlb, seaborn]     # TAG names should always be lowercase
+tags: [python, pandas, matplotlb, seaborn, scipy]     # TAG names should always be lowercase
 math: true
 ---
 ## 정형 데이터 처리와 비정형 데이터 처리
@@ -701,3 +701,7 @@ math: true
 #### 통계적 시각화
 - 통계적 시각화는 데이터의 분포, 관계, 추세 등을 효과적으로 분석하기 위해 통계적 기법을 활용하여 그래프나 차트로 표현하는 과정을 말한다. 단순한 시각화와 달리 통계적인 요약 및 분석을 포함하여 데이터의 패턴과 특성을 보다 깊이 있게 탐색하는 것이 목적이다.
 - 통계적 시각화를 사용하는 이유는 데이터의 패턴과 분포를 직관적으로 파악하여 정확한 해석과 신뢰성 있는 분석을 하기 위해서이다. 데이터 분석에서 정확한 해석을 위해서는 평균, 표준 편차, 분산과 같은 수치적 통계 값만으로는 충분하지 않다.
+
+## 오늘의 회고
+- 데이터 시각화에 대해 잘 배울 수 있었으며 `Matplotlib`과 `Seaborn`을 이용한 시각화 방법을 배울 수 있었다.
+그 외에 `Scipy`부분에서는 ADsP에서 공부한 내용으로 다시 한 번 복습할 수 있는 기회가 되었다.
