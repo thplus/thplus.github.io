@@ -7,6 +7,7 @@ math: true
 ---
 
 ## 한 줄 정리
+
 ||한 줄 정리|비고|
 |--|--|--|
 |[PyTorch](#pytorch)|딥러닝 모델을 쉽게 구축할 수 있는 Python기반 라이브러리||
@@ -34,14 +35,14 @@ math: true
 
 ### TensorFlow vs. PyTorch
 
-|항목|TensorFlow|PyTorch|
-|--|--|--|
-|코딩 스타일|선언적(정적 그래프)|명령형(동적 그래프)|
-|디버깅|복잡|직관적|
-|유연성|낮음|높음|
-|학습곡선|가파름|완만함|
-|커뮤니티|광범위함|급성장 중|
-|배포|강력한 지원|상대적으로 미흡|
+    |항목|TensorFlow|PyTorch|
+    |--|--|--|
+    |코딩 스타일|선언적(정적 그래프)|명령형(동적 그래프)|
+    |디버깅|복잡|직관적|
+    |유연성|낮음|높음|
+    |학습곡선|가파름|완만함|
+    |커뮤니티|광범위함|급성장 중|
+    |배포|강력한 지원|상대적으로 미흡|
 
 ### Kaggle
 - 전 세계 데이터 연구자들이 데이터를 분석할 수 있도록 대회를 개최하고 분석 내용을 토론할 수 있는 커뮤니티를 제공하는 플랫폼
@@ -214,23 +215,26 @@ math: true
             bias += learning_rate * error
     ```
     수식 표현
+    
     $$
-    y = wX + b \\
-    \displaystyle f(x) = \begin{cases}
-    0 \quad x < 0 & \\
-    1 \quad x \geq 0
-    \end {cases}
-    \\
-    \hat y = f(y)\\
-    e = y - \hat y \\
-    w_{n+1} = w_n + \alpha \cdot e \cdot X_{n} \\
-    b_{n+1} = b_n + \alpha \cdot b_n
+    \begin{aligned}
+    y &= wX + b \\[6pt]
+    f(x) &= 
+    \begin{cases}
+    0 & x < 0 \\
+    1 & x \ge 0
+    \end{cases} \\[6pt]
+    \hat{y} &= f(y) \\[6pt]
+    e &= y - \hat{y} \\[6pt]
+    w_{n+1} &= w_n + \alpha \cdot e \cdot X_n \\[6pt]
+    b_{n+1} &= b_n + \alpha \cdot b_n
+    \end{aligned}
     $$
 
 - 다층 퍼셉트론<br/>
   다층 퍼셉트론에서는 활성화 함수로 ReLU함수, Sigmoid 계열 함수 등 다양한 함수를 사용한다. 해당 활성화 함수들은 비선형성을 도입하여 비선형 결정 경계를 형성할 수 있다.<br/>
   ![alt text](/assets/images/ReLU.png)<br/>
-  \- ReLU -
+  \- ReLU - <br/>
   ![alt text](/assets/images/sigmoid.png)<br/>
   \- Sigmoid -
 
