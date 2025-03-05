@@ -36,26 +36,26 @@ When selecting a single column of a pandas `DataFrame`, the result is a pandas `
    2	58
    ```
 - pandas는 다양한 포멧이나 다양한 데이터 소스를 읽고 쓸 수 있다.
-![alt text](/thplus.github.io/assets/lib/images/image-1.png)
+![alt text](/assets/lib/images/image-1.png)
 `read_*`fuctions을 이용해서 읽어오고 `to_*`functions을 이용해 내보낼 수 있다.
 
 - pandas는 다양한 형태로 `DataFrame`을 추출할 수 있다.
-![alt text](/thplus.github.io/assets/lib/images/image-2.png)
+![alt text](/assets/lib/images/image-2.png)
 To select a single column, use square brackets `[]` with the column name of the column of interest.
 To select multiple columns, use a list of column names within the selection brackets `[]`.
-![alt text](/thplus.github.io/assets/lib/images/image-3.png)
+![alt text](/assets/lib/images/image-3.png)
 To select rows based on a conditional expression, use a condition inside the selection brackets `[]`. e.g. `titanic["Age"] > 35`
-![alt text](/thplus.github.io/assets/lib/images/image-4.png)
+![alt text](/assets/lib/images/image-4.png)
 When using `loc`/`iloc`, the part before the comma is the rows you want, and the part after the comma is the columns you want to select.<br/>
 Select specific rows and/or columns using `loc` when using the row and column names.<br/>
 Select specific rows and/or columns using `iloc` when using the positions in the table.
 - pandas는 여러 columns들을 계산하여 새로운 columns을 만들 수 있다.
-![alt text](/thplus.github.io/assets/lib/images/image-5.png)
-![alt text](/thplus.github.io/assets/lib/images/image-6.png)
+![alt text](/assets/lib/images/image-5.png)
+![alt text](/assets/lib/images/image-6.png)
 Create a new column by assigning the output to the DataFrame with a new column name in between the `[]`.<br/>
 Operations are element-wise, no need to loop over rows.<br/>
 Use `rename` with a dictionary or function to rename row labels or column names.
-![alt text](/thplus.github.io/assets/lib/images/image-7.png)
+![alt text](/assets/lib/images/image-7.png)
 `groupby` provides the power of the split-apply-combine pattern.
 
 - Categorical Data
