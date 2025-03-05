@@ -27,7 +27,7 @@ math: true
 
     (2) 그 외<br/>
         보간을 해야하는데, 보간은 어떻게 하느냐가 문제이다.<br/>
-        우리가 배운 보간법 [`df.interpolate()`](/_posts/2025-02-10-data_visualization.md/#이동평균)<br/>
+        우리가 배운 보간법 [`df.interpolate()`](/posts/2025-02-10-data_visualization.md/#이동평균)<br/>
         가장 기본적인 것은 Linear Regression : 예측하고자 하는 값이 주변의 값들과 선형관계에 있으면 탁월한 방법<br/>
         ![alt text](/assets/images/linearregression.png)<br/>
         단점 - 세상은 그렇게 만만하지 않다.

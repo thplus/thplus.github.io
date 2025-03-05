@@ -105,11 +105,11 @@ math: true
     ```
 
 - 데이터 필터링 및 변환<br/>
-  [Pandas에서의 필터링](/_posts/2025-02-04-numpy_pandas.md/#Pandas에서의-필터링)
+  [Pandas에서의 필터링](/posts/2025-02-04-numpy_pandas.md/#Pandas에서의-필터링)
 - 정형 데이터 정리 및 가공<br/>
-  [Pandas에서의 결측치 처리](/_posts/2025-02-04-numpy_pandas.md/#Pandas에서의-결측치-처리)
+  [Pandas에서의 결측치 처리](/posts/2025-02-04-numpy_pandas.md/#Pandas에서의-결측치-처리)
 - 정렬 및 그룹화<br/>
-  [Pandas에서의 그룹화](/_posts/2025-02-04-numpy_pandas.md/#Pandas에서의-그룹화)
+  [Pandas에서의 그룹화](/posts/2025-02-04-numpy_pandas.md/#Pandas에서의-그룹화)
 - 가공된 정형 데이터 저장 및 불러오기<br/>
   Pandas에서는 다양한 형태의 자료를 읽고 쓰는 기능을 지원한다. `.read_*()` 메서드를 이용해 file 뿜낭 아니라 http주소로 된 데이터도 불러올 수 있으며 `.to_*` 메서드를 이용해 저장도 가능하다.
 
