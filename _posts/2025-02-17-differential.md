@@ -7,13 +7,13 @@ math: true
 ## 다변수 함수의 미분
 - 정의역을 기준으로 하는 함수의 종류와 미분
     $$
-    f : \mathbb{R} \rarr \mathbb{R}, \, x_0 \in \mathbb{R}, \, L \in \mathbb{R} \\
-    \lim_{x \rarr x_0} \frac{f(x)-f(x_0)}{x-x_0} = L = f'(x_0) \\
-    \Leftrightarrow \lim_{x \rarr x_0} \frac{f(x)-f(x_0)}{x-x_0} - L = 0
+    f : \mathbb{R} \rightarrow \mathbb{R}, \, x_0 \in \mathbb{R}, \, L \in \mathbb{R} \\
+    \lim_{x \rightarrow x_0} \frac{f(x)-f(x_0)}{x-x_0} = L = f'(x_0) \\
+    \Leftrightarrow \lim_{x \rightarrow x_0} \frac{f(x)-f(x_0)}{x-x_0} - L = 0
     \\
-    \Leftrightarrow \lim_{x \rarr x_0} \frac{f(x)-f(x_0)-L(x - x_0)}{x-x_0} = 0
+    \Leftrightarrow \lim_{x \rightarrow x_0} \frac{f(x)-f(x_0)-L(x - x_0)}{x-x_0} = 0
     \\
-    \Leftrightarrow \lim_{x \rarr x_0} \frac{f(x)-(f(x_0)+L(x - x_0))}{x-x_0} = 0
+    \Leftrightarrow \lim_{x \rightarrow x_0} \frac{f(x)-(f(x_0)+L(x - x_0))}{x-x_0} = 0
     $$
 
 - 다변수 함수에서 선형 근사식<br/>
@@ -23,9 +23,9 @@ math: true
     $$
     다변수 함수에서의 선형근사
     $$
-    f : \mathbb{R^n} \rarr \mathbb{R^m}, \, x_0 \in \mathbb{R^n}, \, L : \mathbb{R^n} \rarr \mathbb{R^m} \\
+    f : \mathbb{R^n} \rightarrow \mathbb{R^m}, \, x_0 \in \mathbb{R^n}, \, L : \mathbb{R^n} \rightarrow \mathbb{R^m} \\
     \\
-    \Leftrightarrow \lim_{x \rarr x_0} \left\vert\left\vert\frac{f(x)-(f(x_0)+L(x - x_0))}{x-x_0}\right\vert\right\vert = 0
+    \Leftrightarrow \lim_{x \rightarrow x_0} \left\vert\left\vert\frac{f(x)-(f(x_0)+L(x - x_0))}{x-x_0}\right\vert\right\vert = 0
     $$
     미분 행렬, 야코비 행렬<br/>
     $L(x) = [L]x = D\cdot f(x_0)x$<br/>
@@ -36,7 +36,7 @@ math: true
 - 방향 도함수와 기울기 벡터(Gradient)<br/>
     방향 도함수<br/>
     $\vec u = \langle a,\,b \rangle$일 때,
-    $$D_uf(x_0, y_0) = \lim_{h \rarr 0} \frac{f(x_0+ha, \, y_0+hb)-f(x_0, \, y_0)}{h}$$
+    $$D_uf(x_0, y_0) = \lim_{h \rightarrow 0} \frac{f(x_0+ha, \, y_0+hb)-f(x_0, \, y_0)}{h}$$
     이변수함수 $f$가 $x$와 $y$의 미분가능한 함수이면 $f$는 모든 단위벡터 $\vec u = <a,\,b>$ 방향으로 방향 도함수가 존재하고 방향도함수 $D_uf = f_x(x,y)a + f_y(x,y)b$이다.<br/>
     <br/>
     기울기 벡터(Gradient)
