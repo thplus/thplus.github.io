@@ -3,12 +3,13 @@ title: NumPy & Pandas
 date: 2025-02-04
 categories: [Today I Learn, 2nd Week]
 tags: [python, numpy, pandas]     # TAG names should always be lowercase
+math: true
 ---
 
 ## 한 줄 정리
 
 ## NumPy
-- NumPy는 대규모 다차원 배열 및 행렬 연산을 위한 <span style = "color:orange">**고성능 수학 함수와 도구를 제공**</span>하는 파이썬 라이브러리이다.</br>
+- NumPy는 대규모 다차원 배열 및 행렬 연산을 위한 <span style = "color:orange">**고성능 수학 함수와 도구를 제공**</span>하는 파이썬 라이브러리이다.<br/>
   데이터 구조를 기반으로 <span style = "color:orange">**수학 연산, 선형대수, 통계, 변환, 기본적인 수치 계산**</span> 등이 가능하도록 다양한 함수와 도구를 포함하고 있다.
 
 - NumPy를 사용하는 이유는 대규모 수치 데이터를 빠르고 ```메모리 효율적```으로 처리하기 위해서이다.
@@ -57,6 +58,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   matrix = 2
   tensor = 3
   ```
+
   |차원|명칭|예시|
   |--|--|--|
   |0차원|스칼라(Scalar)|```np.array(1)```&rarr;```1```|
@@ -209,7 +211,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   40
   6
   ```
-- 슬라이싱</br>
+- 슬라이싱<br/>
   배열의 특정 범위를 선택하는 방법으로 `start:end:step` 형식으로 추출할 수 있다.
 
   ```python
@@ -227,7 +229,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   [1 2 3]
   [1 3 5]
   ```
-- 인덱싱을 활용한 데이터 수정</br>
+- 인덱싱을 활용한 데이터 수정<br/>
   위에서 배운 기본적인 인덱싱을 활용하여 아래와 같이 데이터를 수정할 수 있다.
 
   ```python
@@ -247,7 +249,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   [9 5 6 4]
   ```
 ### NumPy에서의 연산
-- 요소별 연산</br>
+- 요소별 연산<br/>
   NumPy는 배열의 각 요소에 대해 연산을 수행하며 동일한 크기의 배열에 대해 사칙 연산을 수행할 수 있다.
   ```python
   import numpy as np
@@ -267,7 +269,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   [ 4 10 18]
   [0.25 0.4  0.5 ]
   ```
-- 비교 연산</br>
+- 비교 연산<br/>
   배열의 요소의 값들을 비교하여 `bool`값을 `return`한다.
   ```python
   import numpy as np
@@ -283,7 +285,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   [False False False]
   [ True  True False]
   ```
-- 통계 연산</br>
+- 통계 연산<br/>
   NumPy는 배열의 집계 및 통계적 분석을 위한 다양한 함수를 제공한다.
   ```python
   array = np.array([1, 2, 3, 4, 5])
@@ -302,7 +304,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   1
   1.4142135623730951
   ```
-- 선형대수 연산</br>
+- 선형대수 연산<br/>
   NumPy는 다양한 선형대수 함수를 제공한다.
   ```python
   matrix = np.array([[1, 2], [3, 4]])
@@ -322,7 +324,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   [[-2.   1. ]
    [ 1.5 -0.5]]
   ```
-- 브로드캐스팅을 활용한 연산</br>
+- 브로드캐스팅을 활용한 연산<br/>
   크기가 다른 배열 간의 연산을 수행할 때, NumPy는 작은 배열을 자동으로 확장하여 연산이 가능하도록 지원한다.
   ```python
   matrix = np.array([[1, 2, 3], [4, 5, 6]])
@@ -336,7 +338,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   [[2 4 6]
    [5 7 9]]
   ```
-- 유니버설 함수 </br>
+- 유니버설 함수 <br/>
   NumPy에서 유니버설 함수는 배열의 각 요소에 대해 반복적으로 수행되는 벡터화된 연산을 제공하는 함수이다. 유니버설 함수는 여러 개의 입력 배열을 받아 연산을 수행가고 하나 이상의 출력을 반환할 수 있다.
   |유형|함수|
   |--|--|
@@ -426,7 +428,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   |`size`|Series의 총 요소 수를 return|`series.size`|
   |`name`|Series 객체의 이름 설정 및 확인|`series.name = '이름'`|
 
-- Series 객체는 다양한 방법으로 생성할 수 있다.</br>
+- Series 객체는 다양한 방법으로 생성할 수 있다.<br/>
   Series 객체를 생성할 때, 앞 글자가 대문자인 것을 항상 확인해야한다. `Series`
   ```python
   series1 = pd.Series([1, 2, 3, 4])
@@ -485,7 +487,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   4
   Example Series
   ```
-- Series 데이터 연산</br>
+- Series 데이터 연산<br/>
   NumPy 연산과 비슷하며 벡터 연산을 지원한다.
   ```python
   import pandas as pd
@@ -512,7 +514,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   3    4
   dtype: int64
   ```
-- 결측값 처리</br>
+- 결측값 처리<br/>
   Series는 `.fillna()`메서드를 통해 결측값(`NaN`)을 자동으로 처리할 수 있다.
   ```python
   s = pd.Series([1, 2, None, 4])
@@ -530,11 +532,11 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   ```
 
 ### Pandas에서의 데이터프레임
-- Pandas에서 데이터 프레임은 행과 열로 구성된 2차원 테이블 형태의 데이터 구조이다.</br>
+- Pandas에서 데이터 프레임은 행과 열로 구성된 2차원 테이블 형태의 데이터 구조이다.<br/>
 데이터 프레임을 사용하는 이유는 데이터를 체계적으로 구조화하여 효과적으로 조작하고 분석할 수 있도록 하기 위해서이다.
 
-- 딕셔너리를 이용한 생성</br>
-앞서 소개한 Pandas를 이용한 데이터 프레임 생성을 통한 예시와 같다.</br>
+- 딕셔너리를 이용한 생성<br/>
+앞서 소개한 Pandas를 이용한 데이터 프레임 생성을 통한 예시와 같다.<br/>
 `pd.DataFrame()`메서드를 이용해 생성할 수 있으며 딕셔너리의 키가 열(column) 이름으로 설정되고 값들이 행(row)의 요소로 입력된다. 또한 인덱스는 자동으로 0부터 부여된다.
   ```python
   import pandas as pd
@@ -555,7 +557,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   1  김철수  15  대전
   2  신창섭  23  인천
   ```
-- 리스트를 이용한 생성</br>
+- 리스트를 이용한 생성<br/>
   리스트를 사용하여 데이터 프레임을 생성하면 열 이름이 없으므로 `pd.DataFrame()`메서드에 `columns`매개변수를 추가하여 열 이름을 지정할 수 있다.
   ```python
   import pandas as pd
@@ -573,7 +575,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   1  4  5  6
   2  7  8  9
   ```
-- NumPy를 이용한 생성</br>
+- NumPy를 이용한 생성<br/>
   NumPy 배열을 활용하면 대규모 수치 데이터를 효과적으로 처리할 수 있다.
   ```python
   import pandas as pd
@@ -592,7 +594,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   1  4  5  6
   ```
 
-- 데이터 프레임 기본 속성</br>
+- 데이터 프레임 기본 속성<br/>
   |속성|설명|
   |--|--|
   |`.head()`|첫 5개 행을 출력하여 데이터의 개요를 빠르게 확인|
@@ -603,7 +605,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   |`.info()`|데이터 타입, 결측치 여부 등을 요약|
   |`.decribe()`|수치형 데이터를 요약하여 평균, 표준편차, 최댓값 등을 제공|
 
-- 데이터 접근</br>
+- 데이터 접근<br/>
   데이터 프레임에서는 인덱스와 열 이름을 활용하여 특정 데이터에 쉽게 접근할 수 있다.
   ```python
   import pandas as pd
@@ -666,7 +668,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   도시     인천
   Name: c, dtype: object 
   ```
-- 데이터 수정 및 연산</br>
+- 데이터 수정 및 연산<br/>
   아래 데이터 프레임으로 설명합니다.
   ```python
   import pandas as pd
@@ -729,7 +731,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
 
 ### Pandas에서의 필터링
 - 데이터 프레임이나 시리즈에서 특정 행이나 값을 선택하는 과정으로 대량의 데이터에서 원하는 정보를 효과적으로 추출하여 분석의 정확성을 높이기 위함이다.
-- Boolean indexing</br>
+- Boolean indexing<br/>
   `df[조건]`형태로 필터링을 수행하여 특정 컬럼의 값이 주어진 조건을 만족하는 경우 해당 행이 선택된다. 다중 조건 필터링을 위해 `&`,`|`,`~` 연산자를 사용할 수 있다.
   ```python
   import pandas as pd
@@ -759,7 +761,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   5  한예슬  22  95  93  94
   8  신세경  25  91  90  87 
   ```
-- `query()`를 사용한 indexing</br>
+- `query()`를 사용한 indexing<br/>
   SQL과 유사한 스타일로 데이터를 필터링 하는 방식으로 문자열 표현식을 통해 필터링이 가능하며 가독성이 높은 편이다.
   ```python
   #(...) Boolean indexing df 계속
@@ -773,8 +775,8 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   6  오지호  23  80  79  81
   7  황보승  24  82  84  86
   ```
-- 문자열 indexing `isin()`혹은`str.contains()`를 활용할 수 있다.</br>
-  `isin()` : 여러 값 중 하나라도 포함되어 있는지 여부를 확인</br>
+- 문자열 indexing `isin()`혹은`str.contains()`를 활용할 수 있다.<br/>
+  `isin()` : 여러 값 중 하나라도 포함되어 있는지 여부를 확인<br/>
   `str.contains()` : 특정 문자열이 포함된 데이터를 필터링
   ```python
   print(df[df['이름'].isin(['김민수', '한예슬'])], '\n')
@@ -835,7 +837,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   `[column_name].agg()`메서드를 사용하여 `sum`, `mean`, `max`, `min` 등의 집계를 할 수 있다.
 
 ### Pandas에서의 Merge
-- Pandas에서 Merging은 여러 데이터프레임을 공통 열 또는 인덱스를 기준으로 결합하는 과정을 말한다. `merge()`메서드를 사용하여 데이터 프레임을 병합할 수 있다.</br>
+- Pandas에서 Merging은 여러 데이터프레임을 공통 열 또는 인덱스를 기준으로 결합하는 과정을 말한다. `merge()`메서드를 사용하여 데이터 프레임을 병합할 수 있다.<br/>
 기본 문법은 `pd.merge(left, right, how='병합방식', on='기준 열')`이다.
   - `left`, `right` : 병합할 두 개의 데이터 프레임
   - `how` : 병합 방식
@@ -848,7 +850,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
 - 데이터 프레임 연결 `concat()` 함수는 데이터를 단순히 연결하는 반면 `merge()`는 공통된 열을 기준으로 데이터를 결합한다.
 
 ### Pandas에서의 결측치 처리
-- Pandas에서 결측치 처리는 데이터 프레임이나 시리즈에서 누락된 값을 탐지하고 제거하거나 대체하는 작업으로 결측치를 `NaN` 또는 `None`으로 표시하며 이러한 결측치를 탐지하고 적절히 처리하는 기능을 제공한다.</br>
+- Pandas에서 결측치 처리는 데이터 프레임이나 시리즈에서 누락된 값을 탐지하고 제거하거나 대체하는 작업으로 결측치를 `NaN` 또는 `None`으로 표시하며 이러한 결측치를 탐지하고 적절히 처리하는 기능을 제공한다.<br/>
 결측치 처리를 사용하는 이유는 데이터 분석의 정확성과 신뢰성을 확보하기 위해서이며 데이터 분석 및 머신러닝에서 데이터의 품질은 분석 결과의 정확성과 직결된다.
 
 |유형|메서드|설명|
@@ -858,8 +860,8 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
 |결측치 대체|`fillna()`, `interpolate()`|특정 값으로 결측치 대체|
 
 ### Pandas에서의 Pivot
-- Pandas에서 피벗은 데이터를 특정 기준에 따라 재구성하여 요약 통계를 계산하고 행과 열을 재배치하여 보다 쉽게 분석할 수 있도록 하는 과정을 말한다. 피벗을 사용하는 이유는 데이터를 특정 기준에 따라 재구성하여 의미있는 패턴을 발견하기 위해서로 데이터 프레임을 목적에 맞게 재구성하고 시각적으로 직관적인 형태로 만드는 것이다.</br>
-`pivot()`과 `pivot_table()`메서드를 사용하여 데이터를 특정 기준에 따라 재구성할 수 있다.</br>
+- Pandas에서 피벗은 데이터를 특정 기준에 따라 재구성하여 요약 통계를 계산하고 행과 열을 재배치하여 보다 쉽게 분석할 수 있도록 하는 과정을 말한다. 피벗을 사용하는 이유는 데이터를 특정 기준에 따라 재구성하여 의미있는 패턴을 발견하기 위해서로 데이터 프레임을 목적에 맞게 재구성하고 시각적으로 직관적인 형태로 만드는 것이다.<br/>
+`pivot()`과 `pivot_table()`메서드를 사용하여 데이터를 특정 기준에 따라 재구성할 수 있다.<br/>
 기본 문법은 `df.pivot(index = '행으로 설정할 column_name', columns = '열로 설정할 column_name', value = '값으로 설정할 column_name')`이다.
   ```python
   import pandas as pd
@@ -909,7 +911,7 @@ tags: [python, numpy, pandas]     # TAG names should always be lowercase
   |`str.len()`|문자열 길이 반환|
   |`str.findall()`|정규 표현식 패턴과 일치하는 부분 검색|
 
-- Python에서는 정규 표현식을 지원하기위해 re(regular expression) 모듈을 제공한다. 정규 표현식은 문자들로 이루어진 패턴을 정의하고 이 패턴을 사용해 특정 문자열을 찾거나 바꾸는 도구이다.</br>
+- Python에서는 정규 표현식을 지원하기위해 re(regular expression) 모듈을 제공한다. 정규 표현식은 문자들로 이루어진 패턴을 정의하고 이 패턴을 사용해 특정 문자열을 찾거나 바꾸는 도구이다.<br/>
 정규 표현식의 메타문자는 `. ^ $ * + ? { } [ ] \ | ( )`이며 자세한 내용은 [Python 정규식 HOWTO](https://docs.python.org/ko/3.13/howto/regex.html)참조
 
 ## 오늘의 회고
