@@ -105,7 +105,7 @@ math: true
     ```
 
 - 데이터 필터링 및 변환<br/>
-  [Pandas에서의 필터링](At_site/posts/numpy_pandas/#pandas에서의-필터링)
+  [Pandas에서의 필터링](/posts/numpy_pandas/#pandas에서의-필터링)
 - 정형 데이터 정리 및 가공<br/>
   [Pandas에서의 결측치 처리](/posts/numpy_pandas/#pandas에서의-결측치-처리)
 - 정렬 및 그룹화<br/>
