@@ -1,6 +1,6 @@
 ---
-title: NumPy & Pandas
-date: 2025-02-05
+title: NumPy & Pandas 딥 다이브
+date: 2025-02-07
 categories: [Today I Learn, 2nd Week]
 tags: [python, numpy]     # TAG names should always be lowercase
 math: true

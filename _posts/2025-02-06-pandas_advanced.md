@@ -1,8 +1,8 @@
 ---
-title: NumPy & Pandas
-date: 2025-02-05
+title: Pandas 심화학습
+date: 2025-02-06
 categories: [Today I Learn, 2nd Week]
-tags: [python, numpy]     # TAG names should always be lowercase
+tags: [python, pandas]     # TAG names should always be lowercase
 math: true
 ---
 ## Pandas 심화학습

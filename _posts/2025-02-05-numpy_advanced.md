@@ -1,5 +1,5 @@
 ---
-title: NumPy & Pandas
+title: NumPy 심화학습
 date: 2025-02-05
 categories: [Today I Learn, 2nd Week]
 tags: [python, numpy]     # TAG names should always be lowercase
