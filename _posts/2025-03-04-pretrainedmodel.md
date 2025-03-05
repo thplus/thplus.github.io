@@ -29,18 +29,22 @@ math: true
     3. Validation Data의 Label과 모델의 예측 값을 비교하여 Loss값과 Accuracy를 계산하여 해당 Epoch에 대한 학습과 검증 결과로 Loss와 Accuracy 값이 출력된 후 학습된 모델이 저장된다.
 
 ### Loss(손실)
-- 실제 값과 예측 값의 차이로 $|Y - \hat Y|$
+- 실제 값과 예측 값의 차이
+ $|Y - \hat Y|$ 
+ 로 정의할 수 있다.
 - Loss가 0에 가까울수록 좋다. 그러나 Loss가 낮다고 무조건 좋은 것은 아니며 Overfitting의 경우 Loss가 낮아도 테스트 데이터의 성능이 떨어질 수 있다.
 
 ### Accuracy(정확도)
 - 전체 $n$개의 샘플에 대해 각 샘플 $i$에 대해 모델의 예측과 실제 값이 일치하는 정도<br/>
 - 전체 샘플
+
     $$
      \text{Accuracy} = \frac{1}{n}\sum_{i=1}^{n} \mathbf{1}\{y_i = \hat{y}_i\}
     $$
      <br/>
 
 - 이진 분류
+
     $$
     \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
     $$
