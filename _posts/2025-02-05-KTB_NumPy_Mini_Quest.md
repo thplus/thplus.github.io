@@ -1,5 +1,5 @@
 ---
-title: 2주차 과제
+title: 2주차 NumPy Mini Quest
 date: 2025-02-05
 categories: [Assignment, 2nd Week]
 tags: [mini_quest, python, numpy, pandas]     # TAG names should always be lowercase
