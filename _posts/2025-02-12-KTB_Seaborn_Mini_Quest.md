@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 ```
 
-#**범주형 데이터(Categorical Data)**
+# **범주형 데이터(Categorical Data)**
 
 1. 샘플 데이터를 직접 생성한 후 `Seaborn`을 활용하여 막대 그래프(Bar Plot)를 생성하는 코드를 작성하세요.
 
@@ -94,7 +94,7 @@ plt.show()
     
 
 
-#**연속형 데이터(Continuous Data)**
+# **연속형 데이터(Continuous Data)**
 
 1. 평균 0, 표준편차 1을 따르는 정규분포 데이터를 500개 생성한 후 히스토그램과 KDE를 함께 시각화하는 코드를 작성하세요.
 
@@ -157,7 +157,7 @@ plt.show()
     
 
 
-#**관계형 데이터(Relational Data)**
+# **관계형 데이터(Relational Data)**
 
 1. `Seaborn`의 `scatterplot`을 활용하여 "총 결제 금액"(`total_bill`)과 "팁"(`tip`)의 관계를 시각화하는 코드를 작성하세요. 단, `scatterplot`의 색상과 스타일을 다르게 설정하여 출력해야 합니다.
 

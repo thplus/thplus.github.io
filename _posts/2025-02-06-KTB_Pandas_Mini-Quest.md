@@ -6,7 +6,7 @@ tags: [mini_quest, python, numpy, pandas]     # TAG names should always be lower
 math: true
 ---
 
-#**시리즈(Series)**
+# **시리즈(Series)**
 
 1. Pandas의 Series를 리스트 `[5, 10, 15, 20]`을 사용하여 생성하고, Series의 인덱스를 확인하는 코드를 작성하세요.
 
@@ -64,7 +64,7 @@ print(series)
     dtype: float64
     
 
-#**데이터프레임(DataFrame)**
+# **데이터프레임(DataFrame)**
 
 1. 다음 데이터프레임에서 열(column)의 이름들을 출력하는 코드를 작성하세요.
 
@@ -122,7 +122,7 @@ print(new_df)
     3  이순신  92  87  90  269
     
 
-#**필터링(Filtering)**
+# **필터링(Filtering)**
 
 1. 주어진 데이터프레임에서 나이가 30 이상인 행만 필터링하는 코드를 작성하세요.
 
@@ -183,7 +183,7 @@ print(df.query('나이 >= 35 and 점수 > 80'))
     3  이순신  40  대구  95
     
 
-#**그룹화(Grouping)**
+# **그룹화(Grouping)**
 
 1. 주어진 데이터프레임에서 `groupby()`를 사용하여 '부서'별로 급여의 합계를 구하는 코드를 작성하세요.
 
@@ -247,7 +247,7 @@ print(new_df)
     5  신사임당  IT  6200
     
 
-#**병합(Merging)**
+# **병합(Merging)**
 
 1. 두 개의 데이터프레임을 `고객ID`를 기준으로 내부 조인(`inner join`)하여 공통된 데이터를 병합하는 코드를 작성하세요.
 
@@ -310,7 +310,7 @@ print(new_df)
     3     3  대전   30000.0       NaN
     
 
-#**결측치 처리(Missing Data)**
+# **결측치 처리(Missing Data)**
 
 1. 주어진 데이터프레임에서 결측치를 탐지하고, 열별 결측치 개수를 출력하는 코드를 작성하세요.
 
@@ -377,7 +377,7 @@ print(df)
     3  이영희  28.000000  NaN
     
 
-#**피벗(Pivot)**
+# **피벗(Pivot)**
 
 1. 주어진 데이터프레임을 `pivot()`함수를 사용하여 날짜(`날짜`)를 행 인덱스로, 제품(`제품`)을 열로, 판매량(`판매량`)을 값으로 설정하는 코드를 작성하세요.
 
@@ -444,7 +444,7 @@ print(df.pivot(index='날짜', columns='제품', values=['판매량', '이익'])
     2024-01-02  150  250  30  60
     
 
-#**중복 제거(Duplicates Removal)**
+# **중복 제거(Duplicates Removal)**
 
 1. 주어진 데이터프레임에서 기본적으로 중복된 행을 제거하는 코드를 작성하세요.
 
@@ -524,7 +524,7 @@ print(df)
     3  이정훈  88  C고
     
 
-#**문자열 처리(String Operation)**
+# **문자열 처리(String Operation)**
 
 1. Pandas의 `.str`접근자를 사용하여 아래 시리즈의 모든 문자열을 소문자로 변환하는 코드를 작성하세요.
 

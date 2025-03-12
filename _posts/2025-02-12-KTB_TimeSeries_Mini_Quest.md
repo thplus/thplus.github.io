@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 ```
 
-#**시계열 데이터(Time Series Data)**
+# **시계열 데이터(Time Series Data)**
 
 1. 100일간의 시계열 데이터를 생성하고 이를 선 그래프로 시각화하는 코드를 작성하세요.
 
@@ -105,7 +105,7 @@ plt.show()
     
 
 
-#**리샘플링(Resampling)**
+# **리샘플링(Resampling)**
 
 1. `Pandas`를 사용하여 3시간 간격의 시계열 데이터를 생성한 후 하루 단위(`D`)로 평균을 구하는 다운 샘플링을 수행하는 코드를 작성하세요.
 
@@ -1104,7 +1104,7 @@ df_d
 
 
 
-#**이동평균(Moving Average)**
+# **이동평균(Moving Average)**
 
 1. 주어진 시계열 데이터에서 7일 단순 이동평균(SMA)을 계산하여 새로운 컬럼을 추가하는 코드를 작성하세요.
 
@@ -2314,7 +2314,7 @@ result
 
 
 
-#**금융 데이터(Financial Data)**
+# **금융 데이터(Financial Data)**
 
 1. 샘플 금융 데이터프레임을 직접 생성한 후 데이터의 기분 정보(행 개수, 열 개수, 데이터 타입 등)를 출력하는 코드를 작성하세요.
 

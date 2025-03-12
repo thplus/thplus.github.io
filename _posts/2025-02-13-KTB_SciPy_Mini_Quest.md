@@ -15,7 +15,7 @@ import scipy
 from scipy import optimize, stats, signal, interpolate, integrate, linalg
 ```
 
-#**정규분포(Normal Distribution)**
+# **정규분포(Normal Distribution)**
 
 1. 평균 `60`, 표준편차 `15`를 갖는 정규분포에 500개의 데이터를 생성한 후 데이터의 기본 통계 정보(평균, 표준편차, 최소값, 최대값)를 출력하는 코드를 작성하세요.
 
@@ -62,7 +62,7 @@ print(stats.norm.ppf(0.95, loc=70, scale=8))
     83.15882901561177
     
 
-#**기술통계(Descriptive Statistics)**
+# **기술통계(Descriptive Statistics)**
 
 1. 주어진 데이터에서 평균과 중앙값의 차이를 계산하는 코드를 작성하세요.
 
@@ -134,7 +134,7 @@ print(skew, kurt)
     -0.1779481426259557 -0.10097745347286446
     
 
-#**가설검정(Hypothesis Testing)**
+# **가설검정(Hypothesis Testing)**
 
 1. 단일 표본 t-검정(One-Sample t-test)을 수행하여 샘플 데이터의 평균이 특정 값과 유의미한 차이가 있는지 검정하는 코드를 작성하세요. (평균 `50`, 표준 편차 `5`를 따르는 정규 분포에서 30개의 데이터를 생성하고, 해당 데이터가 평균 `52`와 차이가 있는지 확인하세요.)
 
@@ -196,7 +196,7 @@ print(f"p-값: {p_value}")
     p-값: 2.1200748140507065e-05
     
 
-#**통계적 시각화(Statistical Visualization)**
+# **통계적 시각화(Statistical Visualization)**
 
 1. `NumPy`를 사용하여 평균 `70`, 표준편차 `20`을 따르는 정규분포 데이터 1,000개를 생성한 후, `Matplotlib`을 활용하여 박스플롯을 그리는 코드를 작성하세요.
 

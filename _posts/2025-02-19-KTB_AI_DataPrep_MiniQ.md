@@ -16,7 +16,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 ```
 
-#**Data Preprocessing(데이터 전처리)**
+# **Data Preprocessing(데이터 전처리)**
 
 1. 간단한 데이터셋을 사용하여 데이터 전처리 과정을 단계별로 진행해보세요. 각 단계에서 필요한 코드를 작성하고 그 결과를 확인합니다.
 
