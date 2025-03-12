@@ -1,3 +1,11 @@
+---
+title: 3주차 시계열 데이터 Mini Quest
+date: 2025-02-12
+categories: [Assignment, 3rd Week]
+tags: [mini_quest, python, numpy, pandas, seaborn, matplotlib]     # TAG names should always be lowercase
+math: true
+---
+
 ```python
 import numpy as np
 import pandas as pd
