@@ -5,6 +5,7 @@ categories: [Today I Learn, 2nd Week]
 tags: [review, python]     # TAG names should always be lowercase
 math: true
 ---
+
 ## 재귀함수
 - Subroutine call: 프로그램 내에서 반복적으로 수행되는 코드를 별도로 작성하여 필요할 때, 호출하는 것.<br/>
     Subroutine은 재사용 가능성, 모듈화, 디버깅 등 코드 작업을 할 때, 다양한 이점이 있다.
