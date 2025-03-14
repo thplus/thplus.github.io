@@ -1,8 +1,8 @@
 ---
 title: 카카오테크부트캠프 해커톤 review
 date: 2025-02-28
-categories: [Project]
-tags: [python, langchain]
+categories: [Project, KTB]
+tags: [python, langchain, fastapi]
 math: true
 ---
 
