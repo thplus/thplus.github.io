@@ -242,3 +242,22 @@ math: true
 - 궁극적으로 양봉 농가의 생산성 향상에 기여할 수 있다. 질병 모니터링 예방을 통해 벌통 내 꿀벌의 건강을 유지하는데 도움을 줄 것이고 건강한 꿀벌은 양질의 꿀을 생산하는데 기여할 것이다.
 
 - 정부는 올해부터 '양봉농가 질병관리 지원 사업'을 실시하여 응애 모니터링 방법, 꿀벌 질병 진단법 등에 대한 실습을 제공하고 있다. 그러나 수많은 벌집과 벌집 속 벌방을 양봉가가 하나씩 확인하는데는 많은 시간과 노동력이 필요하다. 따라서 조기 질병 진단 서비스를 도입할 경우 국가 예산 및 양봉가의 노동력과 시간을 절약할 수 있다.
+
+## Reference
+1. Khalifa, Shaden A. M., Esraa H. Elshafiey, and Aya A. Shetaia. 2021. “Overview of Bee Pollination and Its Economic Value for Crop Production.” Insects.
+https://doi.org/10.3390/insects12080688
+
+2. United States Department of Agriculture (USDA) National Agricultural Statistics Service. n.d. "Graph of Increase in Honeybee Death Rate Due to Diseases."
+
+3. Harvard University Gazette. 2020. “The Damage That Wasps Do to Honeybees.” Harvard News.
+https://news.harvard.edu/gazette/story/2020/06/harvard-bee-experts-discuss-the-murder-hornet-threat/
+
+4. 농촌진흥청 보도자료. 2023. “화분매개벌 생존 기간 늘리고 농가 소득 키우는 '스마트벌통'”. 농촌진흥청. https://www.rda.go.kr/fileDownLoadDw.do?boardId=farmprmninfo&dataNo=100000785164&sortNo=2
+
+5. 이학범. 2023. "꿀벌 폐사 피해 현황 및 원인, 꿀벌질병진단법 교육". DailyVetNews. https://www.dailyvet.co.kr/news/prevention-hygiene/204884
+
+6. 농촌진흥청. 2023. "이제 벌관리도 스마트하게! '화분매개용 스마트벌통'". 농촌진흥청 블로그. https://blog.naver.com/rda2448/223038459700
+
+7. 키움투자자산운용 매거진. 2023. "[월간 ESG 트렌드] 꿀벌이 위험해! 기후변화로 인한 꿀벌 폐사". 키움투자자산운용. https://www.kiwoomam.com/lounge/KI0502010102M?kijaNo=237
+
+8. Jacob Posada. 2024. "Beekeeping in the US - Market Research Report (2014-2029)". IBISWorld. https://www.ibisworld.com/united-states/industry/beekeeping/68/
