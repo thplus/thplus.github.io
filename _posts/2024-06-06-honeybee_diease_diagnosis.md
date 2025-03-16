@@ -202,11 +202,11 @@ math: true
 
 - 실시간 객체 탐지<br/>
     <video controls style="max-width: 100%; height: auto;">
-    <source src="/assetes/videos/honeybee_video1.mp4" type="video/mp4">
+    <source src="/assets/videos/honeybee_video1.mp4" type="video/mp4">
     </video>
 
     <video controls style="max-width: 100%; height: auto;">
-    <source src="/assetes/videos/honeybee_video2.mp4" type="video/mp4">
+    <source src="/assets/videos/honeybee_video2.mp4" type="video/mp4">
     </video>
 
 ## YOLO 성능평가
