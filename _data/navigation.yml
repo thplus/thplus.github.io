@@ -12,3 +12,8 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+  docs:
+    - title: "Category"
+      children:
+        - title: "Category"
+          url: /categories/
