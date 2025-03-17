@@ -18,5 +18,7 @@ main:
 docs:
   - title: "Category"
     children:
-      - title: "Category"
-        url: /categories/
+      - title: "Project"
+        url: /categories/#project
+      - title: "Today I Learn"
+        url: /categories/#today-i-learn
