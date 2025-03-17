@@ -22,3 +22,5 @@ docs:
         url: /categories/#project
       - title: "Today I Learn"
         url: /categories/#today-i-learn
+      - title: "Assignment"
+        url: /categories/#assignment
