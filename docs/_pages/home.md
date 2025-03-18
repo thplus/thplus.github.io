@@ -32,7 +32,16 @@ feature_row:
     excerpt: "Free to use however you want under the MIT License. Clone it, fork it, customize it... whatever!"
     url: "/docs/license/"
     btn_class: "btn--primary"
-    btn_label: "Learn more"      
+    btn_label: "Learn more"   
+  - image_path: /assets/images/mm-free-feature.png
+    alt: "honeybee"
+    title: "Honeybee Diease diagnosis"
+    excerpt: "꿀벌을 한겁니다. ^^ 열씨미 해떠염;;"
+    url: "/docs/license/"
+    btn_class: "btn--primary"
+    btn_label: "Learn more"     
 ---
 
 {% include feature_row %}
+
+아래에는 어떻게 나오는지 살펴보자
