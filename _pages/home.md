@@ -1,5 +1,6 @@
 ---
 layout: splash
+title: Brix
 permalink: /
 hidden: true
 header:
