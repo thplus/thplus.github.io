@@ -54,7 +54,7 @@ stack_row:
 {% include feature_row %}
 
 ## Test
-{% include stack_row %}
+<!-- {% include stack_row %} -->
 
 ## KaKao Tech Bootcamp - Today I Learn
 
