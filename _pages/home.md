@@ -1,6 +1,6 @@
 ---
 layout: splash
-permalink: /hometest/
+permalink: /
 hidden: true
 header:
   overlay_color: "#5e616c"
@@ -15,29 +15,29 @@ feature_row:
   - image_path: /assets/images/honeybee_yolo_varroa2.png
     alt: "honeybee_varroa"
     title: "Honeybee Diease Diagnosis"
-    excerpt: "YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다."
+    excerpt: "YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다. YOLO를 이용한 학습과 결과분석, 디벨롭을 담당했습니다. "
     url: "/project/ajou%20university/honeybee_diease_diagnosis/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
-  - image_path: /assets/images/mm-responsive-feature.png
-    alt: "fully responsive"
-    title: "Responsive layouts"
-    excerpt: "Built with HTML5 + CSS3. All layouts are fully responsive with helpers to augment your content."
-    url: "/docs/layouts/"
+  - image_path: /assets/images/sentiment_1.png
+    alt: "Sentiment"
+    title: "감성분석을 활용한 언론사의 양극화 분석"
+    excerpt: "감성분석을 활용하여 언론사의 양극화 현상을 분석해 본 프로젝트입니다. 감성분석 모델 설계, Topic 모델 설계, 결과분석, 인사이트 분석을 담당했습니다."
+    url: "/project/ajou%20university/sentiment_analysis_with_headline/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
-  - image_path: /assets/images/mm-free-feature.png
-    alt: "100% free"
-    title: "100% free"
-    excerpt: "Free to use however you want under the MIT License. Clone it, fork it, customize it... whatever!"
-    url: "/docs/license/"
+  - image_path: /assets/images/hackathon_4.png
+    alt: "Hackathon"
+    title: "노래 추천 AI 서비스"
+    excerpt: "LLM을 활용한 노래 추천 서비스로 배포까지 완료해 본 프로젝트입니다. 프롬프트 엔지니어링과 API 설계, FastAPI 설계, 디버깅 등을 담당했습니다."
+    url: "/project/ktb/hackathon/"
     btn_class: "btn--primary"
     btn_label: "Learn more"      
   - image_path: /assets/images/mm-free-feature.png
-    alt: "honeybee"
-    title: "Honeybee Diease diagnosis"
-    excerpt: "꿀벌을 한겁니다. ^^ 열씨미 해떠염;;"
-    url: "/docs/license/"
+    alt: "CNN"
+    title: "쌀 분류, CNN 연구"
+    excerpt: "To Be Updated"
+    url: "/"
     btn_class: "btn--primary"
     btn_label: "Learn more"    
 ---
