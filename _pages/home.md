@@ -42,7 +42,7 @@ feature_row:
     btn_class: "btn--primary"
     btn_label: "Learn more"    
 
-feature_row2:
+feature2_row:
   - image_path: /assets/images/honeybee_yolo_varroa2.png
     alt: "Sokoban"
     title: "3D Sokoban"
@@ -52,15 +52,15 @@ feature_row2:
     btn_label: "Learn more"
   - image_path: /assets/images/honeybee_yolo_varroa2.png
     alt: "Sokoban"
-    title: "3D Sokoban"
-    excerpt: "To Be Updated, 3D로 소코반 게임을 만들어본 프로젝트입니다. "
+    title: "Amazing Bowling"
+    excerpt: "To Be Updated, Amazing Bowling "
     url: "/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/honeybee_yolo_varroa2.png
     alt: "Sokoban"
-    title: "3D Sokoban"
-    excerpt: "To Be Updated, 3D로 소코반 게임을 만들어본 프로젝트입니다. "
+    title: "TPS Project"
+    excerpt: "To Be Updated, TPS 게임을 만들어 본 프로젝트입니다. "
     url: "/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
@@ -72,7 +72,7 @@ feature_row2:
 
 ## Game Project
 
-{% include feature_row2 %}
+{% include feature2_row %}
 
 
 ## KaKao Tech Bootcamp - Today I Learn
