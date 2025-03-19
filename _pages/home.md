@@ -16,7 +16,9 @@ feature_row:
   - image_path: /assets/images/honeybee_yolo_varroa2.png
     alt: "honeybee_varroa"
     title: "Honeybee Diease Diagnosis"
-    excerpt: "YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다. YOLO를 이용한 학습과 결과분석, 디벨롭을 담당했습니다. "
+    excerpt: >
+      YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다. YOLO를 이용한 학습과 결과분석, 디벨롭을 담당했습니다.<br />
+      <i class="fa fa-calendar" aria-hidden="true"></i> 2024.05.30. ~ 2024.06.06.
     url: "/project/ajou%20university/honeybee_diease_diagnosis/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
