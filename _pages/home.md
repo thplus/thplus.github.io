@@ -42,19 +42,37 @@ feature_row:
     btn_class: "btn--primary"
     btn_label: "Learn more"    
 
-# stack_row:
-#   - image_path: /assets/images/honeybee_yolo_varroa2.png
-#     alt: "honeybee_varroa"
-#     title: "Honeybee Diease Diagnosis"
-#     excerpt: "YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다. YOLO를 이용한 학습과 결과분석, 디벨롭을 담당했습니다. "
-#     url: "/project/ajou%20university/honeybee_diease_diagnosis/"
-#     btn_class: "btn--primary"
-#     btn_label: "Learn more"
+feature_row2:
+  - image_path: /assets/images/honeybee_yolo_varroa2.png
+    alt: "Sokoban"
+    title: "3D Sokoban"
+    excerpt: "To Be Updated, 3D로 소코반 게임을 만들어본 프로젝트입니다. "
+    url: "/"
+    btn_class: "btn--primary"
+    btn_label: "Learn more"
+  - image_path: /assets/images/honeybee_yolo_varroa2.png
+    alt: "Sokoban"
+    title: "3D Sokoban"
+    excerpt: "To Be Updated, 3D로 소코반 게임을 만들어본 프로젝트입니다. "
+    url: "/"
+    btn_class: "btn--primary"
+    btn_label: "Learn more"
+  - image_path: /assets/images/honeybee_yolo_varroa2.png
+    alt: "Sokoban"
+    title: "3D Sokoban"
+    excerpt: "To Be Updated, 3D로 소코반 게임을 만들어본 프로젝트입니다. "
+    url: "/"
+    btn_class: "btn--primary"
+    btn_label: "Learn more"
 ---
 
-## Project
+## AI Project
 
 {% include feature_row %}
+
+## Game Project
+
+{% include feature_row2 %}
 
 
 ## KaKao Tech Bootcamp - Today I Learn
