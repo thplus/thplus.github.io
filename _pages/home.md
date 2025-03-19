@@ -44,7 +44,7 @@ feature_row:
 
 feature2_row:
   - image_path: /assets/images/3dsokoban_teaser.png
-    alt: "Sokoban"
+    alt: "Sokoban Teaser"
     title: "3D Sokoban"
     excerpt: "To Be Updated, 3D로 소코반 게임을 만들어본 프로젝트입니다. "
     url: "/"
@@ -57,8 +57,8 @@ feature2_row:
     url: "/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
-  - image_path: /assets/images/honeybee_yolo_varroa2.png
-    alt: "Sokoban"
+  - image_path: /assets/images/tps_teaser.png
+    alt: "TPS Teaser"
     title: "TPS Project"
     excerpt: "To Be Updated, TPS 게임을 만들어 본 프로젝트입니다. "
     url: "/"
@@ -73,7 +73,6 @@ feature2_row:
 ## Game Project
 
 {% include feature2_row %}
-![alt text](image.png)
 
 ## KaKao Tech Bootcamp - Today I Learn
 
