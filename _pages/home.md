@@ -43,7 +43,7 @@ feature_row:
     btn_label: "Learn more"    
 
 feature2_row:
-  - image_path: /assets/images/honeybee_yolo_varroa2.png
+  - image_path: /assets/images/3dsokoban_teaser.png
     alt: "Sokoban"
     title: "3D Sokoban"
     excerpt: "To Be Updated, 3D로 소코반 게임을 만들어본 프로젝트입니다. "
@@ -73,7 +73,7 @@ feature2_row:
 ## Game Project
 
 {% include feature2_row %}
-
+![alt text](image.png)
 
 ## KaKao Tech Bootcamp - Today I Learn
 
