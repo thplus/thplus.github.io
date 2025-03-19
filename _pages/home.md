@@ -50,11 +50,11 @@ feature_row:
 #     btn_class: "btn--primary"
 #     btn_label: "Learn more"
 ---
+
 ## Project
+
 {% include feature_row %}
 
-## Test
-<!-- {% include stack_row %} -->
 
 ## KaKao Tech Bootcamp - Today I Learn
 
