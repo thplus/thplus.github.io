@@ -12,11 +12,11 @@ excerpt: >
   A flexible two-column Jekyll theme. Perfect for building personal sites, blogs, and portfolios.<br />
   <small><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/4.26.2">Latest release v4.26.2</a></small>
 feature_row:
-  - image_path: /assets/images/mm-customizable-feature.png
-    alt: "customizable"
-    title: "Super customizable"
-    excerpt: "Everything from the menus, sidebars, comments, and more can be configured or set with YAML Front Matter."
-    url: "/docs/configuration/"
+  - image_path: /assets/images/honeybee_yolo_varroa2.png
+    alt: "honeybee_varroa"
+    title: "Honeybee Diease Diagnosis"
+    excerpt: "YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다."
+    url: "/project/ajou%20university/honeybee_diease_diagnosis/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/mm-responsive-feature.png
