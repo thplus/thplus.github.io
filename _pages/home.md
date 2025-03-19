@@ -17,69 +17,92 @@ feature_row:
     alt: "honeybee_varroa"
     title: "Honeybee Diease Diagnosis"
     excerpt: >
-      <span style="font-size: larger;">
+      <span style="font-size: 16px;">
         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.05.30. ~ 2024.06.06.
       </span><br />
       YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다. YOLO를 이용한 학습과 결과분석, 디벨롭을 담당했습니다.
     url: "/project/ajou%20university/honeybee_diease_diagnosis/"
     btn_class: "btn--primary"
-    btn_label: "Learn more"
+    btn_label: "See Details"
   - image_path: /assets/images/sentiment_1.png
     alt: "Sentiment"
     title: "감성분석을 활용한 언론사의 양극화 분석"
     excerpt: >
-     <span style="font-size: 20px;">
+     <span style="font-size: 16px;">
         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.09.11. ~ 2024.12.04.
      </span><br />
      "감성분석을 활용하여 언론사의 양극화 현상을 분석해 본 프로젝트입니다. 감성분석 모델 설계, Topic 모델 설계, 결과분석, 인사이트 분석을 담당했습니다."
     url: "/project/ajou%20university/sentiment_analysis_with_headline/"
     btn_class: "btn--primary"
-    btn_label: "Learn more"
+    btn_label: "See Details"
   - image_path: /assets/images/hackathon_4.png
     alt: "Hackathon"
     title: "노래 추천 AI 서비스"
     excerpt: >
       <span style="font-size: 16px;">
-        <i class="fa fa-calendar" aria-hidden="true"></i> 2025.02.26. ~ 2024.02.28.
+        <i class="fa fa-calendar" aria-hidden="true"></i> 2025.02.26. ~ 2025.02.28.
       </span><br />
       "LLM을 활용한 노래 추천 서비스로 배포까지 완료해 본 프로젝트입니다. 프롬프트 엔지니어링과 API 설계, FastAPI 설계, 디버깅 등을 담당했습니다."
     url: "/project/ktb/hackathon/"
     btn_class: "btn--primary"
-    btn_label: "Learn more"      
-  - image_path: /assets/images/mm-free-feature.png
-    alt: "CNN"
+    btn_label: "See Details"      
+  - image_path: /assets/images/rice_teaser.png
+    alt: "Rice Image Dataset"
     title: "쌀 분류, CNN 연구"
     excerpt: >
-      <span style="font-size: 24px;">
-        <i class="fa fa-calendar" aria-hidden="true"></i> 2025.03.19. ~ 2024.03.30.
+      <span style="font-size: 16px;">
+        <i class="fa fa-calendar" aria-hidden="true"></i> 2025.03.19. ~ 2025.03.30.
       </span><br />
       "To Be Updated"
     url: "/"
     btn_class: "btn--primary"
-    btn_label: "Learn more"    
+    btn_label: "See Details"    
 
 feature2_row:
   - image_path: /assets/images/3dsokoban_teaser.png
     alt: "Sokoban Teaser"
     title: "3D Sokoban"
-    excerpt: "To Be Updated, 3D로 소코반 게임을 만들어본 프로젝트입니다. "
+    excerpt: >
+      <span style="font-size: 16px;">
+        <i class="fa fa-calendar" aria-hidden="true"></i> 2024.10.01. ~ 2024.10.02.
+      </span><br />
+      "To Be Updated, 3D로 소코반 게임을 만들어 본 프로젝트입니다. "
     url: "/"
     btn_class: "btn--primary"
-    btn_label: "Learn more"
+    btn_label: "See Details"
   - image_path: /assets/images/honeybee_yolo_varroa2.png
     alt: "Sokoban"
     title: "Amazing Bowling"
-    excerpt: "To Be Updated, Amazing Bowling "
+    excerpt: >
+      <span style="font-size: 16px;">
+        <i class="fa fa-calendar" aria-hidden="true"></i> 2024.10.18. ~ 2024.10.23.
+      </span><br />
+      "To Be Updated, Amazing Bowling 게임을 만들어 본 프로젝트입니다.. "
     url: "/"
     btn_class: "btn--primary"
-    btn_label: "Learn more"
+    btn_label: "See Details"
+  - image_path: /assets/images/honeybee_yolo_varroa2.png
+    alt: "Sokoban"
+    title: "Dodge"
+    excerpt: >
+      <span style="font-size: 16px;">
+        <i class="fa fa-calendar" aria-hidden="true"></i> 2024.11.20. ~ 2024.11.22.
+      </span><br />
+      "To Be Updated, 3D 닷지 게임을 만들어 본 프로젝트입니다. "
+    url: "/"
+    btn_class: "btn--primary"
+    btn_label: "See Details"
   - image_path: /assets/images/tps_teaser.png
     alt: "TPS Teaser"
     title: "TPS Project"
-    excerpt: "To Be Updated, TPS 게임을 만들어 본 프로젝트입니다. "
+    excerpt: >
+      <span style="font-size: 16px;">
+        <i class="fa fa-calendar" aria-hidden="true"></i> 2024.12.03. ~ 2024.12.13.
+      </span><br />
+      "To Be Updated, TPS 게임을 만들어 본 프로젝트입니다. "
     url: "/"
     btn_class: "btn--primary"
-    btn_label: "Learn more"
+    btn_label: "See Details"
 ---
 
 ## AI Project
