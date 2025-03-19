@@ -17,29 +17,43 @@ feature_row:
     alt: "honeybee_varroa"
     title: "Honeybee Diease Diagnosis"
     excerpt: >
-      YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다. YOLO를 이용한 학습과 결과분석, 디벨롭을 담당했습니다.<br />
-      <i class="fa fa-calendar" aria-hidden="true"></i> 2024.05.30. ~ 2024.06.06.
+      <span style="font-size: larger;">
+        <i class="fa fa-calendar" aria-hidden="true"></i> 2024.05.30. ~ 2024.06.06.
+      </span><br />
+      YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다. YOLO를 이용한 학습과 결과분석, 디벨롭을 담당했습니다.
     url: "/project/ajou%20university/honeybee_diease_diagnosis/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/sentiment_1.png
     alt: "Sentiment"
     title: "감성분석을 활용한 언론사의 양극화 분석"
-    excerpt: "감성분석을 활용하여 언론사의 양극화 현상을 분석해 본 프로젝트입니다. 감성분석 모델 설계, Topic 모델 설계, 결과분석, 인사이트 분석을 담당했습니다."
+    excerpt: >
+     <span style="font-size: 20px;">
+        <i class="fa fa-calendar" aria-hidden="true"></i> 2024.09.11. ~ 2024.12.04.
+     </span><br />
+     "감성분석을 활용하여 언론사의 양극화 현상을 분석해 본 프로젝트입니다. 감성분석 모델 설계, Topic 모델 설계, 결과분석, 인사이트 분석을 담당했습니다."
     url: "/project/ajou%20university/sentiment_analysis_with_headline/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/hackathon_4.png
     alt: "Hackathon"
     title: "노래 추천 AI 서비스"
-    excerpt: "LLM을 활용한 노래 추천 서비스로 배포까지 완료해 본 프로젝트입니다. 프롬프트 엔지니어링과 API 설계, FastAPI 설계, 디버깅 등을 담당했습니다."
+    excerpt: >
+      <span style="font-size: 16px;">
+        <i class="fa fa-calendar" aria-hidden="true"></i> 2025.02.26. ~ 2024.02.28.
+      </span><br />
+      "LLM을 활용한 노래 추천 서비스로 배포까지 완료해 본 프로젝트입니다. 프롬프트 엔지니어링과 API 설계, FastAPI 설계, 디버깅 등을 담당했습니다."
     url: "/project/ktb/hackathon/"
     btn_class: "btn--primary"
     btn_label: "Learn more"      
   - image_path: /assets/images/mm-free-feature.png
     alt: "CNN"
     title: "쌀 분류, CNN 연구"
-    excerpt: "To Be Updated"
+    excerpt: >
+      <span style="font-size: 24px;">
+        <i class="fa fa-calendar" aria-hidden="true"></i> 2025.03.19. ~ 2024.03.30.
+      </span><br />
+      "To Be Updated"
     url: "/"
     btn_class: "btn--primary"
     btn_label: "Learn more"    
