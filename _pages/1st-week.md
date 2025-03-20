@@ -7,7 +7,7 @@ sidebar_main: true
 ---
 
 {% assign temp_posts = site.posts | where_exp: "post", "post.categories contains 'Today I Learn'" %}
-{% assign posts = temp_posts | where_exp: "post", "post.categories contains '1st Week'" %}
+{% assign posts = temp_posts | where_exp: "post", "post.categories contains '2nd Week'" %}
 
 <h3>📌 Filtered Posts</h3>
 <ul>
