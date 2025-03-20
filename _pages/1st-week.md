@@ -6,9 +6,9 @@ author_profile: true
 sidebar_main: true
 ---
 
-<h3>📌 Debugging Categories</h3>
+<h3>📌 Debugging Filtered Posts</h3>
 <ul>
-  {% for post in site.posts %}
-    <li>{{ post.title }} - {{ post.categories }}</li>
+  {% for post in posts %}
+    <li>{{ post.title }} - {{ post.categories | join: ", " }}</li>
   {% endfor %}
 </ul>
