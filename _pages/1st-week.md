@@ -6,10 +6,9 @@ author_profile: true
 sidebar_main: true
 ---
 
-{% assign posts = site.posts 
-  | where_exp: "post", "post.categories contains 'Today I Learn'" 
-  | where_exp: "post", "post.categories contains '1st Week'" %}
-
+{% if posts == site.categories.["Today I Learn"] and posts == site.categories.["1st Week"] %}
+    {% assign posts = posts %}
+{% endif %}
 {% for post in posts %}
   {% include archive-single.html type=page.entries_layout %}
 {% endfor %}
