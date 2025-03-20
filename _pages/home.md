@@ -67,7 +67,7 @@ feature2_row:
         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.10.01. ~ 2024.10.02.
       </span><br />
       "To Be Updated, 3D로 소코반 게임을 만들어 본 프로젝트입니다. "
-    url: "/"
+    url: "/project/ajou%20university/3dsokoban/"
     btn_class: "btn--primary"
     btn_label: "See Details"
   - image_path: /assets/images/honeybee_yolo_varroa2.png
