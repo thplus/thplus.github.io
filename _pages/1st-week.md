@@ -6,9 +6,9 @@ author_profile: true
 sidebar_main: true
 ---
 
-{% if posts == site.categories.["Today I Learn"] and posts == site.categories.["1st Week"] %}
-    {% assign posts = posts %}
-    {% for post in posts %}
-        {% include archive-single.html type=page.entries_layout %}
-    {% endfor %}
-{% endif %}
+<h3>📌 Debugging Categories</h3>
+<ul>
+  {% for post in site.posts %}
+    <li>{{ post.title }} - {{ post.categories }}</li>
+  {% endfor %}
+</ul>
