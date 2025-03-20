@@ -1,17 +1,14 @@
 ---
 title: TPS Project
 date: 2024-12-13
-categories: 
-    - Project
-    - Ajou University
-
+categories: [Project, Ajou University]
 tags: [C#, Unity]
 header:
-    video: /assets/videos/TPS_Project_Play.mp4
+    video: <video controls style="max-width: 100%; height: auto;">
+        <source src="/assets/videos/honeybee_video1.mp4" type="video/mp4">
+        </video>
 math: true
 ---
-
-## YouTube Play 영상 띄우기
 
 ## 로직? Flow Chart
 
