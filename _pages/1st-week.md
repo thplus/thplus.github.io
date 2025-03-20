@@ -6,9 +6,14 @@ author_profile: true
 sidebar_main: true
 ---
 
-<h3>📌 Debugging Categories</h3>
+{% assign temp_posts = site.posts | where_exp: "post", "post.categories contains 'Today I Learn'" %}
+{% assign posts = temp_posts | where_exp: "post", "post.categories contains '1st Week'" %}
+
+<h3>📌 Filtered Posts</h3>
 <ul>
-  {% for post in site.posts %}
-    <li>{{ post.title }} - {{ post.categories | inspect }}</li>
+  {% for post in posts %}
+    <li>{{ post.title }} - {{ post.categories | join: ", " }}</li>
+  {% else %}
+    <li>⚠ No matching posts found.</li>
   {% endfor %}
 </ul>
