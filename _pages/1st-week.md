@@ -8,7 +8,7 @@ sidebar_main: true
 
 {% if posts == site.categories.["Today I Learn"] and posts == site.categories.["1st Week"] %}
     {% assign posts = posts %}
+    {% for post in posts %}
+        {% include archive-single.html type=page.entries_layout %}
+    {% endfor %}
 {% endif %}
-{% for post in posts %}
-  {% include archive-single.html type=page.entries_layout %}
-{% endfor %}
