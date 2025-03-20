@@ -18,11 +18,25 @@ main:
   #   url: /sitemap/
 
 docs:
-  - title: "Category"
+  - title: "Project"
     children:
-      - title: "Project"
-        url: /categories/#project
-      - title: "Today I Learn"
-        url: /categories/#today-i-learn
-      - title: "Assignment"
-        url: /categories/#assignment
+      - title: "Ajou University"
+        url: /categories/ajou-university/
+      - title: "KaKao Tech Bootcamp"
+        url: /categories/ktb/
+  - title: "Today I Learn"
+    children:
+      - title: "1st Week"
+        url: /categories/1st-week/
+      - title: "2nd Week"
+        url: /
+      - title: "3rd Week"
+        url: /
+      - title: "4th Week"
+        url: /
+      - title: "5th Week"
+        url: /
+      - title: "6th Week"
+        url: / 
+      - title: "7th Week"
+        url: /

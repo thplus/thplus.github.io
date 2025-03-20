@@ -1,10 +1,10 @@
 ---
-title: "1st Week"
+title: "Ajou University"
 layout: archive
-permalink: /categories/1st-week/
+permalink: /categories/ajou-university/
 author_profile: true
 sidebar_main: true
 ---
 
-{% assign posts = site.categories.1st%20week %}
+{% assign posts = site.categories.ajou%20university %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
