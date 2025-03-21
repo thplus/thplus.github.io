@@ -65,7 +65,7 @@ feature_row:
         <i class="fa fa-calendar" aria-hidden="true"></i> 2025.03.19. ~ 2025.03.30.
       </span><br />
       "To Be Updated, Rice Image Dataset을 사용해 CNN을 분석해 본 개인 프로젝트입니다."
-    url: "/"
+    url: "/project/ktb/cnn_experiment/"
     btn_class: "btn--primary"
     btn_label: "See Details"    
 
