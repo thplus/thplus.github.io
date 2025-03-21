@@ -1,7 +1,7 @@
 ---
 title: 1주차 내용 복습
 date: 2025-02-03
-categories: [Today I Learn, 2nd Week]
+categories: [Today I Learn, 1st Week]
 tags: [review, python]     # TAG names should always be lowercase
 math: true
 ---

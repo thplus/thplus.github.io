@@ -1,5 +1,5 @@
 ---
-title: "Ajou University"
+title: "Ajou University Project"
 layout: archive
 permalink: /categories/ajou-university/
 author_profile: true
