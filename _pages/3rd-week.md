@@ -3,7 +3,8 @@ title: "TIL - 3rd Week"
 layout: archive
 permalink: /categories/3rd-week/
 author_profile: true
-sidebar_main: true
+sidebar:
+    nav: "docs"
 ---
 {% assign posts = site.posts | where_exp: "post", "post.categories contains 'Today I Learn'" | where_exp: "post", "post.categories contains '3rd Week'" %}
 

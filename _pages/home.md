@@ -43,7 +43,7 @@ feature_row:
         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.12.03. ~ 2024.12.13.
       </span><br />
       "To Be Updated, TPS 게임을 만들어 본 개인 프로젝트입니다."
-    url: "/"
+    url: "/project/ajou%20university/tps_project/"
     btn_class: "btn--primary"
     btn_label: "See Details"
   - image_path: /assets/images/hackathon_4.png

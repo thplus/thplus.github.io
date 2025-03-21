@@ -3,7 +3,8 @@ title: "Ajou University Project"
 layout: archive
 permalink: /categories/ajou-university/
 author_profile: true
-sidebar_main: true
+sidebar:
+    nav: "docs"
 ---
 
 {% assign posts = site.categories.["Ajou University"] %}

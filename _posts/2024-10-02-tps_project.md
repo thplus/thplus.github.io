@@ -1,4 +1,5 @@
 ---
+layout: splash
 title: TPS Project
 date: 2024-12-13
 categories: [Project, Ajou University]
