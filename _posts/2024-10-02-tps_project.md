@@ -14,6 +14,11 @@ header:
   caption: "TPS Project Demo"
 math: true
 ---
+## Demo Play
+<video controls style="max-width: 100%; height: auto;">
+    <source src="/assets/videos/TPS_Project_Play.mp4" type="video/mp4">
+</video>
+
 
 ## Flow Chart
 
