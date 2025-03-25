@@ -6,18 +6,20 @@ tags: [python, langchain, fastapi]
 math: true
 ---
 
-## 서론
+# 서론
 &nbsp;&nbsp;최근 다양한 CNN(Convolutional Neural Network) 기반의 이미지 분류 모델들이 제안되며 이미지 인식 분야에서 뛰어난 성능을 보이고 있다. 하지만 이러한 모델들은 구조의 복잡성이나 파라미터 수에 따라 연산 비용과 메모리 사용량에 큰 차이를 보이며, 특히 데이터셋의 특성에 따라 성능 및 효율성이 달라질 수 있다.<br/>
 &nbsp;&nbsp;실제 응용 환경에서는 모델의 경량화 또한 중요한 과제로 떠오르고 있다. 모바일 기기, 임베디드 시스템, 자동화 기계 등에서는 모델의 정확도뿐만 아니라 처리 속도와 자원 효율성이 중요한 요소로 작용하기 때문이다.<br/>
 &nbsp;&nbsp;따라서 본 프로젝트에서는 'Rice Image Dataset'을 활용하여 여러 CNN 기반 모델들이 해당 데이터셋에서 어떤 성능을 보이는지 비교하고 모델별 특징 및 효율성을 분석하고자 한다. 특히, 이미지 분류 과정에서 생성되는 Feature map을 시각화함으로써 각 모델이 어떤 방식으로 이미지를 인식하고 구분하는지 직관적으로 이해하고자 하였다.<br/>
 &nbsp;&nbsp;이를 통해 모델 경량화 여부를 판단하여 보고 모델 경량화 기법을 일부 적용해 봄으로써 성능저하 없이 예측 효율성을 개선할 수 있는 가능성도 살펴보고자한다. 이러한 분석을 통해 단순 정확도 비교를 넘어서 실제 응용에 적합한 효율적인 모델을 선정하기 위한 방법을 살펴보고자 한다.<br/>
 
-## 데이터셋 설명
+## 모델 경량화
+
+# 데이터셋 설명
 &nbsp;&nbsp;본 프로젝트에서 사용한 데이터셋은 Kaggle의 'Rice Image Dataset'으로 Murat Koklu에 의해 제공되었다.<br/>
 &nbsp;&nbsp;해당 데이터셋은 Arborio, Basmati, Ipsala, Jasmine, Karacadag로 총 5가지 class로 구분되어 있으며 각 데이터는 15,000개로 총 75,000개의 `.jpg` 이미지로 구성되어있다.<br/>
 &nbsp;&nbsp; 각 이미지는 250x250 픽셀 크기를 가지며 검은 배경 위에 단일 쌀알이 위치한 형태로 구성되어 있다. 이미지들은 쌀알 이외의 잡음은 없고 배경과 객체가 명확히 구분되도록 전처리 되어있어 이미지 분류 모델 학습에 적합한 데이터이다.
 
-### Data Load
+## Data Load
 (1)  Kaggle을 이용한 Data Load
   
 ```python
@@ -93,6 +95,7 @@ plt.show()
 
 ![alt text](/assets/images/rice_category.png)
 
+# 모델 구성
 ## CNN
 - 일반적인 CNN으로 Convolution → ReLu → MaxPooling 으로 3개 층으로 쌓아보았으며 필터의 갯수는 32 → 64 → 128 개를 사용하여 Feature map을 시각화 하였다.
   
@@ -169,7 +172,7 @@ plt.show()
 
   부분적으로 filter을 거친 후 feature map이 검은색인 경우가 많다. 이는 계산에 큰 영향을 미치지 않을 것이라 판단되어 filter의 개수를 줄여 개선을 경량화를 해보고자 한다.
 
-### CNN 경량화
+## CNN 경량화
 - 일반적인 CNN으로 Convolution → ReLu → MaxPooling 으로 2개 층으로 쌓아보았으며 필터의 갯수는 8 → 16 개를 사용하여 이전과 다르게 `strides` 추가하여 feature map의 크기를 줄여보았다.
   
   ```python
@@ -393,12 +396,247 @@ plt.show()
   Train Accuracy: 0.9988<br/>
   Train Loss: 0.0039<br/>
   Validation Accruacy: 0.9975<br/>
-  Validation Loss:  0.0111<br/>
+  Validation Loss: 0.0111<br/>
 
-- feature map 시각화
+- feature map 시각화<br/>
+  feature map은 앞선 stemp network만 시각화해보았다.
+  > 앞서서 GoogLeNet 구조에 대해 설명해보는게 좋을 듯 싶음
+
+  ![alt text](/assets/images/cnnproject_googlenet_layer1.png)<br/>
+  ![alt text](/assets/images/cnnproject_googlenet_layer2.png)<br/>
+  ![alt text](/assets/images/cnnproject_googlenet_layer3.png)<br/>
+
+## GoogLeNet 경량화
+- GoogLeNet은 Stem Network의 filter의 개수를 줄이고 각 Inception Module의 filter 개수를 줄여주었다. 또한 2단계의 Inception Module하나를 삭제하므로써 연산량을 줄였다. Inception Module의 구조는 GoogLeNet의 특징이므로 건드리지 않았다.
+  
+  ```python
+  # Inception Module은 GoogLeNet과 같으므로 생략
+
+  def create_googlenet_light(input_shape, num_classes):
+      inputs = layers.Input(shape=input_shape)
+
+      # Stem network
+      x = layers.Conv2D(16, (7,7), strides=(2,2), padding='same', activation='relu')(inputs)
+      x = layers.MaxPooling2D((3,3), strides=(2,2), padding='same')(x)
+      x = layers.Conv2D(16, (1,1), padding='same', activation='relu')(x)
+      x = layers.Conv2D(64, (3,3), padding='same', activation='relu')(x)
+      x = layers.MaxPooling2D((3,3), strides=(2,2), padding='same')(x)
+
+      # Inception modules
+      x = InceptionModule(16, 16, 24, 4, 8, 8)(x)
+      x = InceptionModule(24, 24, 32, 4, 8, 8)(x)
+      x = layers.MaxPooling2D((3,3), strides=(2,2), padding='same')(x)
+
+      x = InceptionModule(32, 32, 48, 8, 16, 16)(x)
+      x = InceptionModule(48, 48, 64, 8, 16, 16)(x)
+      x = InceptionModule(64, 64, 96, 12, 24, 24)(x)
+      x = InceptionModule(96, 64, 96, 12, 24, 24)(x)
+      x = layers.MaxPooling2D((3,3), strides=(2,2), padding='same')(x)
+
+      x = InceptionModule(96, 64, 96, 12, 24, 24)(x)
+      x = InceptionModule(96, 96, 128, 16, 32, 32)(x)
+
+      # 최종 분류기
+      x = layers.GlobalAveragePooling2D()(x)
+      x = layers.Dropout(0.4)(x)
+      outputs = layers.Dense(num_classes, activation='softmax')(x)
+
+      model = models.Model(inputs, outputs)
+      return model
+
+  # GoogLeNet 모델 생성 및 컴파일
+  googlenet_light = create_googlenet_light(input_shape=img_size + (3,), num_classes=5)
+  googlenet_light.compile(optimizer='adam',
+                    loss='categorical_crossentropy',
+                    metrics=['accuracy'])
+  googlenet_light.summary()
+  ```
+
+- GoogLeNet 경량화 Summary
+  
+  ```
+  Model: "functional_24"
+  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+  ┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+  ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+  │ input_layer (InputLayer)             │ (None, 224, 224, 3)         │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ conv2d (Conv2D)                      │ (None, 112, 112, 16)        │           2,368 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ max_pooling2d (MaxPooling2D)         │ (None, 56, 56, 16)          │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ conv2d_1 (Conv2D)                    │ (None, 56, 56, 16)          │             272 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ conv2d_2 (Conv2D)                    │ (None, 56, 56, 64)          │           9,280 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ max_pooling2d_1 (MaxPooling2D)       │ (None, 28, 28, 64)          │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ inception_module (InceptionModule)   │ (None, 28, 28, 56)          │           7,148 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ inception_module_1 (InceptionModule) │ (None, 28, 28, 72)          │          11,172 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ max_pooling2d_4 (MaxPooling2D)       │ (None, 14, 14, 72)          │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ inception_module_2 (InceptionModule) │ (None, 14, 14, 112)         │          23,512 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ inception_module_3 (InceptionModule) │ (None, 14, 14, 144)         │          44,488 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ inception_module_4 (InceptionModule) │ (None, 14, 14, 208)         │          86,396 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ inception_module_5 (InceptionModule) │ (None, 14, 14, 240)         │         103,580 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ max_pooling2d_9 (MaxPooling2D)       │ (None, 7, 7, 240)           │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ inception_module_6 (InceptionModule) │ (None, 7, 7, 240)           │         109,852 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ inception_module_7 (InceptionModule) │ (None, 7, 7, 288)           │         181,392 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ global_average_pooling2d             │ (None, 288)                 │               0 │
+  │ (GlobalAveragePooling2D)             │                             │                 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ dropout (Dropout)                    │ (None, 288)                 │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ dense (Dense)                        │ (None, 5)                   │           1,445 │
+  └──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+  Total params: 580,905 (2.22 MB)
+  Trainable params: 580,905 (2.22 MB)
+  Non-trainable params: 0 (0.00 B)
+  ```
+
+- Model Evaluation 시각화
+  
+  ![alt text](/assets/images/cnnproject_googlenetlight_accuracy.png)<br/>
+  ![alt text](/assets/images/cnnproject_googlenetlight_loss.png)<br/>
+  ```
+  Restoring model weights from the end of the best epoch: 16.
+  ```
+  Best score인 16번 째 epoch의 evaluation은 아래와 같다.<br/>
+  Train Accuracy: 0.9983<br/>
+  Train Loss: 0.0071<br/>
+  Validation Accruacy: 0.9981<br/>
+  Validation Loss: 0.0070<br/>
+  
+- feature map 시각화<br/>
+  feature map은 앞선 stemp network만 시각화해보았다.
+
+  ![alt text](/assets/images/cnnproject_googlenetlight_layer1.png)<br/>
+  ![alt text](/assets/images/cnnproject_googlenetlight_layer2.png)<br/>
+  ![alt text](/assets/images/cnnproject_googlenetlight_layer3.png)<br/>
 
 ## VGG16
-- VGG16 어쩌구
+- VGG16 어쩌구 구조는 어쩌구 저쩌구
+  
+  ```python
+  input_tensor = Input(shape=img_size + (3,))  # (224, 224, 3)
+
+  # VGG16 base model
+  base_model = VGG16(include_top=False,
+                    weights='imagenet',
+                    input_tensor=input_tensor)
+
+  # 필요한 레이어만 학습되도록 설정
+  for layer in base_model.layers[:-4]:
+      layer.trainable = False
+
+  # 커스텀 분류기 추가
+  x = base_model.output
+  x = GlobalAveragePooling2D()(x)
+  x = Dense(512, activation='relu')(x)
+  x = Dropout(0.3)(x)
+  output_tensor = Dense(5, activation='softmax')(x)
+
+  # 전체 모델 정의
+  vgg16 = Model(inputs=input_tensor, outputs=output_tensor)
+  vgg16.compile(optimizer='adam',
+                loss='categorical_crossentropy',
+                metrics=['accuracy'])
+
+  # 모델 구조 출력
+  vgg16.summary()
+  ```
+
+- VGG16 summary
+  
+  ```
+  Model: "functional_177"
+  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+  ┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+  ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+  │ input_layer_171 (InputLayer)         │ (None, 224, 224, 3)         │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block1_conv1 (Conv2D)                │ (None, 224, 224, 64)        │           1,792 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block1_conv2 (Conv2D)                │ (None, 224, 224, 64)        │          36,928 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block1_pool (MaxPooling2D)           │ (None, 112, 112, 64)        │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block2_conv1 (Conv2D)                │ (None, 112, 112, 128)       │          73,856 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block2_conv2 (Conv2D)                │ (None, 112, 112, 128)       │         147,584 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block2_pool (MaxPooling2D)           │ (None, 56, 56, 128)         │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block3_conv1 (Conv2D)                │ (None, 56, 56, 256)         │         295,168 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block3_conv2 (Conv2D)                │ (None, 56, 56, 256)         │         590,080 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block3_conv3 (Conv2D)                │ (None, 56, 56, 256)         │         590,080 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block3_pool (MaxPooling2D)           │ (None, 28, 28, 256)         │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block4_conv1 (Conv2D)                │ (None, 28, 28, 512)         │       1,180,160 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block4_conv2 (Conv2D)                │ (None, 28, 28, 512)         │       2,359,808 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block4_conv3 (Conv2D)                │ (None, 28, 28, 512)         │       2,359,808 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block4_pool (MaxPooling2D)           │ (None, 14, 14, 512)         │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block5_conv1 (Conv2D)                │ (None, 14, 14, 512)         │       2,359,808 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block5_conv2 (Conv2D)                │ (None, 14, 14, 512)         │       2,359,808 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block5_conv3 (Conv2D)                │ (None, 14, 14, 512)         │       2,359,808 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block5_pool (MaxPooling2D)           │ (None, 7, 7, 512)           │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ global_average_pooling2d_7           │ (None, 512)                 │               0 │
+  │ (GlobalAveragePooling2D)             │                             │                 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ dense_14 (Dense)                     │ (None, 512)                 │         262,656 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ dropout_7 (Dropout)                  │ (None, 512)                 │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ dense_15 (Dense)                     │ (None, 5)                   │           2,565 │
+  └──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+  Total params: 14,979,909 (57.14 MB)
+  Trainable params: 7,344,645 (28.02 MB)
+  Non-trainable params: 7,635,264 (29.13 MB)
+  ```
+
+- Model Evaluation 시각화
+  
+  ![alt text](/assets/images/cnnproject_vgg16_accuracy.png)<br/>
+  ![alt text](/assets/images/cnnproject_vgg16_loss.png)<br/>
+
+  ```
+  Restoring model weights from the end of the best epoch: 11.
+  ```
+  Best score인 11번 째 epoch의 evaluation은 아래와 같다.<br/>
+  Train Accuracy: 0.9994<br/>
+  Train Loss: 0.0024<br/>
+  Validation Accruacy: 0.9979<br/>
+  Validation Loss: 0.0099<br/>
+  
+- feature map 시각화<br/>
+
+  ![alt text](/assets/images/cnnproject_vgg16_layer1.png)<br/>
+  ![alt text](/assets/images/cnnproject_vgg16_layer2.png)<br/>
+  ![alt text](/assets/images/cnnproject_vgg16_layer3.png)<br/>
+  ![alt text](/assets/images/cnnproject_vgg16_layer4.png)<br/>
+  ![alt text](/assets/images/cnnproject_vgg16_layer5.png)<br/>
+  ![alt text](/assets/images/cnnproject_vgg16_layerfin.png)<br/>
+
 
 
 ## MobileNet
