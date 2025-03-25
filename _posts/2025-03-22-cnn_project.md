@@ -10,9 +10,80 @@ math: true
 &nbsp;&nbsp;최근 다양한 CNN(Convolutional Neural Network) 기반의 이미지 분류 모델들이 제안되며 이미지 인식 분야에서 뛰어난 성능을 보이고 있다. 하지만 이러한 모델들은 구조의 복잡성이나 파라미터 수에 따라 연산 비용과 메모리 사용량에 큰 차이를 보이며, 특히 데이터셋의 특성에 따라 성능 및 효율성이 달라질 수 있다.<br/>
 &nbsp;&nbsp;실제 응용 환경에서는 모델의 경량화 또한 중요한 과제로 떠오르고 있다. 모바일 기기, 임베디드 시스템, 자동화 기계 등에서는 모델의 정확도뿐만 아니라 처리 속도와 자원 효율성이 중요한 요소로 작용하기 때문이다.<br/>
 &nbsp;&nbsp;따라서 본 프로젝트에서는 'Rice Image Dataset'을 활용하여 여러 CNN 기반 모델들이 해당 데이터셋에서 어떤 성능을 보이는지 비교하고 모델별 특징 및 효율성을 분석하고자 한다. 특히, 이미지 분류 과정에서 생성되는 Feature map을 시각화함으로써 각 모델이 어떤 방식으로 이미지를 인식하고 구분하는지 직관적으로 이해하고자 하였다.<br/>
-&nbsp;&nbsp;이를 통해 모델 경량화 여부를 판단하여 보고 모델 경량화 기법을 일부 적용해 봄으로써 성능저하 없이 예측 효율성을 개선할 수 있는 가능성도 살펴보고자한다. 이러한 분석을 통해 단순 정확도 비교를 넘어서 실제 응용에 적합한 효율적인 모델을 선정하기 위한 방법을 살펴보고자 한다.<br/>
+&nbsp;&nbsp;이를 통해 더 이상 특징을 제대로 추출하지 못 하는 Layer를 일부 제거하거나 Filter의 수를 줄임 성능저하 없이 예측 효율성을 개선할 수 있는 가능성도 살펴보고자한다. 이러한 분석을 통해 단순 정확도 비교를 넘어서 실제 응용에 적합한 효율적인 모델을 선정하기 위한 방법을 살펴보고자 한다.<br/>
 
 ## 모델 경량화
+&nbsp;&nbsp;CNN 계열 모델의 이론적 추론시간은 아래와 같다.
+$$
+Inference\,Time = \frac{\sum_{l=1}^{L}FLOPs_l}{Device\,Performance\,(FLOPs/sec)}
+$$
+
+&nbsp;&nbsp;FLOPs란 FLoating point Operations의 약자로 부동소수점 연산을 의미하며 주로 모델의 계산 복잡성을 측정하는데 사용된다. Device Performance는 대개 FLOPS(FLoating point Operations Per Second)로 측정하고 있으며 추론 시간은 Device의 성능이 높을수록 계산해야하는 FLOPs가 낮을수록 추론시간은 짧아진다.<br/>
+&nbsp;&nbsp;일반적으로 Convolution Lyaer의 FLOPs의 계산은 아래와 같이 계산된다.<br/>
+
+$$
+FLOPs_{conv} = 2 \times C_{in} \times K^2 \times H_{out} \times W_{out} \times C_{out}
+$$
+
+$C_{in}$: 입력 채널 수<br/>
+$K$: 커널크기<br/>
+$H_{out}, W_{out}$: Feature map의 height, width<br/>
+$C_{out}$: 출력 채널 수<br/>
+
+&nbsp;&nbsp;여기서 Layer를 제거하거나 Filter의 개수를 줄여 다음 Layer에서의 $C_{in}$이 줄어든다. 따라서 계산량이 줄어들어 상당한 FLOPs의 이득을 볼 수 있다.
+
+## CNN의 기본 구조
+![alt text](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FOmgjJ%2FbtqXrD2js9s%2FGFjoiBuv70Hx53YKb9XOzK%2Fimg.png)<br/>
+
+&nbsp;&nbsp;CNN은 Convolution Layer를 통과해 특징을 추출하게 되며 Filter를 통과하고 나온 형태를 Feature Map이라 한다. 해당 Feature Map은 특징을 강조하는 Pooling을 거치게 되는데, 이 과정이 끝나면 Fully Connected Layer로 들어가게 되어 우리가 흔히 아는 ANN구조와 같은 방식으로 작동한다.<br/>
+
+&nbsp;&nbsp;예를 들어 고양이 사진을 CNN구조인 VGG16에 통과시키면 아래와 같은 Feature Map을 얻을 수 있다.<br/>
+![alt text](/assets/images/cnnproject_catfeaturemap.png)<br/>
+> [이미지 출처](https://m.blog.naver.com/luvwithcat/222148953574)| LifeofPy, CNN의 정의, 이미지의 feature map 기능과 kernel(filter)의 개념
+
+&nbsp;&nbsp;하지만 본 프로젝트에서 사용하는 'Rice Image Dataset'의 경우 CNN의 층이 깊어질수록 불필요한 특징이 잡힐 수 있다. 해당 Dataset을 같은 VGG16에 통과시킨 후의 Feature Map을 보면 아래와 같이 block_1과 block_5에서의 차이를 볼 수 있다.<br/>
+![alt text](/assets/images/cnnproject_vgg16_layer1.png)<br/>
+&nbsp;&nbsp;위의 Feature Map은 VGG16의 첫 번째 Convolution Layer를 통과한 상태이다.<br/>
+<br/>
+![alt text](/assets/images/cnnproject_vgg16_layerfin.png)<br/>
+&nbsp;&nbsp;위의 Feature Map은 VGG16의 마지막 Convolution Layer를 통과한 상태이다.
+모든 Filter에 대한 Feature Map을 출력한 것은 아니지만 대부분의 Filter가 그냥 검정색임을 알 수 있다. 해당 현상이 문제가 되는 점은 Fully Connected Layer에서 발생할 수 있다.<br/>
+
+&nbsp;&nbsp;Convolution → ReLU → MaxPooling 형태의 CNN 층을 수식으로 표현하면 아래와 같다.<br/>
+$X \in \mathbb{R}^{C_{in}\times H \times W}$<br/>
+$W \in \mathbb{R}^{C_{out}\times C_{in} \times K' \times K}$<br/>
+$b_i \in \mathbb{R}$<br/>
+&nbsp;&nbsp;출력 채널 $i$, 위치 $(m, n)$에서의 convolution 출력은 아래의 식과 같다.
+$$
+Z_i(m, n) = \sum_{c=1}^{C_{\text{in}}} \sum_{u=1}^{K} \sum_{v=1}^{K} W_{i,c,u,v} \cdot X_c(m + u, n + v) + b_i
+$$
+&nbsp;&nbsp;ReLU는 음수를 0으로 만들고 양수는 그대로 유지하므로 아래의 식과 같다.
+$$
+\text{ReLU}(Z_i(m, n)) = \max(0, Z_i(m, n))
+$$
+&nbsp;&nbsp; $2 \times 2$ 커널에서의 Max Pooling은 아래의 식과 같다.
+$$
+P_i(p, q) = \max_{\substack{0 \leq m < k \\ 0 \leq n < k}} A_i(s \cdot p + m,\, s \cdot q + n)
+$$
+
+&nbsp;&nbsp; 따라서 모든 Feature Map의 값이 0인 경우를 보면 아래와 같이 출력된다.
+$$
+Z_i(m,n) = 0 \,\,\, \forall i,m,n \\
+ReLU(Z_{i}(m,n))\max(0, Z_i(m,n)) = 0 \\
+P_i(p, q) = \max(0, 0, 0, 0) = 0
+$$
+
+&nbsp;&nbsp;이와 같이 Feature Map의 값이 모두 0이면 ReLU함수와 Pooling 층을 통과해도 그 결과는 0이 나온다.<br/>
+&nbsp;&nbsp;Fully Connected Layer는 $z = Wx + b$와 같이 표현되고 모든 $x = 0$이라면 학습결과는 bias($b$)에 의존할 수 밖에 없으며 이는 추출된 특징으로 학습할 수 없다. 따라서 학습할 정보가 사라지므로 해당 모델은 찍기의 형태를 띌 수 밖에 없다.<br/>
+
+&nbsp;&nbsp;실제 해당 프로젝트를 진행하면서 GoogLeNet을 학습시킬 때, weight를 초기화하며 학습하다보면 학습이 되지 않는 현상이 생겼다.<br/>
+![alt text](/assets/images/cnnproject_learningerror.png)<br/>
+![alt text](/assets/images/cnnproject_learningerroraccuracy.png)<br/>
+![alt text](/assets/images/cnnproject_learningerrorloss.png)<br/>
+
+[학습 불가 Colab Link](https://colab.research.google.com/drive/1Wt_dMel9Vv8HwzGIlkuvochkIFNWLsv0?usp=sharing), [프로젝트 Colab Link](https://colab.research.google.com/drive/1WgjlYTLEkDyacbimKDHpdKw0LBZn4aTi?usp=sharing) 두 링크를 통해 비교해보면 코드는 같은 걸 알 수 있다.<br/>
+
+&nbsp;&nbsp;따라서 본 프로젝트는 위의 결과를 토대로 시각적으로 Feature Map을 살펴보고 불필요한 Filter가 생성되는 Layer는 제거하거나 Filter의 개수를 줄여보면서 모델을 경량화하고 성능을 비교해보고자 한다.
 
 # 데이터셋 설명
 &nbsp;&nbsp;본 프로젝트에서 사용한 데이터셋은 Kaggle의 'Rice Image Dataset'으로 Murat Koklu에 의해 제공되었다.<br/>
@@ -240,7 +311,14 @@ plt.show()
 
   다양한 filter 중 유효한 filter만 사용된 모습을 볼 수 있다.
 
-### 두 모델 비교
+## 모델 비교
+
+|Model|Parameter|Validation Accuracy|Validation Loss|
+|---|--------|--|--|
+|CNN|12,939,077 (49.36 MB)|0.9963|0.0132|
+|CNN 경량화|**51,669** (201.83 KB)|**0.9970**|**0.0108**|
+
+Parameter 수는 각 $12,939,077$와 $51,669$로 $99.60(\%)$ 경량화 감소하였으며 Accuracy와 Loss를 보았을 때, 성능차이는 오차범위 이내로 소폭 증가하였다.
 
 ## GoogLeNet
 - GoogLeNet은 LeNet을 활용한 어쩌구... tensorflow로 구현해보았다.
@@ -523,6 +601,15 @@ plt.show()
   ![alt text](/assets/images/cnnproject_googlenetlight_layer2.png)<br/>
   ![alt text](/assets/images/cnnproject_googlenetlight_layer3.png)<br/>
 
+## 모델 비교
+
+|Model|Parameter|Validation Accuracy|Validation Loss|
+|---|--------|--|--|
+|GoogLeNet|5,978,677 (22.81 MB)|0.9975|0.0111|
+|GoogLeNet 경량화|**580,905** (2.22 MB)|**0.9981**|**0.0070**|
+
+Parameter 수는 각 $5,978,677$와 $580,905$로 $90.28(\%)$ 경량화 감소하였으며 Accuracy와 Loss를 보았을 때, 성능차이는 오차범위 이내로 소폭 증가하였다.
+
 ## VGG16
 - VGG16 어쩌구 구조는 어쩌구 저쩌구
   
@@ -638,6 +725,107 @@ plt.show()
   ![alt text](/assets/images/cnnproject_vgg16_layerfin.png)<br/>
 
 
+## VGG16 경량화
+- Pre-trained 되어있는 Filter를 그대로 사용하고 block_4와 block_5는 특징 추출이 되지 않은 형태로 보이므로 삭제하여 경량화
+
+  ```python
+  x = vgg16.get_layer('block3_pool').output
+
+  # 분류기 추가
+  x = GlobalAveragePooling2D()(x)
+  x = Dense(256, activation='relu')(x)
+  x = Dropout(0.2)(x)
+  output_tensor = Dense(5, activation='softmax')(x)
+
+  # 전체 모델 정의
+  vgg_light = Model(inputs=input_tensor, outputs=output_tensor)
+
+  # 필요한 레이어만 학습되도록 설정 (보통 block1,2는 고정)
+  for layer in vgg16.layers:
+      layer.trainable = False  # 전부 freeze 하거나 선택적으로 조절 가능
+
+  # 컴파일
+  vgg_light.compile(optimizer='adam',
+                    loss='categorical_crossentropy',
+                    metrics=['accuracy'])
+
+  # 모델 구조 출력
+  vgg_light.summary()
+  ```
+
+- VGG 경량화 Summary
+  
+  ```
+  Model: "functional_56"
+  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+  ┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+  ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+  │ input_layer_49 (InputLayer)          │ (None, 224, 224, 3)         │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block1_conv1 (Conv2D)                │ (None, 224, 224, 64)        │           1,792 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block1_conv2 (Conv2D)                │ (None, 224, 224, 64)        │          36,928 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block1_pool (MaxPooling2D)           │ (None, 112, 112, 64)        │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block2_conv1 (Conv2D)                │ (None, 112, 112, 128)       │          73,856 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block2_conv2 (Conv2D)                │ (None, 112, 112, 128)       │         147,584 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block2_pool (MaxPooling2D)           │ (None, 56, 56, 128)         │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block3_conv1 (Conv2D)                │ (None, 56, 56, 256)         │         295,168 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block3_conv2 (Conv2D)                │ (None, 56, 56, 256)         │         590,080 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block3_conv3 (Conv2D)                │ (None, 56, 56, 256)         │         590,080 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block3_pool (MaxPooling2D)           │ (None, 28, 28, 256)         │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ global_average_pooling2d_6           │ (None, 256)                 │               0 │
+  │ (GlobalAveragePooling2D)             │                             │                 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ dense_11 (Dense)                     │ (None, 256)                 │          65,792 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ dropout_5 (Dropout)                  │ (None, 256)                 │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ dense_12 (Dense)                     │ (None, 5)                   │           1,285 │
+  └──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+  Total params: 1,802,565 (6.88 MB)
+  Trainable params: 67,077 (262.02 KB)
+  Non-trainable params: 1,735,488 (6.62 MB)
+  ```
+
+- Model Evaluation 시각화
+  
+  ![alt text](/assets/images/cnnproject_vgg16_accuracy.png)<br/>
+  ![alt text](/assets/images/cnnproject_vgg16_loss.png)<br/>
+
+  ```
+  Restoring model weights from the end of the best epoch: 26.
+  ```
+  Best score인 11번 째 epoch의 evaluation은 아래와 같다.<br/>
+  Train Accuracy: 0.9970<br/>
+  Train Loss: 0.0102<br/>
+  Validation Accruacy: 0.9979<br/>
+  Validation Loss: 0.0070<br/>
+  
+- feature map 시각화<br/>
+
+  ![alt text](/assets/images/cnnproject_vgg16_layer1.png)<br/>
+  ![alt text](/assets/images/cnnproject_vgg16_layer2.png)<br/>
+  ![alt text](/assets/images/cnnproject_vgg16_layer3.png)<br/>
+
+  사전 학습된 모델 그대로 가져왔으므로 Filter를 통과한 Feature map은 동일하다.
+
+## 모델 비교
+
+|Model|Parameter|Validation Accuracy|Validation Loss|
+|---|--------|--|--|
+|VGG16|14,979,909 (57.14 MB)|0.9979|0.0099|
+|VGG 경량화|**1,802,565** (6.88 MB)|**0.9979**|**0.0070**|
+
+Parameter 수는 각 $5,978,677$와 $580,905$로 $87.97(\%)$ 경량화 감소하였으며 Accuracy와 Loss를 보았을 때, 성능차이는 오차범위 이내로 소폭 증가하였다.
 
 ## MobileNet
 
