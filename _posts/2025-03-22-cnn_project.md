@@ -83,7 +83,7 @@ $$
 \frac{\partial L}{\partial W_{conv}} = \frac{\partial L}{\partial A} \cdot \frac{\partial A}{\partial Z} \cdot \frac{\partial Z}{\partial W_{conv}}
 $$
 이다. <br/>
-&nbsp;&nbsp; 여기서 앞서 구한 $\frac{\partial L}{\partial W} = 0$이므로 $\frac{\partial Z}{\partial W_{conv}} = 0$ 이므로 Convolution Layer의 gradient가 0이 되어 학습이 되지 않은 채, Filter는 그대로 고정된 상태로 남는다.<br/>
+&nbsp;&nbsp; 여기서 앞서 구한 $\frac{\partial L}{\partial W} = 0$이므로 $\frac{\partial Z}{\partial W_{conv}} = 0$ 이다. 따라서 Convolution Layer의 gradient가 0이 되어 학습이 되지 않은 채, Filter는 그대로 고정된 상태로 남는다.<br/>
 &nbsp;&nbsp; 따라서 $\frac{\partial L}{\partial b}$인 bias만 업데이트 되어 의미 없는 학습만 계속하여 제대로 추론을 할 수 없게된다.
 
 &nbsp;&nbsp;위와 같이 이론적으로는 Feature Map을 모두 보았을 때, 마지막 Feature Map의 값이 모두 0이라면 학습은 진행되지 않는다. 본 프로젝트에서 첨부한 Feature Map들은 gray scale로 출력하여 각 채널(R, G, B)별 실제 Feature Map의 값들이 전부 0인지는 시각적으로 확인할 순 없다. 하지만 GoogLeNet을 이용해 이를 확인할 수 있었다.<br/>
