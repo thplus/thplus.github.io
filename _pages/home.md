@@ -59,12 +59,12 @@ feature_row:
     btn_label: "See Details"      
   - image_path: /assets/images/rice_teaser.png
     alt: "Rice Image Dataset"
-    title: "쌀 분류, CNN 연구"
+    title: "CNN 경량화 연구"
     excerpt: >
       <span style="font-size: 16px;">
         <i class="fa fa-calendar" aria-hidden="true"></i> 2025.03.19. ~ 2025.03.30.
       </span><br />
-      "To Be Updated, Rice Image Dataset을 사용해 CNN을 분석해 본 개인 프로젝트입니다."
+      "Rice Image Dataset을 이용하여 Feature Map을 토대로 CNN 계열 모델을 시각적으로 경량화 해 본 개인 프로젝트입니다."
     url: "/project/ktb/cnn_project/"
     btn_class: "btn--primary"
     btn_label: "See Details"    
