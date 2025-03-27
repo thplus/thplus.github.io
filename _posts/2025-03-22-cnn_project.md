@@ -741,15 +741,15 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
 
 
 ## (6) VGG16 경량화
-- 사전학습 되어있는 Filter를 그대로 사용하고 block_4와 block_5는 특징 추출이 되지 않은 형태로 보이므로 삭제하여 경량화였으며 Dense 부분만 512에서 256으로 줄여 학습시켰다.
+- 사전학습 되어있는 Filter를 그대로 사용하고 block_5는 특징 추출이 되지 않은 형태로 보이므로 삭제하여 경량화였다.
 
   ```python
-  x = vgg16.get_layer('block3_pool').output
+  x = vgg16.get_layer('block4_pool').output
 
   # 분류기 추가
   x = GlobalAveragePooling2D()(x)
-  x = Dense(256, activation='relu')(x)
-  x = Dropout(0.2)(x)
+  x = Dense(512, activation='relu')(x)
+  x = Dropout(0.3)(x)
   output_tensor = Dense(5, activation='softmax')(x)
 
   # 전체 모델 정의
@@ -771,11 +771,10 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
 - VGG 경량화 Summary
   
   ```
-  Model: "functional_56"
   ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
   ┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
   ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-  │ input_layer_49 (InputLayer)          │ (None, 224, 224, 3)         │               0 │
+  │ input_layer (InputLayer)             │ (None, 224, 224, 3)         │               0 │
   ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
   │ block1_conv1 (Conv2D)                │ (None, 224, 224, 64)        │           1,792 │
   ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
@@ -797,50 +796,160 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
   │ block3_pool (MaxPooling2D)           │ (None, 28, 28, 256)         │               0 │
   ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
-  │ global_average_pooling2d_6           │ (None, 256)                 │               0 │
+  │ block4_conv1 (Conv2D)                │ (None, 28, 28, 512)         │       1,180,160 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block4_conv2 (Conv2D)                │ (None, 28, 28, 512)         │       2,359,808 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block4_conv3 (Conv2D)                │ (None, 28, 28, 512)         │       2,359,808 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ block4_pool (MaxPooling2D)           │ (None, 14, 14, 512)         │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ global_average_pooling2d_3           │ (None, 512)                 │               0 │
   │ (GlobalAveragePooling2D)             │                             │                 │
   ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
-  │ dense_11 (Dense)                     │ (None, 256)                 │          65,792 │
+  │ dense_6 (Dense)                      │ (None, 512)                 │         262,656 │
   ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
-  │ dropout_5 (Dropout)                  │ (None, 256)                 │               0 │
+  │ dropout_3 (Dropout)                  │ (None, 512)                 │               0 │
   ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
-  │ dense_12 (Dense)                     │ (None, 5)                   │           1,285 │
+  │ dense_7 (Dense)                      │ (None, 5)                   │           2,565 │
   └──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
-  Total params: 1,802,565 (6.88 MB)
-  Trainable params: 67,077 (262.02 KB)
-  Non-trainable params: 1,735,488 (6.62 MB)
+  Total params: 7,900,485 (30.14 MB)
+  Trainable params: 265,221 (1.01 MB)
+  Non-trainable params: 7,635,264 (29.13 MB)
   ```
 
 - Model Evaluation 시각화
   
-  ![alt text](/assets/images/cnnproject_vgg16_accuracy.png)<br/>
-  ![alt text](/assets/images/cnnproject_vgg16_loss.png)<br/>
-
+  ![alt text](/assets/images/cnnproject_vgglight_accuracy.png)<br/>
+  ![alt text](/assets/images/cnnproject_vgglight_loss.png)<br/>
   ```
-  Restoring model weights from the end of the best epoch: 26.
+  Restoring model weights from the end of the best epoch: 28.
   ```
-  Best score인 11번 째 epoch의 evaluation은 아래와 같다.<br/>
-  Train Accuracy: 0.9970<br/>
-  Train Loss: 0.0102<br/>
-  Validation Accruacy: 0.9979<br/>
-  Validation Loss: 0.0070<br/>
+  Best score인 28번 째 epoch의 evaluation은 아래와 같다.<br/>
+  Train Accuracy: 0.9982<br/>
+  Train Loss: 0.0061<br/>
+  Validation Accruacy: 0.9977<br/>
+  Validation Loss: 0.0077<br/>
   
 - feature map 시각화<br/>
 
   ![alt text](/assets/images/cnnproject_vgg16_layer1.png)<br/>
   ![alt text](/assets/images/cnnproject_vgg16_layer2.png)<br/>
   ![alt text](/assets/images/cnnproject_vgg16_layer3.png)<br/>
+  ![alt text](/assets/images/cnnproject_vgg16_layer4.png)<br/>
 
   사전 학습된 모델 그대로 가져왔으므로 Filter를 통과한 Feature map은 동일하다.
+
+## (7) VGG Custom
+- VGG16 모델과 경량화 모델은 모두 Imagenet으로 사전학습된 모델이다. 해당 모델은 VGG16의 구조를 따라가되 직접 학습한 모델이며 총 3개의 block으로 이루어져있다.
+  
+  ```python
+  def vgg_custom(input_shape=(224, 224, 3), num_classes=5):
+      inputs = layers.Input(shape=input_shape)
+
+      # Block 1 - 16 filters
+      x = layers.Conv2D(16, (3, 3), activation='relu', padding='same')(inputs)
+      x = layers.Conv2D(16, (3, 3), activation='relu', padding='same')(x)
+      x = layers.MaxPooling2D((2, 2))(x)
+
+      # Block 2 - 32 filters
+      x = layers.Conv2D(32, (3, 3), activation='relu', padding='same')(x)
+      x = layers.Conv2D(32, (3, 3), activation='relu', padding='same')(x)
+      x = layers.MaxPooling2D((2, 2))(x)
+
+      # Block 3 - 64 filters
+      x = layers.Conv2D(64, (3, 3), activation='relu', padding='same')(x)
+      x = layers.Conv2D(64, (3, 3), activation='relu', padding='same')(x)
+      x = layers.Conv2D(64, (3, 3), activation='relu', padding='same')(x)
+      x = layers.MaxPooling2D((2, 2))(x)
+
+      x = layers.GlobalAveragePooling2D()(x)
+      x = layers.Dense(512, activation='relu')(x)
+      x = layers.Dropout(0.5)(x)
+      outputs = layers.Dense(num_classes, activation='softmax')(x)
+
+      model = models.Model(inputs, outputs)
+      return model
+    
+  vgg_custom = vgg_custom(input_shape=img_size + (3,), num_classes=5)
+  vgg_custom.compile(optimizer='adam',
+                    loss='categorical_crossentropy',
+                    metrics=['accuracy'])
+  vgg_custom.summary()
+  ```
+
+- VGG Custom Summary
+  
+  ```
+  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+  ┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+  ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+  │ input_layer_1 (InputLayer)           │ (None, 224, 224, 3)         │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ conv2d (Conv2D)                      │ (None, 224, 224, 16)        │             448 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ conv2d_1 (Conv2D)                    │ (None, 224, 224, 16)        │           2,320 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ max_pooling2d (MaxPooling2D)         │ (None, 112, 112, 16)        │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ conv2d_2 (Conv2D)                    │ (None, 112, 112, 32)        │           4,640 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ conv2d_3 (Conv2D)                    │ (None, 112, 112, 32)        │           9,248 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ max_pooling2d_1 (MaxPooling2D)       │ (None, 56, 56, 32)          │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ conv2d_4 (Conv2D)                    │ (None, 56, 56, 64)          │          18,496 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ conv2d_5 (Conv2D)                    │ (None, 56, 56, 64)          │          36,928 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ conv2d_6 (Conv2D)                    │ (None, 56, 56, 64)          │          36,928 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ max_pooling2d_2 (MaxPooling2D)       │ (None, 28, 28, 64)          │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ global_average_pooling2d_4           │ (None, 64)                  │               0 │
+  │ (GlobalAveragePooling2D)             │                             │                 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ dense_8 (Dense)                      │ (None, 512)                 │          33,280 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ dropout_4 (Dropout)                  │ (None, 512)                 │               0 │
+  ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+  │ dense_9 (Dense)                      │ (None, 5)                   │           2,565 │
+  └──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+  Total params: 144,853 (565.83 KB)
+  Trainable params: 144,853 (565.83 KB)
+  Non-trainable params: 0 (0.00 B)
+  ```
+
+- Model Evaluation 시각화
+  
+  ![alt text](/assets/images/cnnproject_vggcustom_accuracy.png)<br/>
+  ![alt text](/assets/images/cnnproject_vggcustom_loss.png)<br/>
+  ```
+  Restoring model weights from the end of the best epoch: 41.
+  ```
+  Best score인 41번 째 epoch의 evaluation은 아래와 같다.<br/>
+  Train Accuracy: 0.9986<br/>
+  Train Loss: 0.0051<br/>
+  Validation Accruacy: 0.9988<br/>
+  Validation Loss: 0.0042<br/>
+  
+- feature map 시각화<br/>
+
+  ![alt text](/assets/images/cnnproject_vggcustom_layer1.png)<br/>
+  ![alt text](/assets/images/cnnproject_vggcustom_layer2.png)<br/>
+  ![alt text](/assets/images/cnnproject_vggcustom_layer3.png)<br/>
+
+  각 블럭의 1층의 Feature Map만 시각화하였다.
 
 ### 모델 비교
 
 |Model|Parameter|Validation Accuracy|Validation Loss|
 |---|--------|--|--|
 |VGG16|14,979,909|0.9979|0.0099|
-|VGG 경량화|**1,802,565**|**0.9979**|**0.0070**|
+|VGG 경량화|7,900,485|0.9977|0.0077|
+|VGG Custom|**144,853**|**0.9988**|**0.0042**|
 
-Parameter 수는 각 5,978,677와 580,905로 87.97(%) 경량화하였으며 Accuracy와 Loss를 보았을 때, 성능차이는 거의 없으며 오히려 경량화 모델이 소폭 높은 것을 확인할 수 있다.
+Parameter 수는 각 VGG16 모델 대비 99.03(%) 경량화하였으며 VGG 경량화 모델 대비 98.16(%)경량화 되었다. Accuracy와 Loss를 보았을 때, 성능차이는 VGG16 Custom 모델이 제일 높은 성능을 보여준다.
 
 # 4. 모델별 일반화 성능비교
 
@@ -918,29 +1027,45 @@ def get_flops(model, batch_size=1):
 - 이미지 1장 당 FLOPs : 1,042,859,422 (약 1.04 GFLOPs)<br/>
   이미지 7,500장 : 약 7.82 TFLOPs
 
-- Test Accuracy : 0.9988
+- Test Accuracy : 0.7092
 
 - Confusion Matrix<br/>
   ![alt text](/assets/images/cnnproject_cnn_confusionmatrix.png)<br/>
-  오분류 수 : 9개
 
-- 오분류 샘플
-  ![alt text](/assets/images/cnnproject_cnn_missclass.png)<br/>
-
+  | Class        | Precision | Recall | F1-Score | Support |
+  |--------------|-----------|--------|----------|---------|
+  | **Arborio**   | 0.91      | 0.55   | 0.68     | 1500    |
+  | **Basmati**   | 0.68      | 0.90   | 0.77     | 1500    |
+  | **Ipsala**    | 0.88      | 0.96   | 0.92     | 1500    |
+  | **Jasmine**   | 0.48      | 0.60   | 0.53     | 1500    |
+  | **Karacadag** | 0.76      | 0.53   | 0.62     | 1500    |
+  |              |           |        |          |         |
+  | **Accuracy**  |           |        | **0.71** | 7500    |
+  | **Macro Avg** | 0.74      | 0.71   | 0.71     | 7500    |
+  | **Weighted Avg** | 0.74   | 0.71   | 0.71     | 7500    |
+  
 ## (2) CNN 경량화
 - 총 필터 수: 24개
   
 - 이미지 1장 당 FLOPs : 7,551,694 (약 7.55 MFLOPs)<br/>
   이미지 7,500장 : 약 56.64 GFLOPs
 
-- Test Accuracy : 0.9989
+- Test Accuracy : 0.7456
 
 - Confusion Matrix<br/>
   ![alt text](/assets/images/cnnproject_cnnlight_confusionmatrix.png)<br/>
-  오분류 수 : 8개
 
-- 오분류 샘플
-  ![alt text](/assets/images/cnnproject_cnnlight_missclass.png)<br/>
+  | Class        | Precision | Recall | F1-Score | Support |
+  |--------------|-----------|--------|----------|---------|
+  | **Arborio**   | 0.85      | 0.60   | 0.70     | 1500    |
+  | **Basmati**   | 0.67      | 0.96   | 0.79     | 1500    |
+  | **Ipsala**    | 0.97      | 0.94   | 0.95     | 1500    |
+  | **Jasmine**   | 0.54      | 0.77   | 0.63     | 1500    |
+  | **Karacadag** | 1.00      | 0.47   | 0.64     | 1500    |
+  |              |           |        |          |         |
+  | **Accuracy**  |           |        | **0.75** | 7500    |
+  | **Macro Avg** | 0.80      | 0.75   | 0.74     | 7500    |
+  | **Weighted Avg** | 0.80   | 0.75   | 0.74     | 7500    |
 
 ## (3) GoogLeNet
 - 총 필터 수: 5,808개
@@ -948,29 +1073,45 @@ def get_flops(model, batch_size=1):
 - 이미지 1장 당 FLOPs : 3,179,339,598 (약 3.18 GFLOPs)<br/>
   이미지 7,500장 : 약 23.85 TFLOPs
 
-- Test Accuracy : 0.9992
+- Test Accuracy : 0.8675
 
 - Confusion Matrix<br/>
   ![alt text](/assets/images/cnnproject_googlenet_confusionmatrix.png)<br/>
-  오분류 수 : 6개
 
-- 오분류 샘플
-  ![alt text](/assets/images/cnnproject_googlenet_missclass.png)<br/>
+    | Class        | Precision | Recall | F1-Score | Support |
+    |--------------|-----------|--------|----------|---------|
+    | **Arborio**   | 0.93      | 0.69   | 0.79     | 1500    |
+    | **Basmati**   | 0.92      | 0.98   | 0.95     | 1500    |
+    | **Ipsala**    | 0.88      | 0.99   | 0.93     | 1500    |
+    | **Jasmine**   | 0.71      | 0.91   | 0.80     | 1500    |
+    | **Karacadag** | 0.99      | 0.76   | 0.86     | 1500    |
+    |              |           |        |          |         |
+    | **Accuracy**  |           |        | **0.87** | 7500    |
+    | **Macro Avg** | 0.89      | 0.87   | 0.87     | 7500    |
+    | **Weighted Avg** | 0.89   | 0.87   | 0.87     | 7500    |
 
 ## (4) GoogLeNet 경량화
 - 총 필터 수: 1,456개
 
-- 이미지 1장 당 FLOPs : 280,058,490 (약 280.05 MFLOPs)<br/>
-  이미지 7,500장 : 약 2.10 GFLOPs
+- 이미지 1장 당 FLOPs : 280,058,490 (약 0.28 GFLOPs)<br/>
+  이미지 7,500장 : 약 2.10 TFLOPs
 
-- Test Accuracy : 0.9987
+- Test Accuracy : 0.9319
 
 - Confusion Matrix<br/>
   ![alt text](/assets/images/cnnproject_googlenetlight_confusionmatrix.png)<br/>
-  오분류 수 : 10개
 
-- 오분류 샘플
-  ![alt text](/assets/images/cnnproject_googlenetlight_missclass.png)<br/>
+  | Class        | Precision | Recall | F1-Score | Support |
+  |--------------|-----------|--------|----------|---------|
+  | **Arborio**   | 0.91      | 0.87   | 0.89     | 1500    |
+  | **Basmati**   | 0.97      | 0.99   | 0.98     | 1500    |
+  | **Ipsala**    | 0.98      | 0.99   | 0.98     | 1500    |
+  | **Jasmine**   | 0.83      | 0.98   | 0.90     | 1500    |
+  | **Karacadag** | 1.00      | 0.83   | 0.91     | 1500    |
+  |              |           |        |          |         |
+  | **Accuracy**  |           |        | **0.93** | 7500    |
+  | **Macro Avg** | 0.94      | 0.93   | 0.93     | 7500    |
+  | **Weighted Avg** | 0.94   | 0.93   | 0.93     | 7500    |
 
 ## (5) VGG16
 - 총 필터 수: 4,320개
@@ -978,41 +1119,98 @@ def get_flops(model, batch_size=1):
 - 이미지 1장 당 FLOPs : 30,713,485,342 (약 30.71 GFLOPs)<br/>
   이미지 7,500장 : 약 226.30 TFLOPs
 
-- Test Accuracy : 0.9976
+- Test Accuracy : 0.9649
 
 - Confusion Matrix<br/>
   ![alt text](/assets/images/cnnproject_vgg16_confusionmatrix.png)<br/>
-  오분류 수 : 18개
 
-- 오분류 샘플
-  ![alt text](/assets/images/cnnproject_vgg16_missclass.png)<br/>
+  | Class        | Precision | Recall | F1-Score | Support |
+  |--------------|-----------|--------|----------|---------|
+  | **Arborio**   | 1.00      | 0.97   | 0.98     | 1500    |
+  | **Basmati**   | 0.88      | 1.00   | 0.94     | 1500    |
+  | **Ipsala**    | 0.97      | 1.00   | 0.99     | 1500    |
+  | **Jasmine**   | 0.99      | 0.86   | 0.92     | 1500    |
+  | **Karacadag** | 0.99      | 1.00   | 1.00     | 1500    |
+  |              |           |        |          |         |
+  | **Accuracy**  |           |        | **0.96** | 7500    |
+  | **Macro Avg** | 0.97      | 0.96   | 0.96     | 7500    |
+  | **Weighted Avg** | 0.97   | 0.96   | 0.96     | 7500    |
 
 ## (6) VGG 경량화
-- 총 필터 수: 1,152개
+- 총 필터 수: 2,688개
 
-- 이미지 1장 당 FLOPs : 18,688,285,470 (약 18.69 GFLOPs)<br/>
-  이미지 7,500장 : 약 140.16 TFLOPs
+- 이미지 1장 당 FLOPs : 27,938,627,102 (약 27.94 GFLOPs)<br/>
+  이미지 7,500장 : 약 290.54 TFLOPs
 
-- Test Accuracy : 0.9980
+- Test Accuracy : 0.9227
 
 - Confusion Matrix<br/>
   ![alt text](/assets/images/cnnproject_vgglight_confusionmatrix.png)<br/>
-  오분류 수 : 15개
 
-- 오분류 샘플
-  ![alt text](/assets/images/cnnproject_vgglight_missclass.png)<br/>
+  | Class        | Precision | Recall | F1-Score | Support |
+  |--------------|-----------|--------|----------|---------|
+  | **Arborio**   | 1.00      | 0.89   | 0.94     | 1500    |
+  | **Basmati**   | 0.78      | 1.00   | 0.88     | 1500    |
+  | **Ipsala**    | 0.99      | 1.00   | 0.99     | 1500    |
+  | **Jasmine**   | 0.99      | 0.72   | 0.83     | 1500    |
+  | **Karacadag** | 0.93      | 1.00   | 0.96     | 1500    |
+  |              |           |        |          |         |
+  | **Accuracy**  |           |        | **0.92** | 7500    |
+  | **Macro Avg** | 0.94      | 0.92   | 0.92     | 7500    |
+  | **Weighted Avg** | 0.94   | 0.92   | 0.92     | 7500    |
 
-## (7) 성능비교
+## (7) VGG Custom
+- 총 필터 수: 288개
+
+- 이미지 1장 당 FLOPs : 1,203,943,966 (약 1.20 GFLOPs)<br/>
+  이미지 7,500장 : 약 9.02 TFLOPs
+
+- Test Accuracy : 0.9909
+
+- Confusion Matrix<br/>
+  ![alt text](/assets/images/cnnproject_vggcustom_confusionmatrix.png)<br/>
+
+  | Class        | Precision | Recall | F1-Score | Support |
+  |--------------|-----------|--------|----------|---------|
+  | **Arborio**   | 0.97      | 0.99   | 0.98     | 1500    |
+  | **Basmati**   | 1.00      | 1.00   | 1.00     | 1500    |
+  | **Ipsala**    | 1.00      | 1.00   | 1.00     | 1500    |
+  | **Jasmine**   | 1.00      | 0.97   | 0.98     | 1500    |
+  | **Karacadag** | 0.99      | 1.00   | 0.99     | 1500    |
+  |              |           |        |          |         |
+  | **Accuracy**  |           |        | **0.99** | 7500    |
+  | **Macro Avg** | 0.99      | 0.99   | 0.99     | 7500    |
+  | **Weighted Avg** | 0.99   | 0.99   | 0.99     | 7500    |
+
+## (8) 성능비교
+
+| 모델 이름         | Accuracy | Macro Precision | Macro Recall | Macro F1-score |
+|-------------------|----------|------------------|---------------|----------------|
+| CNN               | 0.71     | 0.74             | 0.71          | 0.71           |
+| CNN Light         | 0.75     | 0.80             | 0.75          | 0.74           |
+| GoogLeNet         | 0.87     | 0.89             | 0.87          | 0.87           |
+| GoogLeNet Light   | 0.93     | 0.94             | 0.93          | 0.93           |
+| VGG16             | 0.96     | 0.97             | 0.96          | 0.96           |
+| VGG Light         | 0.92     | 0.94             | 0.92          | 0.92           |
+| VGG Custom        | 0.99     | 0.99             | 0.99          | 0.99           |
+
+![alt text](/assets/images/cnnproject_summary_accuracy.png)<br/>
+Filter의 개수를 줄이거나 Layer를 제거한 모델들의 일반화 성능이 더욱 높게 나왔다.<br/>
+
 ![alt text](/assets/images/cnnproject_summary_flops.png)<br/>
-오른쪽으로 갈수록 필요 계산량이 적고 위로 갈수록 성능이 좋다.<br/>
+오른쪽으로 갈수록 필요 계산량이 적고 위로 갈수록 성능이 좋다. Accuracy가 0.9 미만은 실사용 불가능이라고 판단하였다.<br/>
 ![alt text](/assets/images/cnnproject_summary_filter.png)<br/>
-오른쪽으로 갈수록 Filter의 개수가 적고 위로 갈수록 성능이 좋다.<br/>
+오른쪽으로 갈수록 Filter의 개수가 적고 위로 갈수록 성능이 좋다. Accuracy가 0.9 미만은 실사용 불가능이라고 판단하였다.<br/>
 
 # 5. 결론
-&nbsp;&nbsp;시각적으로 Feature Map을 보며 학습에 도움이 되지 않을만큼 Filter가 많다면 Filter의 개수를 줄여 모델을 경량화하는 것을 시도해보았다. '[4. 모델 성능비교](#4-모델-성능비교)'를 보면 알 수 있듯이 경량화 된 모델의 성능이 대채적으로 더 좋았다는 것을 알 수 있다.<br/>
-&nbsp;&nbsp;FLOPs vs 오분류 표를 보면 왼쪽 아래로 갈수록 성능이 좋지 않고 계산에 필요한 자원이 많이 들들고 오른쪽 위로 갈수록 성능이 좋으면서 계산에 필요한 자원이 적다는 것이다. 'Rice Image Dataset'기준으로 VGG16의 효율이 가장 좋지 못했으며 GoogLeNet과 CNN 경량화 모델이 가장 좋은 효율을 가졌다.<br/>
-&nbsp;&nbsp;Filter vs 오분류 표를 통해 'Rice Image Dataset'기준으로 Filter의 개수가 꼭 성능에 큰 영향을 미치지 않는 것을 볼 수 있다. GoogLeNet을 제외하면 분포가 비슷하며 Filter를 줄여 계산량을 줄이는 것이 어느정도 효율성이 있음을 보여준다. 앞서 [서론](#4-back-propagation-관점)에서 이야기한 것과 같이 GoogLeNet처럼 Filter의 개수가 너무 많으면 'Rice Image Dataset'과 같이 복잡하지 않은 이미지에서는 학습이 제대로 이루어지지 않을 수 있는 것을 주의해야한다.<br/>
-&nbsp;&nbsp;해당 프로젝트를 통해 이미지 전처리가 잘 되어있으며 비교적 간단한 이미지의 경우, Feature Map을 보며 필요하지 않은 Filter가 많이 생성되고 있다면 Filter의 개수를 줄이거나 Layer를 삭제하여 모델을 경량화하는 방법도 의미가 있으며 실제 모델의 성능이 더 좋아지는 것을 볼 수 있었다. 따라서 후속 연구가 더 필요하겠지만 Feature Map을 통해 불필요하다고 판단되는 Filter가 있을 경우 삭제하는 것도 타당한 방법이라 생각된다.
+&nbsp;&nbsp;시각적으로 Feature Map을 보며 학습에 도움이 되지 않을만큼 Filter가 많다면 Filter의 개수를 줄이거나 Layer를 없애면서 모델 경량화를 시도해보았다. '[4. 모델 성능비교](#4-모델-성능비교)'를 보면 알 수 있듯이 경량화 된 모델의 성능이 대채적으로 더 좋았다는 것을 알 수 있다.<br/>
+&nbsp;&nbsp;FLOPs vs Test Accuracy 표를 보면 왼쪽 아래로 갈수록 성능이 좋지 않고 계산에 필요한 자원이 많이 들들고 오른쪽 위로 갈수록 성능이 좋으면서 계산에 필요한 자원이 적다는 것이다. 'Rice Image Dataset'기준으로 VGG16 Custom이 가장 효율이 좋은 것으로 판단된다. GoogLeNet Light도 높은 성능과 낮은 계산량으로 효율면에서 좋다고 판단된다.<br/>
+&nbsp;&nbsp;CNN Light의 경우 계산량이 0.056TFLOPs 수준으로 압도적으로 낮았으나 Test Accuracy가 0.9 미만이면 일반화 성능 부족으로 실사용 불가로 판단하였기에 정확도가 뒷받침 해주지 못하여 실사용 불가판정을 내렸다. Accuracy / TFLOPs 그래프를 시각화해보면 아래와 같다.<br/>
+![alt text](/assets/images/cnnproject_summary_accpertflops.png)<br/>
+&nbsp;&nbsp;CNN Light의 경우 Validation Accuracy가 0.9970, Validation Loss가 0.0108로 학습은 굉장이 잘 되었다. 따라서 'Rice Image Dataset'처럼 이미지 전처리가 잘 되어있고 어느정도 과적합이 괜찮은 상황에서 극단적으로 계산량을 줄이고 싶다면 사용해볼 수 있다고 생각한다. 따라서 일반적인 CNN모델도 어느정도 개선을 계산량은 조금만 올리고 Test Accuracy는 많이 올릴 수 있다고 생각한다.
+**CNN Light의 가벼움과 VGG Custom의 정확도만 가져오는 것 진행중**
+&nbsp;&nbsp;Rice Image Dataset'기준으로 Filter의 개수가 꼭 성능에 큰 영향을 미치지 않는 것을 볼 수 있다. 성능비교 표를 보면 알 수 있듯이 오히려 Filter의 개수가 적을수록 일반화 성능이 더 앞서는 것을 보여준다. [서론](#4-back-propagation-관점)에서 이야기한 것과 같이 GoogLeNet처럼 Filter의 개수가 너무 많으면 'Rice Image Dataset'과 같이 복잡하지 않은 이미지에서는 학습이 제대로 이루어지지 않을 수 있는 것을 주의해야한다.<br/>
+&nbsp;&nbsp;해당 프로젝트를 통해 이미지 전처리가 잘 되어있으며 비교적 간단한 이미지의 경우, Feature Map을 보며 필요하지 않은 Filter가 많이 생성되고 있다면 Filter의 개수를 줄이거나 Layer를 삭제하여 모델을 경량화하는 방법도 의미가 있다고 생각된다. 실제 모델의 일반화 성능이 더 좋아지는 것을 볼 수 있었다. 따라서 후속 연구가 더 필요하겠지만 Feature Map을 통해 불필요하다고 판단되는 Filter가 있을 경우 삭제하는 것도 타당한 방법이라 생각된다.
 
 # 6. Reference
 1. Koklu, Murat. “Rice Image Dataset.” Kaggle. Accessed March 26, 2025. https://www.kaggle.com/datasets/muratkokludataset/rice-image-dataset/data.
@@ -1020,5 +1218,3 @@ def get_flops(model, batch_size=1):
 2. Joshi, Shardul. “Rice Classification Using VGG16 - 99% Accuracy.” Kaggle, September 8, 2022. https://www.kaggle.com/code/sharduljoshi29/rice-classification-using-vgg16-99-accuracy.
 
 3. 최진영. “산업인공지능 수업자료”. 아주대학교 산업공학과. 2024.
-
-0.4133
