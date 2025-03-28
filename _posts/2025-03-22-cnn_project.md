@@ -75,36 +75,34 @@ $$
 ## (4) Backpropagation 관점
 &nbsp;&nbsp;Backpropagation의 관점에서 보면, Fully Connected Layer(FCL)의 입력값이 모두 $x=0$ 인 경우, Convolution Layer의 필터는 업데이트되지 않게 된다.<br/>
 
-&nbsp;&nbsp;FCL을 $y = \phi(Wx+b)$로 표현할 수 있을 때, $x = 0$이면 $y = \phi(b)$가 된다. 해당 상황에서 FCL의 가중치 $W$에 대한 손실함수의 기울기를 구하면 다음과 같다.
+&nbsp;&nbsp;FCL을 $y = \phi(Wx+b)$로 표현할 수 있을 때, $x = 0$이면 $y = \phi(b)$가 된다. 해당 상황에서 FCL의 가중치 $W$에 대한 손실함수의 기울기를 구하면 다음과 같다.<br/>
 $$
 \frac{\partial L}{\partial W} = \frac{\partial L}{\partial y} \cdot \phi '(b) \cdot x^{T} = 0
 $$
-따라서 FCL의 가중치는 학습되지 않으며 오직 bias만 영향을 받게 된다.<br/>
-&nbsp;&nbsp;입력 $X$에 대하여 Convolution → ReLU → Pooling 순으로 연산이 이루어진다고 할 때, Convolution Layer의 weight $W_{conv}$에 대한 기울기는 다음과 같이 chain rule로 표현된다.
+<br/>
+따라서 FCL의 가중치는 학습되지 않으며 오직 bias의 영향만 받게 된다.<br/>
+&nbsp;&nbsp;입력 $X$에 대하여 Convolution → ReLU → Pooling 순으로 연산이 이루어진다고 할 때, Convolution Layer의 weight $W_{conv}$에 대한 기울기는 다음과 같이 chain rule로 표현된다.<br/>
 $$
 \frac{\partial L}{\partial W_{conv}} = \frac{\partial L}{\partial A} \cdot \frac{\partial A}{\partial Z} \cdot \frac{\partial Z}{\partial W_{conv}}
 $$
+<br/>
  &nbsp;&nbsp; 앞서 구한 바와 같이 $\frac{\partial L}{\partial W} = 0$이므로 $\frac{\partial Z}{\partial W_{conv}} = 0$ 이다. 이로인해 Convolution Layer의 필터 역시 학습되지 않게 된다. 결국 bias만 업데이트 되며 의미 없는 학습이 반복될 뿐이다.
 
 &nbsp;&nbsp;이론적으로도 마지막 Feature Map의 모든 값이 0인 경우에는 학습이 이루어지지 않으며 이는 실험적으로도 관찰 가능하다. 본 프로젝트에서는 Feature Map을 grayscale로 출력하였기 때문에 모든 채널(R, G, B)이 동시에 0인지를 정확히 시각적으로 판단하기는 어렵지만, GoogLeNet을 이용해 이를 간접적으로 확인할 수 있었다.<br/>
 &nbsp;&nbsp;GoogLeNet의 대표적인 특징은 1×1 Convolution 연산이다. 이 연산은 Feature Map의 공간적 크기를 유지하면서 채널 수를 줄이는 역할을 한다. 즉, RGB 각각의 특성이 하나의 채널로 압축되는 구조로, 학습이 충분히 진행되지 않은 경우 Feature Map 전체가 0으로 수렴할 가능성도 상대적으로 높아진다.<br/>
 &nbsp;&nbsp;또한 GoogLeNet은 총 27개의 Layer로 구성된 깊은 구조이기 때문에, 학습이 불안정하거나 정보가 사라질 경우 Feature Map이 0으로 소멸될 위험성도 다른 모델보다 더 클 수 있다.<br/>
 
-&nbsp;&nbsp;아래의 내용은 실제 weight를 초기화 해보면서 학습을 시도한 결과 얻은 GoogLeNet 학습 결과이다.
+&nbsp;&nbsp;아래의 내용은 실제 weight를 초기화 해보면서 학습을 시도한 결과 얻은 GoogLeNet 학습 결과이다. 학습 로그에서 확인할 수 있듯이 학습이 진행되는 동안 'val_accuracy'는 0.1956, 'val_loss'는 1.6096에서 변하지 않고 반복되었다. 이는 Backpropagation이 정상적으로 이루어지지 않고 bias만 업데이트 되는 현상이 발생했을 가능성이 크다.<br/>
 ![alt text](/assets/images/cnnproject_learningerror.png)<br/>
-![alt text](/assets/images/cnnproject_learningerroraccuracy.png)<br/>
-![alt text](/assets/images/cnnproject_learningerrorloss.png)<br/>
 
 [학습 불가 Colab Link](https://colab.research.google.com/drive/1Wt_dMel9Vv8HwzGIlkuvochkIFNWLsv0?usp=sharing), [프로젝트 Colab Link](https://colab.research.google.com/drive/1WgjlYTLEkDyacbimKDHpdKw0LBZn4aTi?usp=sharing) 두 링크를 통해 비교해보면 코드는 같은 걸 알 수 있다.<br/>
-
-&nbsp;&nbsp;아래의 학습 로그에서 확인할 수 있듯이 학습이 진행되는 동안 'val_accuracy'는 0.1956, 'val_loss'는 1.6096에서 변하지 않고 반복되었다. 이는 Backpropagation이 정상적으로 이루어지지 않고 bias만 업데이트 되는 현상이 발생했을 가능성이 크다.<br/>
 &nbsp;&nbsp;Cross-Entropy Loss는 아래와 같이 정의된다.<br/>
 $$
 L = -\sum _ {i=1} ^{C} y_{i} \cdot \log(\hat{y}_{i})
 $$
 <br/>
 &nbsp;&nbsp;모델이 모든 클래스를 동일한 확률로 예측한다면 각 클래스의 예측 확률은 $\hat{y}_{i} = \frac{1}{C}$이다. 그리고 Cross-Entropy는 정답 클래스에만 적용되므로 $L = \log(C)$가 된다. 즉, 무작위 추측 시의 Cross-Entropy Loss는 $\log(C)$가 된다.<br/>
-&nbsp;&nbsp;따라서 Class수가 5일 때, 무작위 추측 시 Cross-Entropy Loss는 $\log(5) \approx \ln(5) \approx 1.609$이다. 따라서 'val_loss'가 1.609에서 멈춰 있다는건 모델이 학습을 하지 못하고 무작위로 예측하고 있다는 강력한 증거이다.</br>
+&nbsp;&nbsp;따라서 Class수가 5일 때, 무작위 추측 시 Cross-Entropy Loss는 $\log(5) \approx \ln(5) \approx 1.609$이다. 따라서 'val_loss'가 1.609에서 멈춰 있다는건 모델이 학습을 하지 못하고 무작위로 예측하고 있다는 강력한 증거이다.<br/>
 
 # 2. 데이터셋 설명
 &nbsp;&nbsp;본 프로젝트에서 사용한 데이터셋은 Kaggle의 'Rice Image Dataset'으로 Murat Koklu에 의해 제공되었다.<br/>
@@ -256,7 +254,7 @@ plt.show()
   Best score인 9번 째 epoch의 evaluation은 아래와 같다.<br/>
   Train Accuracy: 0.9986<br/>
   Train Loss: 0.0040<br/>
-  Validation Accruacy: 0.9963<br/>
+  Validation Accuracy: 0.9963<br/>
   Validation Loss:  0.0132<br/>
 
 - Feature Map 시각화
@@ -325,7 +323,7 @@ plt.show()
   Best score인 19번 째 epoch의 evaluation은 아래와 같다.<br/>
   Train Accuracy: 0.9986<br/>
   Train Loss: 0.0044<br/>
-  Validation Accruacy: 0.9970<br/>
+  Validation Accuracy: 0.9970<br/>
   Validation Loss:  0.0108<br/>
 
 - Feature Map 시각화
@@ -501,9 +499,8 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
   Validation Accruacy: 0.9975<br/>
   Validation Loss: 0.0111<br/>
 
-- feature map 시각화<br/>
-  feature map은 앞선 stemp network만 시각화해보았다.
-  > 앞서서 GoogLeNet 구조에 대해 설명해보는게 좋을 듯 싶음
+- Feature Map 시각화<br/>
+  Feature Map은 Stem Network만 시각화해보았다.
 
   ![alt text](/assets/images/cnnproject_googlenet_layer1.png)<br/>
   ![alt text](/assets/images/cnnproject_googlenet_layer2.png)<br/>
@@ -614,11 +611,11 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
   Best score인 16번 째 epoch의 evaluation은 아래와 같다.<br/>
   Train Accuracy: 0.9983<br/>
   Train Loss: 0.0071<br/>
-  Validation Accruacy: 0.9981<br/>
+  Validation Accuracy: 0.9981<br/>
   Validation Loss: 0.0070<br/>
   
-- feature map 시각화<br/>
-  feature map은 앞선 stemp network만 시각화해보았다.
+- Feature Map 시각화<br/>
+  Feature Map은 위와 마찬가지로 Stem Network만 시각화해보았다.
 
   ![alt text](/assets/images/cnnproject_googlenetlight_layer1.png)<br/>
   ![alt text](/assets/images/cnnproject_googlenetlight_layer2.png)<br/>
@@ -666,7 +663,7 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   vgg16.summary()
   ```
 
-- VGG16 summary
+- VGG16 Summary
   
   ```
   ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
@@ -735,10 +732,10 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   Best score인 11번 째 epoch의 evaluation은 아래와 같다.<br/>
   Train Accuracy: 0.9994<br/>
   Train Loss: 0.0024<br/>
-  Validation Accruacy: 0.9979<br/>
+  Validation Accuracy: 0.9979<br/>
   Validation Loss: 0.0099<br/>
   
-- feature map 시각화<br/>
+- Feature Map 시각화<br/>
 
   ![alt text](/assets/images/cnnproject_vgg16_layer1.png)<br/>
   ![alt text](/assets/images/cnnproject_vgg16_layer2.png)<br/>
@@ -833,17 +830,17 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   Best score인 28번 째 epoch의 evaluation은 아래와 같다.<br/>
   Train Accuracy: 0.9982<br/>
   Train Loss: 0.0061<br/>
-  Validation Accruacy: 0.9977<br/>
+  Validation Accuracy: 0.9977<br/>
   Validation Loss: 0.0077<br/>
   
-- feature map 시각화<br/>
+- Feature Map 시각화<br/>
 
   ![alt text](/assets/images/cnnproject_vgg16_layer1.png)<br/>
   ![alt text](/assets/images/cnnproject_vgg16_layer2.png)<br/>
   ![alt text](/assets/images/cnnproject_vgg16_layer3.png)<br/>
   ![alt text](/assets/images/cnnproject_vgg16_layer4.png)<br/>
 
-  사전 학습된 모델 그대로 가져왔으므로 Filter를 통과한 Feature map은 동일하다.
+  사전 학습된 모델 그대로 가져왔으므로 Filter를 통과한 Feature Map은 동일하다.
 
 ## (7) VGG Custom
 - VGG16 모델과 경량화 모델은 모두 Imagenet으로 사전학습된 모델이다. 해당 모델은 VGG16의 구조를 따라가되 직접 학습한 모델이며 총 3개의 block으로 이루어져있다.
@@ -935,10 +932,10 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   Best score인 41번 째 epoch의 evaluation은 아래와 같다.<br/>
   Train Accuracy: 0.9986<br/>
   Train Loss: 0.0051<br/>
-  Validation Accruacy: 0.9988<br/>
+  Validation Accuracy: 0.9988<br/>
   Validation Loss: 0.0042<br/>
   
-- feature map 시각화<br/>
+- Feature Map 시각화<br/>
 
   ![alt text](/assets/images/cnnproject_vggcustom_layer1.png)<br/>
   ![alt text](/assets/images/cnnproject_vggcustom_layer2.png)<br/>
@@ -995,7 +992,7 @@ $$
 
 $C_{in}$: 입력 채널 수<br/>
 $K$: 커널크기<br/>
-$H_{out}, W_{out}$: Feature map의 height, width<br/>
+$H_{out}, W_{out}$: Feature Map의 Height, Width<br/>
 $C_{out}$: 출력 채널 수<br/>
 
 $$
