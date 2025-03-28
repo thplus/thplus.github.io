@@ -14,24 +14,24 @@ math: true
 
 ## (1) 모델 경량화
 &nbsp;&nbsp;모델 경량화가 필요한 이유는 다양하지만 비용적 문제가 크다. 모델이 크고 계산량이 많아질수록 전력 소비량이 늘어나고 열 발생량도 높아진다. 심지어 최근에는 스마트폰, IoT 기기 등에도 탑재하고자 노력 중이다. 따라서 모델이 가볍고 성능은 뒤떨어지지 않는 것이 중요하다.<br/>
-모델 경량화의 Solution은 Pruning, Quantization, Knowledg Distillation 등 다양하게 존재한다. 하지만 본 프로젝트에서는 Filter를 통과한 Featrue Map을 시각화하여 불필요한 Filter를 삭제해봄으로써 모델 경량화를 하고자 한다.<br/>
+&nbsp;&nbsp;모델 경량화의 Solution은 Pruning, Quantization, Knowledg Distillation 등 다양하게 존재한다. 하지만 본 프로젝트에서는 Filter를 통과한 Featrue Map을 시각화하여 불필요한 Filter를 삭제해봄으로써 모델 경량화를 하고자 한다.<br/>
+&nbsp;&nbsp;또한 모델을 경량화하다보면 일반화 성능이 좋아지는 부수적인 이득을 볼 수 있다. 따라서 모델을 경량화 해보면서 각 모델의 일반화 성능을 살펴볼 것이다.<br/>
 
 ## (2) Feature Map
 ![alt text](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FOmgjJ%2FbtqXrD2js9s%2FGFjoiBuv70Hx53YKb9XOzK%2Fimg.png)<br/>
 
-&nbsp;&nbsp;CNN은 Convolution Layer를 통과해 특징을 추출하게 되며 Filter를 통과하고 나온 형태를 Feature Map이라 한다. 해당 Feature Map은 특징을 강조하는 Pooling을 거치게 되는데, 이 과정이 끝나면 Fully Connected Layer로 들어가게 되어 우리가 흔히 아는 ANN구조와 같은 방식으로 작동한다.<br/>
+&nbsp;&nbsp;CNN은 Convolution Layer를 통해 이미지의 주요 특징을 추출하며 이때, 각 필터를 통과한 결과가 Feature Map으로 생성된다. 이후 이 Feature Map은 Pooling Layer를 거쳐 중요한 특징을 강조하고 불필요한 정보를 축소하게 된다. 이러한 과정을 반복한 후에는, 최종적으로 Fully Connected Layer에 전달되어 우리가 흔히 알고 있는 인공신경망(ANN) 구조처럼 분류 작업을 수행하게 된다.<br/>
 
 &nbsp;&nbsp;예를 들어 고양이 사진을 CNN구조인 VGG16에 통과시키면 아래와 같은 Feature Map을 얻을 수 있다.<br/>
 ![alt text](/assets/images/cnnproject_catfeaturemap.png)<br/>
 > [이미지 출처](https://m.blog.naver.com/luvwithcat/222148953574)| LifeofPy, CNN의 정의, 이미지의 feature map 기능과 kernel(filter)의 개념
 
-&nbsp;&nbsp;하지만 본 프로젝트에서 사용하는 'Rice Image Dataset'의 경우 CNN의 층이 깊어질수록 불필요한 특징이 잡힐 수 있다. 해당 Dataset을 같은 VGG16에 통과시킨 후의 Feature Map을 보면 아래와 같이 block_1과 block_5에서의 차이를 볼 수 있다.<br/>
+&nbsp;&nbsp; 하지만 본 프로젝트에서 사용하는 ‘Rice Image Dataset’의 경우 CNN의 층이 깊어질수록 불필요한 특징이 잡힐 수 있다. 해당 Dataset을 VGG16에 통과시킨 후의 Feature Map의 차이를 보면 아래와 같다.<br/>
 ![alt text](/assets/images/cnnproject_vgg16_layer1.png)<br/>
-&nbsp;&nbsp;위의 Feature Map은 VGG16의 첫 번째 Convolution Layer를 통과한 상태이다.<br/>
+&nbsp;&nbsp;위의 Feature Map은 VGG16의 첫 번째 Convolution Layer를 통과한 이미지이다.<br/>
 <br/>
 ![alt text](/assets/images/cnnproject_vgg16_layerfin.png)<br/>
-&nbsp;&nbsp;위의 Feature Map은 VGG16의 마지막 Convolution Layer를 통과한 상태이다.
-모든 Filter에 대한 Feature Map을 출력한 것은 아니지만 대부분의 Filter가 그냥 검정색임을 알 수 있다. 해당 현상이 문제가 되는 점은 Fully Connected Layer에서 발생할 수 있다.<br/>
+&nbsp;&nbsp;해당 Feature Map은 VGG16의 마지막 Convolution Layer를 통과한 이미지이다. 모든 Filter에 대한 Featrue Map을 출력한 것은 아니지만 대부분의 Filter가 특징을 추출하지 못한 채 모두 검정색임을 알 수 있다. 해당 현상은 Fully Connected Layer에서 문제가 발생할 수 있다.<br/>
 
 ## (3) Feed Forward 관점
 &nbsp;&nbsp;Convolution → ReLU → MaxPooling 형태의 CNN 층을 수식으로 표현하면 아래와 같다.<br/>
@@ -59,16 +59,18 @@ P_i(p, q) = \max_{\substack{0 \leq m < k \\ 0 \leq n < k}} A_i(s \cdot p + m,\, 
 $$
 
 <br/>
-&nbsp;&nbsp; 따라서 모든 Feature Map의 값이 0인 경우를 보면 아래와 같이 출력된다.<br/>
+&nbsp;&nbsp;Feature Map의 모든 값이 0일 경우, 다음과 같이 출력된다.<br/>
 
 $$
-Z_i(m,n) = 0 \,\,\, \forall i,m,n \\
-ReLU(Z_{i}(m,n))\max(0, Z_i(m,n)) = 0 \\
+Z_i(m,n) = 0 \quad \forall i, m, n \\
+ReLU(Z_i(m,n)) = \max(0, Z_i(m,n)) = 0 \\
 P_i(p, q) = \max(0, 0, 0, 0) = 0
 $$
-<br/>
-&nbsp;&nbsp;이와 같이 Feature Map의 값이 모두 0이면 ReLU함수와 Pooling 층을 통과해도 그 결과는 0이 나온다.<br/>
-&nbsp;&nbsp;Fully Connected Layer는 $y = Wx + b$와 같이 표현되고 모든 $x = 0$이라면 학습결과는 bias($b$)에 의존할 수 밖에 없으며 이는 추출된 특징으로 학습할 수 없다. 따라서 학습할 정보가 사라지므로 해당 모델은 찍기의 형태를 띌 수 밖에 없다.<br/>
+
+&nbsp;&nbsp;이처럼 Feature Map이 0으로 채워져 있을 경우, ReLU 및 Pooling을 통과한 이후에도 출력값은 여전히 0이다.<br/>
+&nbsp;&nbsp;Fully Connected Layer는 $y = Wx + b$로 표현되므로
+모든 입력값 \( x = 0 \)이라면, 출력 \( y \)는 오직 bias \( b \)에만 의존하게 된다.이 상황에서는 실제 이미지로부터 추출한 특징이 전혀 반영되지 않으며 모델은 유의미한 학습이 불가능하게 된다.<br/>
+&nbsp;&nbsp;결국 이는 모델이 정답을 무작위로 선택하는 것과 유사한 상태로 이어질 수 있다.
 
 ## (4) Back propagation 관점
 &nbsp;&nbsp;실제 학습을 위한 Back Propagation의 관점으로 생각해보면 FCL에서의 모든 $x = 0$이라면 Convolution Layer의 Filter는 바뀌지 않는다.<br/>
