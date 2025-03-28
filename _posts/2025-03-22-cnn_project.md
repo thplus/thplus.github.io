@@ -69,27 +69,26 @@ $$
 
 &nbsp;&nbsp;이처럼 Feature Map이 0으로 채워져 있을 경우, ReLU 및 Pooling을 통과한 이후에도 출력값은 여전히 0이다.<br/>
 &nbsp;&nbsp;Fully Connected Layer는 $y = Wx + b$로 표현되므로
-모든 입력값 \( x = 0 \)이라면, 출력 \( y \)는 오직 bias \( b \)에만 의존하게 된다.이 상황에서는 실제 이미지로부터 추출한 특징이 전혀 반영되지 않으며 모델은 유의미한 학습이 불가능하게 된다.<br/>
+모든 입력값  $x = 0$ 이라면, 출력 $y$는 오직 bias$(b)$에만 의존하게 된다.이 상황에서는 실제 이미지로부터 추출한 특징이 전혀 반영되지 않으며 모델은 유의미한 학습이 불가능하게 된다.<br/>
 &nbsp;&nbsp;결국 이는 모델이 정답을 무작위로 선택하는 것과 유사한 상태로 이어질 수 있다.
 
-## (4) Back propagation 관점
-&nbsp;&nbsp;실제 학습을 위한 Back Propagation의 관점으로 생각해보면 FCL에서의 모든 $x = 0$이라면 Convolution Layer의 Filter는 바뀌지 않는다.<br/>
+## (4) Backpropagation 관점
+&nbsp;&nbsp;Backpropagation의 관점에서 보면, Fully Connected Layer(FCL)의 입력값이 모두 $x=0$ 인 경우, Convolution Layer의 필터는 업데이트되지 않게 된다.<br/>
 
-&nbsp;&nbsp;FCL이 $y = \phi(Wx+b)$라면 $x = 0$이므로 $y = \phi(b)$이다. 이에 따른 Gradient를 구해보면
+&nbsp;&nbsp;FCL을 $y = \phi(Wx+b)$로 표현할 수 있을 때, $x = 0$이면 $y = \phi(b)$가 된다. 해당 상황에서 FCL의 가중치 $W$에 대한 손실함수의 기울기를 구하면 다음과 같다.
 $$
 \frac{\partial L}{\partial W} = \frac{\partial L}{\partial y} \cdot \phi '(b) \cdot x^{T} = 0
 $$
-이므로 FCL의 weight는 학습되지 않는다.<br/>
-&nbsp;&nbsp;입력 $X$에 대하여 $Z \rightarrow ReLU \rightarrow P$ 순으로 진행이 된다면 Convolution Layer의 weight $W_{conv}$의 Gradient는
+따라서 FCL의 가중치는 학습되지 않으며 오직 bias만 영향을 받게 된다.<br/>
+&nbsp;&nbsp;입력 $X$에 대하여 Convolution → ReLU → Pooling 순으로 연산이 이루어진다고 할 때, Convolution Layer의 weight $W_{conv}$에 대한 기울기는 다음과 같이 chain rule로 표현된다.
 $$
 \frac{\partial L}{\partial W_{conv}} = \frac{\partial L}{\partial A} \cdot \frac{\partial A}{\partial Z} \cdot \frac{\partial Z}{\partial W_{conv}}
 $$
-이다. <br/>
-&nbsp;&nbsp; 여기서 앞서 구한 $\frac{\partial L}{\partial W} = 0$이므로 $\frac{\partial Z}{\partial W_{conv}} = 0$ 이다. 따라서 Convolution Layer의 gradient가 0이 되어 학습이 되지 않은 채, Filter는 그대로 고정된 상태로 남는다.<br/>
-&nbsp;&nbsp; 따라서 $\frac{\partial L}{\partial b}$인 bias만 업데이트 되어 의미 없는 학습만 계속하여 제대로 추론을 할 수 없게된다.
+ &nbsp;&nbsp; 앞서 구한 바와 같이 $\frac{\partial L}{\partial W} = 0$이므로 $\frac{\partial Z}{\partial W_{conv}} = 0$ 이다. 이로인해 Convolution Layer의 필터 역시 학습되지 않게 된다. 결국 bias만 업데이트 되며 의미 없는 학습이 반복될 뿐이다.
 
-&nbsp;&nbsp;위와 같이 이론적으로는 Feature Map을 모두 보았을 때, 마지막 Feature Map의 값이 모두 0이라면 학습은 진행되지 않는다. 본 프로젝트에서 첨부한 Feature Map들은 gray scale로 출력하여 각 채널(R, G, B)별 실제 Feature Map의 값들이 전부 0인지는 시각적으로 확인할 순 없다. 하지만 GoogLeNet을 이용해 이를 확인할 수 있었다.<br/>
-&nbsp;&nbsp;GoogLeNet 고유한 특징은 1x1 convolution 연산을 한다는 것이다. 1x1 convolution은 Feature Map의 크기를 바꾸지 않는다. 하지만 1x1 Filter를 통해 Feature Map의 수를 줄이는 것이 가장 큰 특징이다. 이를 바꾸어 이야기하면 R, G, B 각 채널의 특성들이 하나로 압축된다는 뜻이다. 또한 GoogLeNet은 총 27개의 Layer로 모델이 깊이 특성을 학습하여 실제 Feature Map들의 모든 값이 0이 될 확률이 다른 모델에 비해 클 수 있다.<br/>
+&nbsp;&nbsp;이론적으로도 마지막 Feature Map의 모든 값이 0인 경우에는 학습이 이루어지지 않으며 이는 실험적으로도 관찰 가능하다. 본 프로젝트에서는 Feature Map을 grayscale로 출력하였기 때문에 모든 채널(R, G, B)이 동시에 0인지를 정확히 시각적으로 판단하기는 어렵지만, GoogLeNet을 이용해 이를 간접적으로 확인할 수 있었다.<br/>
+&nbsp;&nbsp;GoogLeNet의 대표적인 특징은 1×1 Convolution 연산이다. 이 연산은 Feature Map의 공간적 크기를 유지하면서 채널 수를 줄이는 역할을 한다. 즉, RGB 각각의 특성이 하나의 채널로 압축되는 구조로, 학습이 충분히 진행되지 않은 경우 Feature Map 전체가 0으로 수렴할 가능성도 상대적으로 높아진다.<br/>
+&nbsp;&nbsp;또한 GoogLeNet은 총 27개의 Layer로 구성된 깊은 구조이기 때문에, 학습이 불안정하거나 정보가 사라질 경우 Feature Map이 0으로 소멸될 위험성도 다른 모델보다 더 클 수 있다.<br/>
 
 &nbsp;&nbsp;아래의 내용은 실제 weight를 초기화 해보면서 학습을 시도한 결과 얻은 GoogLeNet 학습 결과이다.
 ![alt text](/assets/images/cnnproject_learningerror.png)<br/>
@@ -98,7 +97,14 @@ $$
 
 [학습 불가 Colab Link](https://colab.research.google.com/drive/1Wt_dMel9Vv8HwzGIlkuvochkIFNWLsv0?usp=sharing), [프로젝트 Colab Link](https://colab.research.google.com/drive/1WgjlYTLEkDyacbimKDHpdKw0LBZn4aTi?usp=sharing) 두 링크를 통해 비교해보면 코드는 같은 걸 알 수 있다.<br/>
 
-&nbsp;&nbsp;따라서 본 프로젝트는 위의 결과를 토대로 시각적으로 Feature Map을 살펴보고 불필요한 Filter가 생성되는 Layer는 제거하거나 Filter의 개수를 줄여보면서 모델을 경량화하고 성능을 비교해보고자 한다.
+&nbsp;&nbsp;아래의 학습 로그에서 확인할 수 있듯이 학습이 진행되는 동안 'val_accuracy'는 0.1956, 'val_loss'는 1.6096에서 변하지 않고 반복되었다. 이는 Backpropagation이 정상적으로 이루어지지 않고 bias만 업데이트 되는 현상이 발생했을 가능성이 크다.<br/>
+&nbsp;&nbsp;Cross-Entropy Loss는 아래와 같이 정의된다.<br/>
+$$
+L = -\sum _ {i=1} ^{C} y_{i} \cdot \log(\hat{y}_{i})
+$$
+<br/>
+&nbsp;&nbsp;모델이 모든 클래스를 동일한 확률로 예측한다면 각 클래스의 예측 확률은 $\hat{y}_{i} = \frac{1}{C}$이다. 그리고 Cross-Entropy는 정답 클래스에만 적용되므로 $L = \log(C)$가 된다. 즉, 무작위 추측 시의 Cross-Entropy Loss는 $\log(C)$가 된다.<br/>
+&nbsp;&nbsp;따라서 Class수가 5일 때, 무작위 추측 시 Cross-Entropy Loss는 $\log(5) \approx \ln(5) \approx 1.609$이다. 따라서 'val_loss'가 1.609에서 멈춰 있다는건 모델이 학습을 하지 못하고 무작위로 예측하고 있다는 강력한 증거이다.</br>
 
 # 2. 데이터셋 설명
 &nbsp;&nbsp;본 프로젝트에서 사용한 데이터셋은 Kaggle의 'Rice Image Dataset'으로 Murat Koklu에 의해 제공되었다.<br/>
@@ -183,7 +189,7 @@ plt.show()
 
 # 3. 모델 구성
 ## (1) CNN
-- 일반적인 CNN으로 Convolution → ReLu → MaxPooling 으로 3개 층으로 쌓아보았으며 필터의 개수는 32 → 64 → 128 개를 사용하여 Feature map을 시각화 하였다.
+- 일반적인 CNN으로 Convolution → ReLu → MaxPooling 으로 3개 층으로 쌓아보았으며 필터의 개수는 32 → 64 → 128 개를 사용하여 Feature Map을 시각화 하였다.
   
   ```python
   def cnn(input_shape, num_classes):
@@ -199,6 +205,12 @@ plt.show()
     outputs = tf.keras.layers.Dense(num_classes, activation='softmax')(x)
     model = tf.keras.Model(inputs, outputs)
     return model
+
+  cnn = cnn(input_shape = img_size + (3, ), num_classes=5)
+  cnn.compile(optimizer='adam',
+                    loss='categorical_crossentropy',
+                    metrics=['accuracy'])
+  cnn.summary()
   ```
 
 - CNN 모델 Summary
@@ -255,10 +267,10 @@ plt.show()
   
   ![alt text](/assets/images/cnnproject_cnn_layer3.png)<br/>
 
-  &nbsp;&nbsp;부분적으로 filter을 거친 후 feature map이 검은색인 경우가 많다. 이는 계산에 큰 영향을 미치지 않을 것이라 판단되어 filter의 개수를 줄여 개선을 경량화를 해보고자 한다.
+  &nbsp;&nbsp;부분적으로 Filter를 거친 후 Feature Map이 검은색인 경우가 많다. 이는 계산에 큰 영향을 미치지 않을 것이라 판단되어 Filter의 개수를 줄여 개선을 경량화를 해보고자 한다.
 
 ## (2) CNN 경량화
-- 일반적인 CNN으로 Convolution → ReLu → MaxPooling 으로 2개 층으로 쌓아보았으며 필터의 갯수는 8 → 16 개를 사용하여 이전과 다르게 `strides` 추가하여 feature map의 크기를 줄여보았다.
+- 일반적인 CNN으로 Convolution → ReLu → MaxPooling 으로 2개 층으로 쌓아보았으며 필터의 갯수는 8 → 16 개를 사용하여 이전과 다르게 `strides` 추가하여 Feature Map의 크기를 줄여보았다.
   
   ```python
   def cnn_light(input_shape, num_classes):
@@ -322,7 +334,7 @@ plt.show()
 
   ![alt text](/assets/images/cnnproject_cnnlight_layer2.png)<br/>
 
-  다양한 filter 중 유효한 filter만 사용된 모습을 볼 수 있다.
+  해당 모델은 3개의 층으로 쌓은 CNN에 비해 유효한 특징만 추출한 것을 확인할 수 있다.
 
 ### 모델 비교
 
@@ -336,7 +348,7 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
 ## (3) GoogLeNet
 - GoogLeNet의 구조는 아래 이미지와 같다.<br/>
   ![alt text](/assets/images/cnnproject_googlenet_architect.png)<br/>
-  GoogLeNet은 총 27개의 Layer로 구성되어 있고 Stem network는 신경망의 초기 부분으로 일반적인 CNN의 은닉 구조를 가진다. Inception Module은 GoogLeNet의 핵심적인 구조로 Layer를 하나의 Sub-Network구조로 구성하여 연산량을 줄이는 구조이다.<br/>
+  GoogLeNet은 총 27개의 Layer로 구성되어 있고 Stem Network는 신경망의 초기 부분으로 일반적인 CNN의 은닉 구조를 가진다. Inception Module은 GoogLeNet의 핵심적인 구조로 Layer를 하나의 Sub-Network구조로 구성하여 연산량을 줄이는 구조이다.<br/>
   사전 학습된 Weight 없이 직접 해당 구조를 쌓아보았다.<br/>
 
   ```python
@@ -369,7 +381,6 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
         branch2 = self.branch2(x)
         branch3 = self.branch3(x)
         branch4 = self.branch4(x)
-        # 채널 축을 기준으로 병합
         return tf.concat([branch1, branch2, branch3, branch4], axis=-1)
   ```
 
@@ -407,7 +418,6 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
     model = models.Model(inputs, outputs)
     return model
 
-  # GoogLeNet 모델 생성 및 컴파일
   googlenet = create_googlenet(input_shape=img_size + (3,), num_classes=5)
   googlenet.compile(optimizer='adam',
                     loss='categorical_crossentropy',
@@ -500,7 +510,7 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
   ![alt text](/assets/images/cnnproject_googlenet_layer3.png)<br/>
 
 ## (4) GoogLeNet 경량화
-- GoogLeNet은 Stem Network의 filter의 개수를 줄이고 각 Inception Module의 filter 개수를 줄여주었다. 또한 2단계의 Inception Module하나를 삭제하므로써 연산량을 줄였다. Inception Module의 내부 구조는 GoogLeNet의 특징이므로 건드리지 않았다.
+- 해당 모델은 Stem Network의 Filter의 개수를 줄이고 각 Inception Module의 Filter 개수를 줄여주었다. 또한 2단계의 Inception Module 하나를 삭제하므로써 연산량을 줄였다. Inception Module의 내부 구조는 GoogLeNet의 특징이므로 건드리지 않았다.
   
   ```python
   # Inception Module은 GoogLeNet과 같으므로 생략
@@ -537,7 +547,6 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
       model = models.Model(inputs, outputs)
       return model
 
-  # GoogLeNet 모델 생성 및 컴파일
   googlenet_light = create_googlenet_light(input_shape=img_size + (3,), num_classes=5)
   googlenet_light.compile(optimizer='adam',
                     loss='categorical_crossentropy',
@@ -625,14 +634,14 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
 Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accuracy와 Loss를 보았을 때, 성능차이는 거의 없으며 오히려 경량화 모델이 소폭 높은 것을 확인할 수 있다.
 
 ## (5) VGG16
-- VGG16은 구조가 매우 간단하다. 구조는 아래와 같다.<br/>
+- VGG16은 구조가 매우 간단하며 아래와 같은 구조를 가진다.<br/>
   ![alt text](/assets/images/cnnproject_vgg16_architect.png)<br/>
   VGG16은 모든 Convolution Layer에 3x3 필터를 적용하는 것이 큰 특징이다. 구조가 간단하고 이해가 쉽고 변형을 시켜가면서 테스트 하기 용이해 자주 사용되는 모델이다. 해당 모델은 Feature Map 크기는 동일하지만 학습해야할 파라미터 수를 줄였다는 특징이 있다.<br/>
-  해당 모델은 [Rice Image Project 예시](https://www.kaggle.com/code/sharduljoshi29/rice-classification-using-vgg16-99-accuracy)를 참고하여 Imagenet으로 사전학습 된 모델에서 미세조정 하였다. 또한 이미지 증강은 사용하지 않았고 'Rice Image Dataset'을 그대로 사용하였다.<br/>
+  해당 모델은 '[Rice Image Project 예시](https://www.kaggle.com/code/sharduljoshi29/rice-classification-using-vgg16-99-accuracy)'를 참고하여 Imagenet으로 사전학습 된 모델에서 미세조정 하였다. 또한 이미지 증강은 사용하지 않았고 'Rice Image Dataset'을 그대로 사용하였다.<br/>
 
   
   ```python
-  input_tensor = Input(shape=img_size + (3,))  # (224, 224, 3)
+  input_tensor = Input(shape=img_size + (3,))
 
   # VGG16 base model
   base_model = VGG16(include_top=False,
@@ -650,13 +659,10 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   x = Dropout(0.3)(x)
   output_tensor = Dense(5, activation='softmax')(x)
 
-  # 전체 모델 정의
   vgg16 = Model(inputs=input_tensor, outputs=output_tensor)
   vgg16.compile(optimizer='adam',
                 loss='categorical_crossentropy',
                 metrics=['accuracy'])
-
-  # 모델 구조 출력
   vgg16.summary()
   ```
 
@@ -757,16 +763,13 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   # 전체 모델 정의
   vgg_light = Model(inputs=input_tensor, outputs=output_tensor)
 
-  # 필요한 레이어만 학습되도록 설정 (보통 block1,2는 고정)
+  # 필요한 레이어만 학습되도록 설정
   for layer in vgg16.layers:
-      layer.trainable = False  # 전부 freeze 하거나 선택적으로 조절 가능
+      layer.trainable = False
 
-  # 컴파일
   vgg_light.compile(optimizer='adam',
                     loss='categorical_crossentropy',
                     metrics=['accuracy'])
-
-  # 모델 구조 출력
   vgg_light.summary()
   ```
 
@@ -969,18 +972,16 @@ raw_test_ds = tf.keras.preprocessing.image_dataset_from_directory(
 class_names = raw_test_ds.class_names
 
 data_augmentation = tf.keras.Sequential([
-    layers.RandomFlip("horizontal"),              # 수평 뒤집기
-    layers.RandomRotation(0.1),                   # ±10% 회전
-    layers.RandomZoom(0.1),                       # ±10% 확대/축소
-    layers.RandomTranslation(0.1, 0.1),           # ±10% 가로/세로 이동
-    layers.RandomContrast(0.1)                    # 명암 변화
+    layers.RandomFlip("horizontal"), # 수평 뒤집기
+    layers.RandomRotation(0.1), # ±10% 회전
+    layers.RandomZoom(0.1), # ±10% 확대/축소
+    layers.RandomTranslation(0.1, 0.1), # ±10% 가로/세로 이동
+    layers.RandomContrast(0.1) # 명암 변화
 ])
 
-# 정규화 레이어 적용
 normalization_layer = tf.keras.layers.Rescaling(1./255)
 test_ds = raw_test_ds.map(lambda x, y: (normalization_layer(data_augmentation(x)), y))
 
-# 성능 최적화를 위한 prefetch
 AUTOTUNE = tf.data.AUTOTUNE
 test_ds = test_ds.prefetch(buffer_size=AUTOTUNE)
 ```
@@ -992,16 +993,19 @@ $$
 <br/>
 &nbsp;&nbsp;일반적으로 Convolution Lyaer의 FLOPs의 계산은 아래와 같이 계산된다.<br/>
 
-$$
-FLOPs_{conv} = 2 \times C_{in} \times K^2 \times H_{out} \times W_{out} \times C_{out}
-$$
-<br/>
 $C_{in}$: 입력 채널 수<br/>
 $K$: 커널크기<br/>
 $H_{out}, W_{out}$: Feature map의 height, width<br/>
 $C_{out}$: 출력 채널 수<br/>
 
-&nbsp;&nbsp;여기서 Layer를 제거하거나 Filter의 개수를 줄여 다음 Layer에서의 $C_{in}$이 줄어든다. 따라서 계산량이 줄어들어 상당한 FLOPs의 이득을 볼 수 있다. FLOPs 계산은 아래와 같이 하였다.
+$$
+FLOPs_{conv} = 2 \times C_{in} \times K^2 \times H_{out} \times W_{out} \times C_{out}
+$$
+<br/>
+
+
+&nbsp;&nbsp;여기서 Layer를 제거하거나 Filter의 개수를 줄이게 되면 이후 Layer에서의 $C_{in}$값 또한 감소한다. 따라서 연산량이 전반적으로 줄어들게 되며 상당한 계산량 절감 효과를 기대할 수 있다.
+
 ```python
 def get_flops(model, batch_size=1):
     try:
@@ -1200,20 +1204,22 @@ def get_flops(model, batch_size=1):
 Filter의 개수를 줄이거나 Layer를 제거한 모델들의 일반화 성능이 더욱 높게 나왔다.<br/>
 
 ![alt text](/assets/images/cnnproject_summary_flops.png)<br/>
-오른쪽으로 갈수록 필요 계산량이 적고 위로 갈수록 성능이 좋다. Accuracy가 0.9 미만은 실사용 불가능이라고 판단하였다.<br/>
-![alt text](/assets/images/cnnproject_summary_filter.png)<br/>
-오른쪽으로 갈수록 Filter의 개수가 적고 위로 갈수록 성능이 좋다. Accuracy가 0.9 미만은 실사용 불가능이라고 판단하였다.<br/>
-&nbsp;&nbsp;FLOPs vs Test Accuracy 표를 보면 왼쪽 아래로 갈수록 성능이 좋지 않고 계산에 필요한 자원이 많이 들들고 오른쪽 위로 갈수록 성능이 좋으면서 계산에 필요한 자원이 적다는 것이다. 'Rice Image Dataset'기준으로 VGG16 Custom이 가장 효율이 좋은 것으로 판단된다. GoogLeNet Light도 높은 성능과 낮은 계산량으로 효율면에서 좋다고 판단된다.<br/>
-&nbsp;&nbsp;CNN Light의 경우 계산량이 0.056TFLOPs 수준으로 압도적으로 낮았으나 Test Accuracy가 0.9 미만이면 일반화 성능 부족으로 실사용 불가로 판단하였기에 정확도가 뒷받침 해주지 못하여 실사용 불가판정을 내렸다. Accuracy / TFLOPs 그래프를 시각화해보면 아래와 같다.<br/>
+&nbsp;&nbsp;위 그림은 FLOPs vs Test Accuracy 그래프이다. 해당 그래프는 왼쪽 아래로 갈수록 성능은 낮고 계산량은 많으며 오른쪽 위로 갈수록 성능은 높고 계산량은 적은 모델임을 의미한다.<br/>
+&nbsp;&nbsp;'Rice Image Dataset'을 기준으로 평가했을 때, VGG Custom 모델이 가장 높은 정확도와 비교적 낮은 FLOPs를 동시에 달성하며 최고의 효율을 보이는 모델로 판단된다. GoogLeNet Light 역시 높은 정확도와 상대적으로 낮은 연산량으로 효율적인 구조임을 확인할 수 있다.
+&nbsp;&nbsp;반면 CNN Light는 FLOPs가 약 0.056TFLOPs 수준으로 가장 낮은 연산량을 보였지만 Test Accuracy가 0.9 미만으로 일반화 성능이 부족하다고 판단되어 실사용에는 적합하지 않은 모델로 분류하였다.<br/>
 ![alt text](/assets/images/cnnproject_summary_accpertflops.png)<br/>
-&nbsp;&nbsp;CNN Light의 경우 Validation Accuracy가 0.9970, Validation Loss가 0.0108로 학습은 굉장이 잘 되었다. 따라서 'Rice Image Dataset'처럼 이미지 전처리가 잘 되어있고 어느정도 과적합이 괜찮은 상황에서 극단적으로 계산량을 줄이고 싶다면 사용해볼 수 있다고 생각한다. 따라서 일반적인 CNN모델도 어느정도 개선을 계산량은 조금만 올리고 Test Accuracy는 많이 올릴 수 있다고 생각한다.
-&nbsp;&nbsp;Rice Image Dataset'기준으로 Filter의 개수가 꼭 성능에 큰 영향을 미치지 않는 것을 볼 수 있다. 성능비교 표를 보면 알 수 있듯이 오히려 Filter의 개수가 적을수록 일반화 성능이 더 앞서는 것을 보여준다. [서론](#4-back-propagation-관점)에서 이야기한 것과 같이 GoogLeNet처럼 Filter의 개수가 너무 많으면 'Rice Image Dataset'과 같이 복잡하지 않은 이미지에서는 학습이 제대로 이루어지지 않을 수 있는 것을 주의해야한다.<br/>
+&nbsp;&nbsp;위 그림은 각 모델의 Accuracy / TFLOPs를 시각화한 그래프이다. 이를 통해 CNN Light의 계산 효율이 매우 높음을 확인할 수 있지만 정확도의 뒷받침이 없을 경우 효율성만으로는 모델 선택이 어렵다는 점을 보여준다.<br/>
+&nbsp;&nbsp;하지만 CNN Light는 Validation Accuracy 0.9970, Validation Loss 0.0108로 학습 성능은 매우 우수하게 나타났다. 따라서 'Rice Image Dataset'과 같이 이미지 전처리가 잘 되어 있고 과적합에 대한 제약이 비교적 적은 환경에서는 극단적으로 연산량을 줄인 모델도 시도해볼 수 있다고 판단된다.<br/>
+![alt text](/assets/images/cnnproject_summary_filter.png)<br/>
+&nbsp;&nbsp;위 그림은 Filter 수와 정확도의 관계를 분석한 Filter vs Test Accuracy 그래프이다. 해당 그래프에서는 Filter 수가 많다고 해서 반드시 성능이 좋은 것은 아님을 알 수 있다.<br/>
+&nbsp;&nbsp;실제로 VGG Custom, GoogLeNet Light 등은 비교적 적은 수의 필터로도 높은 정확도를 달성하였으며 오히려 필터 수가 적은 모델들이 더 뛰어난 일반화 성능을 보이기도 했다.<br/>
+&nbsp;&nbsp;[서론](#4-backpropagation-관점)에서 언급한 바와 같이 GoogLeNet처럼 Filter 개수가 지나치게 많은 구조는 학습이 불안정해지거나 정보가 소실되어 학습되지 않는 형상이 발생할 수 있다. 특히 'Rice Image Dataset'처럼 비교적 단순한 이미지의 경우 이러한 문제는 더욱 뚜렷하게 나타날 수 있으므로 주의가 필요하다.
 
 # 5. 결론
-&nbsp;&nbsp;본 프로젝트에서는 모델 구조를 단순히 깊게 설계하거나 필터 수를 늘리는 방식보다는, 실제 학습에 도움이 되지 않는 불필요한 구조를 제거하는 방식의 경량화 전략이 오히려 더 좋은 성능을 낼 수 있음을 확인하였다.<br/>
+&nbsp;&nbsp;본 프로젝트에서는 모델 구조를 단순히 깊게 설계하거나 필터 수를 늘리는 방식보다는 학습에 실질적으로 기여하지 않는 구조를 제거하는 경량화 전략이 오히려 더 나은 성능을 낼 수 있음을 확인하였다.<br/>
 &nbsp;&nbsp;Feature Map을 시각적으로 확인한 결과, 일부 모델에서는 이미지가 비교적 단순하고 전처리가 잘 되어 있음에도 불구하고 의미 있는 특성 추출에 기여하지 않는 필터들이 다수 존재하였다. 따라서 필터 수를 줄이거나 레이어를 삭제하는 방식으로 모델을 경량화한 결과, 실제 테스트 성능에서 오히려 일반화가 더 잘 되는 현상을 확인할 수 있었다.<br/>
-&nbsp;&nbsp;실제로 '[4. 모델별 일반화 성능 비교](#4-모델별-일반화-성능비교)에서 확인할 수 있듯이 경량화된 모델들이 오히려 더 우수한 성능을 보이는 경우가 다수였으며, 이는 필터 수가 많다고 반드시 좋은 모델이 되는 것은 아님을 보여주는 결과였다.
-&nbsp;&nbsp;이를 바탕으로, CNN Light의 압도적으로 낮은 계산량과 VGG Custom의 뛰어난 일반화 성능이라는 각각의 강점을 결합한 최종 개선 모델을 설계하였다. 이 모델은 CNN Light처럼 필터 개수를 8 → 16으로 제한하면서도, VGG Custom과 같이 두 번째 풀링 이전에 Convolution 층을 추가하여 표현력을 확보하였고, Global Average Pooling과 Dropout을 적용하여 경량화와 성능 모두를 고려하였다.
+&nbsp;&nbsp;실제로 '[4. 모델별 일반화 성능 비교](#4-모델별-일반화-성능비교)'에서 확인할 수 있듯이 경량화된 모델들이 오히려 더 우수한 성능을 보이는 경우가 많았으며 이는 필터 수가 많다고 반드시 좋은 모델이 되는 것은 아님을 보여주는 결과였다.
+&nbsp;&nbsp;이를 바탕으로 CNN Light의 압도적으로 낮은 계산량과 VGG Custom의 뛰어난 일반화 성능이라는 각 모델의 장점을 결합한 최종 개선 모델을 설계하였다. 이 모델은 CNN Light처럼 8 → 16 필터 구조를 유지하면서 VGG Custom과 같이 두 번째 풀링 이전에 Convolution 층을 추가하여 표현력을 강화하였고 Global Average Pooling과 Dropout을 적용하여 경량화와 성능 모두를 고려하였다.
 
 ## (1) 최종 모델
 - CNN Light와 같이 필터의 개수를 8 → 16으로 제한하여 CNN Light의 극단적으로 적은 계산량을 가져가고 VGG Custom과 같이 두 번째 풀링 이전에 Convolution 층을 추가하여 표현력을 확보하였다. 또한 Global Average Pooling과 Dropout을 적용하여 경량화와 성능 모두를 고려한 모델이다.
@@ -1321,13 +1327,20 @@ Filter의 개수를 줄이거나 Layer를 제거한 모델들의 일반화 성�
   | **Macro Avg** | 0.95      | 0.95   | 0.95     | 7500    |
   | **Weighted Avg** | 0.95   | 0.95   | 0.95     | 7500    |
 
+- Final Model은 Test Accuracy 0.9533, 필터 수 56개, 최종 연산량 1.26 TFLOPs로 GoogLeNet Light보다 더 높은 정확도를 유지하면서도 계산량은 더욱 낮은 수준을 달성하였다.
+
 ## (2) 최종 성능 비교표
 
 ![alt text](/assets/images/cnnproject_final_summary.png)<br/>
 ![alt text](/assets/images/cnnproject_final_flops.png)<br/>
 ![alt text](/assets/images/cnnproject_final_filter.png)<br/>
 
-&nbsp;&nbsp;결론적으로 본 프로젝트 결과를 종합하여 계산량은 줄이면서 성능을 끌어올린 모델을 제작할 수 있었다. 따라서 해당 모델을 바탕으로 Feature Map 기반의 시각적 분석을 통해 불필요한 필터를 제거하고 구조적으로 꼭 필요한 요소만을 유지하는 방식은 충분히 타당하며 실제로도 효과적임을 입증하였다. 향후 후속 연구를 통해 보다 정량적인 기준과 자동화된 필터 최적화 방법이 도입된다면 다양한 모델 구조에 널리 적용될 수 있을 것으로 기대된다.
+&nbsp;&nbsp;위의 시각화된 성능 비교 그래프에서 확인할 수 있듯이 Final Model은 정확도와 효율성 측명 모두에서 우상단에 위치한다. 이는 단순히 계산량만 줄인 것이 아닌 효과적인 구조 설계를 통해 실질적인 성능 개선까지 달성한 사례라 할 수 있다.<br/>
+&nbsp;&nbsp;CNN Light와 같이 극단적으로 연산량을 줄인 모델과 비교해보면 Final Model은 약간의 계산량을 추가함으로써 현실적인 성능 수준을 확보한 균형 잡힌 모델로 평가된다. 이는 경량화 모델 설계시 성능-연산량의 균형이 중요하다는 점을 잘 보여준다.<br/>
+
+## (3) 연구 의의와 활용 가능성
+&nbsp;&nbsp;본 프로젝트는 Feature Map을 기반으로 시각적으로 분석하여 의미없는 필터를 제거하는 방식으로 모델 경량화를 시도하였다. 이는 기존 연구에서 다뤄지지 않았던 접근 방법으로 다양한 CNN 구조를 실험적으로 비교하고 FLOPs 계산량 및 필터 수와의 관계를 장량적으로 분석하였다. 이로써 단순한 구조 최적화만으로도 높은 성능을 유지하면서 연산 효율성을 극대화할 수 있음을 입증하였다.<br/>
+&nbsp;&nbsp;최종적으로 제안된 Final Model은 낮은 연산량에도 불구하고 95% 이상의 정확도를 유지하며 성능과 효율의 균형을 모두 고려한 모델 설계가 가능함을 실증적으로 확인하였다. 이는 향후 모바일 디바이스나 엣지 컴퓨팅 환경처럼 제한된 연산 자원 내에서도 실용적인 딥러닝 모델을 구현한느 데에 참고할 수 있는 유의미한 사례가 될 수 있다.<br/>
 
 # 6. Reference
 1. Koklu, Murat. “Rice Image Dataset.” Kaggle. Accessed March 26, 2025. https://www.kaggle.com/datasets/muratkokludataset/rice-image-dataset/data.
