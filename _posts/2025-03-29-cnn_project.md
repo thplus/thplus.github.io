@@ -1,6 +1,6 @@
 ---
-title: Feature Map 기반 CNN 모델 최적화 Rice Image Dataset 사례 연구
-date: 2025-03-30
+title: Feature Map 기반 CNN 모델 최적화
+date: 2025-03-29
 categories: [Project, KTB]
 tags: [python, langchain, fastapi]
 math: true
