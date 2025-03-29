@@ -119,25 +119,27 @@ class GetLocation:
 
 - 우리는 지오코딩의 기능을 이용할 것이므로 [해당 링크](https://developers.google.com/maps/documentation/javascript/geocoding?hl=ko)를 참조하면 된다.
 
-> results[]: {
- types[]: string,
- formatted_address: string,
- address_components[]: {
-   short_name: string,
-   long_name: string,
-   postcode_localities[]: string,
-   types[]: string
- },
- partial_match: boolean,
- place_id: string,
- postcode_localities[]: string,
- geometry: {
-   location: LatLng,
-   location_type: GeocoderLocationType
-   viewport: LatLngBounds,
-   bounds: LatLngBounds
- }
-}
+    ```
+    results[]: {
+    types[]: string,
+    formatted_address: string,
+    address_components[]: {
+    short_name: string,
+    long_name: string,
+    postcode_localities[]: string,
+    types[]: string
+    },
+    partial_match: boolean,
+    place_id: string,
+    postcode_localities[]: string,
+    geometry: {
+    location: LatLng,
+    location_type: GeocoderLocationType
+    viewport: LatLngBounds,
+    bounds: LatLngBounds
+    }
+    }
+    ```
 
 - 우리가 필요한 건 `formatted_address`이고 나머지는 wheather에서 처리한다.
 

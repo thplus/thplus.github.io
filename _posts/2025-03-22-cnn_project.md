@@ -941,7 +941,7 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   ![alt text](/assets/images/cnnproject_vggcustom_layer2.png)<br/>
   ![alt text](/assets/images/cnnproject_vggcustom_layer3.png)<br/>
 
-  각 블럭의 1층의 Feature Map만 시각화하였다.
+  각 블럭의 1층 Feature Map만 시각화하였다.
 
 ### 모델 비교
 
@@ -1292,10 +1292,10 @@ Filter의 개수를 줄이거나 Layer를 제거한 모델들의 일반화 성�
   Best score인 34번 째 epoch의 evaluation은 아래와 같다.<br/>
   Train Accuracy: 0.9899<br/>
   Train Loss: 0.0310<br/>
-  Validation Accruacy: 0.9897<br/>
+  Validation Accuracy: 0.9897<br/>
   Validation Loss: 0.0305<br/>
   
-- feature map 시각화
+- Feature Map 시각화
 
   ![alt text](/assets/images/cnnproject_final_layer1.png)<br/>
   ![alt text](/assets/images/cnnproject_final_layer2.png)<br/>
