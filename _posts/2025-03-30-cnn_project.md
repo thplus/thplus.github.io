@@ -1,6 +1,6 @@
 ---
-title: CNN 경량화 연구
-date: 2025-03-22
+title: Feature Map 기반 CNN 모델 최적화: Rice Image Dataset 사례 연구
+date: 2025-03-30
 categories: [Project, KTB]
 tags: [python, langchain, fastapi]
 math: true

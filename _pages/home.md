@@ -59,7 +59,7 @@ feature_row:
     btn_label: "See Details"      
   - image_path: /assets/images/rice_teaser.png
     alt: "Rice Image Dataset"
-    title: "CNN 경량화 연구"
+    title: "Feature Map 기반 CNN 모델 최적화: Rice Image Dataset 사례 연구"
     excerpt: >
       <span style="font-size: 16px;">
         <i class="fa fa-calendar" aria-hidden="true"></i> 2025.03.19. ~ 2025.03.30.
