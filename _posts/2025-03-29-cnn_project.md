@@ -211,7 +211,7 @@ plt.show()
   cnn.summary()
   ```
 
-- CNN 모델 Summary
+### Model Summary
   
   | Layer (type)                | Output Shape         | Param #       |
   |----------------------------|----------------------|---------------|
@@ -230,7 +230,7 @@ plt.show()
   Trainable params: 12,939,077 (49.36 MB)<br/>
   Non-trainable params: 0 (0.00 B)<br/>
 
-- Model Evaluation 시각화
+### Model Evaluation
 
   ![alt text](/assets/images/cnnproject_cnn_accuracy.png)<br/>
 
@@ -245,7 +245,7 @@ plt.show()
   Validation Accuracy: 0.9963<br/>
   Validation Loss:  0.0132<br/>
 
-- Feature Map 시각화
+### Feature Map 시각화
 
   ![alt text](/assets/images/cnnproject_cnn_layer1.png)<br/>
 
@@ -272,7 +272,7 @@ plt.show()
     return model
   ```
 
-- CNN 경량화 모델 Summary
+### Model Summary
   
   | Layer (type)                | Output Shape         | Param #     |
   |----------------------------|----------------------|-------------|
@@ -289,7 +289,7 @@ plt.show()
   Trainable params: 51,669 (201.83 KB)<br/>
   Non-trainable params: 0 (0.00 B)<br/>
 
-- Model Evaluation 시각화
+### Model Evaluation
   
   ![alt text](/assets/images/cnnproject_cnnlight_accuracy.png)<br/>
 
@@ -304,7 +304,7 @@ plt.show()
   Validation Accuracy: 0.9970<br/>
   Validation Loss:  0.0108<br/>
 
-- Feature Map 시각화
+### Feature Map 시각화
   
   ![alt text](/assets/images/cnnproject_cnnlight_layer1.png)<br/>
 
@@ -401,7 +401,7 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
   googlenet.summary()
   ```
 
-- GoogLeNet Summary
+### Model Summary
   
   | Layer (type)                  | Output Shape         | Param #      |
   |------------------------------|----------------------|--------------|
@@ -430,7 +430,7 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
   Trainable params: 5,978,677 (22.81 MB)<br/>
   Non-trainable params: 0 (0.00 B)<br/>
 
-- Model Evaluation 시각화
+### Model Evaluation
   
   ![alt text](/assets/images/cnnproject_googlenet_accuracy.png)<br/>
 
@@ -445,7 +445,7 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
   Validation Accruacy: 0.9975<br/>
   Validation Loss: 0.0111<br/>
 
-- Feature Map 시각화<br/>
+### Feature Map 시각화
   Feature Map은 Stem Network만 시각화해보았다.
 
   ![alt text](/assets/images/cnnproject_googlenet_layer1.png)<br/>
@@ -497,7 +497,7 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
   googlenet_light.summary()
   ```
 
-- GoogLeNet 경량화 Summary
+### Model Summary
   
   | Layer (type)                    | Output Shape         | Param #     |
   |--------------------------------|----------------------|-------------|
@@ -525,7 +525,7 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
   Trainable params: 580,905 (2.22 MB)<br/>
   Non-trainable params: 0 (0.00 B)<br/>
 
-- Model Evaluation 시각화
+### Model Evaluation
   
   ![alt text](/assets/images/cnnproject_googlenetlight_accuracy.png)<br/>
   ![alt text](/assets/images/cnnproject_googlenetlight_loss.png)<br/>
@@ -538,7 +538,7 @@ Parameter 수는 각 12,939,077와 51,669로 99.60(%) 경량화하였으며 Accu
   Validation Accuracy: 0.9981<br/>
   Validation Loss: 0.0070<br/>
   
-- Feature Map 시각화<br/>
+### Feature Map 시각화
   Feature Map은 위와 마찬가지로 Stem Network만 시각화해보았다.
 
   ![alt text](/assets/images/cnnproject_googlenetlight_layer1.png)<br/>
@@ -587,7 +587,7 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   vgg16.summary()
   ```
 
-- VGG16 Summary
+### Model Summary
   
   | Layer (type)                    | Output Shape         | Param #     |
   |--------------------------------|----------------------|-------------|
@@ -619,7 +619,7 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   Trainable params: 7,344,645 (28.02 MB)<br/>
   Non-trainable params: 7,635,264 (29.13 MB)<br/>
 
-- Model Evaluation 시각화
+### Model Evaluation
   
   ![alt text](/assets/images/cnnproject_vgg16_accuracy.png)<br/>
   ![alt text](/assets/images/cnnproject_vgg16_loss.png)<br/>
@@ -633,7 +633,7 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   Validation Accuracy: 0.9979<br/>
   Validation Loss: 0.0099<br/>
   
-- Feature Map 시각화<br/>
+### Feature Map 시각화
 
   ![alt text](/assets/images/cnnproject_vgg16_layer1.png)<br/>
   ![alt text](/assets/images/cnnproject_vgg16_layer2.png)<br/>
@@ -668,7 +668,7 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   vgg_light.summary()
   ```
 
-- VGG 경량화 Summary
+### Model Summary
   
   | Layer (type)                    | Output Shape         | Param #     |
   |--------------------------------|----------------------|-------------|
@@ -697,7 +697,7 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   Non-trainable params: 7,635,264 (29.13 MB)<br/>
 
 
-- Model Evaluation 시각화
+### Model Evaluation
   
   ![alt text](/assets/images/cnnproject_vgglight_accuracy.png)<br/>
   ![alt text](/assets/images/cnnproject_vgglight_loss.png)<br/>
@@ -710,7 +710,7 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   Validation Accuracy: 0.9977<br/>
   Validation Loss: 0.0077<br/>
   
-- Feature Map 시각화<br/>
+### Feature Map 시각화
 
   ![alt text](/assets/images/cnnproject_vgg16_layer1.png)<br/>
   ![alt text](/assets/images/cnnproject_vgg16_layer2.png)<br/>
@@ -757,7 +757,7 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   vgg_custom.summary()
   ```
 
-- VGG Custom Summary
+### Model Summary
   
   | Layer (type)                    | Output Shape         | Param #     |
   |--------------------------------|----------------------|-------------|
@@ -781,7 +781,7 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   Trainable params: 144,853 (565.83 KB)<br/>
   Non-trainable params: 0 (0.00 B)<br/>
 
-- Model Evaluation 시각화
+### Model Evaluation
   
   ![alt text](/assets/images/cnnproject_vggcustom_accuracy.png)<br/>
   ![alt text](/assets/images/cnnproject_vggcustom_loss.png)<br/>
@@ -794,7 +794,7 @@ Parameter 수는 각 5,978,677와 580,905로 90.28(%) 경량화하였으며 Accu
   Validation Accuracy: 0.9988<br/>
   Validation Loss: 0.0042<br/>
   
-- Feature Map 시각화<br/>
+### Feature Map 시각화
 
   ![alt text](/assets/images/cnnproject_vggcustom_layer1.png)<br/>
   ![alt text](/assets/images/cnnproject_vggcustom_layer2.png)<br/>
@@ -1104,7 +1104,7 @@ Filter의 개수를 줄이거나 Layer를 제거한 모델들의 일반화 성�
   final_model.summary()
   ```
 
-- Final Model Summary
+### Final Model Summary
 
   | Layer (type)                         | Output Shape         | Param #     |
   |-------------------------------------|----------------------|-------------|
@@ -1126,7 +1126,7 @@ Filter의 개수를 줄이거나 Layer를 제거한 모델들의 일반화 성�
   Non-trainable params: 0 (0.00 B)<br/>
 
 
-- Model Evaluation 시각화
+### Model Evaluation
   
   ![alt text](/assets/images/cnnproject_final_accuracy.png)<br/>
   ![alt text](/assets/images/cnnproject_final_loss.png)<br/>
@@ -1140,12 +1140,14 @@ Filter의 개수를 줄이거나 Layer를 제거한 모델들의 일반화 성�
   Validation Accuracy: 0.9897<br/>
   Validation Loss: 0.0305<br/>
   
-- Feature Map 시각화
+### Feature Map 시각화
 
   ![alt text](/assets/images/cnnproject_final_layer1.png)<br/>
   ![alt text](/assets/images/cnnproject_final_layer2.png)<br/>
   ![alt text](/assets/images/cnnproject_final_layer3.png)<br/>
   ![alt text](/assets/images/cnnproject_final_layer4.png)<br/>
+
+### Final Model 일반화 성능
 
 - 총 필터 수: 56개
 
