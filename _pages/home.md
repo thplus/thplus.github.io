@@ -1,16 +1,19 @@
 ---
 layout: splash
-title: Brix
+title: Buyoung's Profile
 permalink: /
 hidden: true
 header:
   overlay_color: "#5e616c"
   overlay_image: /assets/images/mm-home-page-feature.jpg
-  # actions:
-  #   - label: "<i class='fas fa-download'></i> Install now"
-  #     url: "/docs/quick-start-guide/"
+  actions:
+    - label: "<i class='fas fa-download'></i> Install now"
+      url: "/docs/quick-start-guide/"
+    - label: "<i class='fas fa-download'></i> test button"
+      url: "/docs/quick-start-guide/"
 excerpt: >
-  현재 열심히 공부 중인 AI 주니어 개발자 Brix, 김부영입니다.<br />
+  현재 열심히 공부 중인 AI 주니어 개발자 김부영입니다.<br />
+  서비스에 최적화 된 AI모델을 개발하며 사용자 경험을 중시하는 것이 저의 목표입니다. <br/>
 
 feature_row:
   - image_path: /assets/images/honeybee_yolo_varroa2.png
