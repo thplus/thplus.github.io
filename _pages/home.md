@@ -12,8 +12,38 @@ header:
     - label: "<i class='fas fa-download'></i> test button"
       url: "/docs/quick-start-guide/"
 excerpt: >
-  현재 열심히 공부 중인 AI 주니어 개발자 김부영입니다.<br />
-  서비스에 최적화 된 AI모델을 개발하며 사용자 경험을 중시하는 것이 저의 목표입니다. <br/>
+  <div style="display: flex; align-items: flex-start; gap: 30px; flex-wrap: wrap;">
+    <!-- 프로필 이미지 -->
+    <div>
+      <img src="/assets/images/buyoung_profile.jpg" alt="김부영 프로필" width="180" style="border-radius: 10px;" />
+    </div>
+
+    <!-- 소개 및 정보 -->
+    <div>
+      <h3>안녕하세요, AI 개발자 <strong>김부영</strong>입니다 😊</h3>
+      <p>
+        저는 실용적인 AI 기술로 사용자의 문제를 해결하는 데 집중하는 개발자입니다.<br/>
+        <strong>Stable Diffusion, YOLO, 모델 경량화, FastAPI 기반 MLOps 구축</strong>에 관심이 많습니다.<br/>
+        작은 개선도 놓치지 않고, 서비스에 녹일 수 있는 AI를 지향합니다.
+      </p>
+
+      <p>
+        📧 Email: <a href="mailto:glanz6670@naver.com">glanz6670@naver.com</a><br/>
+        💻 GitHub: <a href="https://github.com/thplus" target="_blank">github.com/thplus</a>
+      </p>
+
+      <!-- 기술 스택 -->
+      <h4>🧰 Tech Stack</h4>
+      <ul style="columns: 2; font-size: 15px; padding-left: 1em;">
+        <li><strong>AI</strong>: PyTorch, TensorFlow, YOLOv8, Stable Diffusion</li>
+        <li><strong>Web</strong>: FastAPI, Flask</li>
+        <li><strong>Infra</strong>: AWS S3, Colab Pro, GitHub Actions</li>
+        <li><strong>기타</strong>: OpenCV, NumPy, Pandas, Scikit-learn</li>
+        <li><strong>Data</strong>: SQLite, MySQL, JSON, Markdown</li>
+        <li><strong>툴</strong>: Jupyter, VSCode, Git</li>
+      </ul>
+    </div>
+  </div>
 
 feature_row:
   - image_path: /assets/images/rice_teaser.png
@@ -84,52 +114,6 @@ feature_row:
     url: "/project/ajou%20university/honeybee_diease_diagnosis/"
     btn_class: "btn--primary"
     btn_label: "See Details"   
-
-# feature2_row:
-#   - image_path: /assets/images/3dsokoban_teaser.png
-#     alt: "Sokoban Teaser"
-#     title: "3D Sokoban"
-#     excerpt: >
-#       <span style="font-size: 16px;">
-#         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.10.01. ~ 2024.10.02.
-#       </span><br />
-#       "To Be Updated, 3D로 소코반 게임을 만들어 본 프로젝트입니다. "
-#     url: "/project/ajou%20university/3dsokoban/"
-#     btn_class: "btn--primary"
-#     btn_label: "See Details"
-#   - image_path: /assets/images/honeybee_yolo_varroa2.png
-#     alt: "Sokoban"
-#     title: "Amazing Bowling"
-#     excerpt: >
-#       <span style="font-size: 16px;">
-#         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.10.18. ~ 2024.10.23.
-#       </span><br />
-#       "To Be Updated, Amazing Bowling 게임을 만들어 본 프로젝트입니다.. "
-#     url: "/"
-#     btn_class: "btn--primary"
-#     btn_label: "See Details"
-#   - image_path: /assets/images/honeybee_yolo_varroa2.png
-#     alt: "Sokoban"
-#     title: "Dodge"
-#     excerpt: >
-#       <span style="font-size: 16px;">
-#         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.11.20. ~ 2024.11.22.
-#       </span><br />
-#       "To Be Updated, 3D 닷지 게임을 만들어 본 프로젝트입니다. "
-#     url: "/"
-#     btn_class: "btn--primary"
-#     btn_label: "See Details"
-#   - image_path: /assets/images/tps_teaser.png
-#     alt: "TPS Teaser"
-#     title: "TPS Project"
-#     excerpt: >
-#       <span style="font-size: 16px;">
-#         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.12.03. ~ 2024.12.13.
-#       </span><br />
-#       "To Be Updated, TPS 게임을 만들어 본 프로젝트입니다. "
-#     url: "/"
-#     btn_class: "btn--primary"
-#     btn_label: "See Details"
 ---
 
 # Projects
