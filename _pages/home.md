@@ -46,6 +46,17 @@ excerpt: >
   </div>
 
 feature_row:
+  - image_path: /assets/images/sentiment_1.png
+    alt: "Sentiment"
+    title: "OnTheTop"
+    excerpt: >
+      <span style="font-size: 16px;">
+        <i class="fa fa-calendar" aria-hidden="true"></i> 2025.03.31. ~ 2025.08.01.
+      </span><br />
+      "Desk 사진을 올리면 AI가 Desk Setup 사진을 추천해주는 서비스입니다."<br/>
+      <a class="btn btn--primary" href="https://github.com/100-hours-a-week/16-Hot6-wiki/wiki">GitHub Wiki</a>
+      <a class="btn btn--info" href="https://github.com/100-hours-a-week/16-Hot6-ai" target="_blank">GitHub</a>
+    
   - image_path: /assets/images/rice_teaser.png
     alt: "Rice Image Dataset"
     title: "Feature Map 기반 CNN 모델 최적화: Rice Image Dataset 사례 연구"
@@ -57,8 +68,6 @@ feature_row:
     url: "/project/ktb/cnn_project/"
     btn_class: "btn--primary"
     btn_label: "See Details"
-    btn_class: "btn--primary"
-    btn_label: "Git Hub"
   - image_path: /assets/images/hackathon_4.png
     alt: "Hackathon"
     title: "노래 추천 AI 서비스"
@@ -70,17 +79,6 @@ feature_row:
     url: "/project/ktb/hackathon/"
     btn_class: "btn--primary"
     btn_label: "See Details"     
-  - image_path: /assets/images/sentiment_1.png
-    alt: "Sentiment"
-    title: "감성분석을 활용한 언론사의 양극화 분석"
-    excerpt: >
-     <span style="font-size: 16px;">
-        <i class="fa fa-calendar" aria-hidden="true"></i> 2024.09.11. ~ 2024.12.04.
-     </span><br />
-     "감성분석을 활용하여 언론사의 양극화 현상을 분석해 본 프로젝트입니다. 감성분석 모델 설계, Topic 모델 설계, 결과분석, 인사이트 분석을 담당했습니다."
-    url: "/project/ajou%20university/sentiment_analysis_with_headline/"
-    btn_class: "btn--primary"
-    btn_label: "See Details"
   - image_path: /assets/images/tps_teaser.png
     alt: "TPS Teaser"
     title: "TPS Project"
