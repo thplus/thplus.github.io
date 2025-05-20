@@ -3,8 +3,6 @@ title: "KaKao Tech Bootcamp Project"
 layout: archive
 permalink: /categories/ktb/
 author_profile: true
-sidebar:
-    nav: "docs"
 ---
 
 {% assign posts = site.categories["KTB"] %}

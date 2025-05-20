@@ -6,11 +6,11 @@ hidden: true
 header:
   overlay_color: "#5e616c"
   overlay_image: /assets/images/mm-home-page-feature.jpg
-  actions:
-    - label: "<i class='fas fa-download'></i> Install now"
-      url: "/docs/quick-start-guide/"
-    - label: "<i class='fas fa-download'></i> test button"
-      url: "/docs/quick-start-guide/"
+  # actions:
+  #   - label: "<i class='fas fa-download'></i> Install now"
+  #     url: "/docs/quick-start-guide/"
+  #   - label: "<i class='fas fa-download'></i> test button"
+  #     url: "/docs/quick-start-guide/"
 excerpt: >
   <div style="display: flex; align-items: flex-start; gap: 30px; flex-wrap: wrap;">
     <!-- 프로필 이미지 -->
@@ -20,41 +20,44 @@ excerpt: >
 
     <!-- 소개 및 정보 -->
     <div>
-      <h3>안녕하세요, AI 개발자 <strong>김부영</strong>입니다 😊</h3>
+      <h3>AI 개발자 <strong>김부영</strong>입니다 😊</h3>
       <p>
         저는 실용적인 AI 기술로 사용자의 문제를 해결하는 데 집중하는 개발자입니다.<br/>
         <strong>Stable Diffusion, YOLO, 모델 경량화, FastAPI 기반 MLOps 구축</strong>에 관심이 많습니다.<br/>
-        작은 개선도 놓치지 않고, 서비스에 녹일 수 있는 AI를 지향합니다.
+        작은 개선도 놓치지 않고 서비스에 녹일 수 있는 <strong> 사용자 중심 AI<strong>를 지향합니다.<br/>
+        <br/>
       </p>
 
       <p>
         📧 Email: <a href="mailto:glanz6670@naver.com">glanz6670@naver.com</a><br/>
-        💻 GitHub: <a href="https://github.com/thplus" target="_blank">github.com/thplus</a>
+        💻 GitHub: <a href="https://github.com/thplus" target="_blank">github.com/thplus</a><br/>
       </p>
 
       <!-- 기술 스택 -->
       <h4>🧰 Tech Stack</h4>
-      <ul style="columns: 2; font-size: 15px; padding-left: 1em;">
+      <ul style="columns: 2; font-size: 17px; padding-left: 1em;">
         <li><strong>AI</strong>: PyTorch, TensorFlow, YOLOv8, Stable Diffusion</li>
-        <li><strong>Web</strong>: FastAPI, Flask</li>
+        <li><strong>Web</strong>: FastAPI</li>
         <li><strong>Infra</strong>: AWS S3, Colab Pro, GitHub Actions</li>
         <li><strong>기타</strong>: OpenCV, NumPy, Pandas, Scikit-learn</li>
-        <li><strong>Data</strong>: SQLite, MySQL, JSON, Markdown</li>
+        <li><strong>Data</strong>: MySQL, JSON, Markdown</li>
         <li><strong>툴</strong>: Jupyter, VSCode, Git</li>
       </ul>
     </div>
   </div>
 
 feature_row:
-  - image_path: /assets/images/sentiment_1.png
-    alt: "Sentiment"
+  - image_path: /assets/images/onthetop_main.png
+    alt: "Onthetop-main"
     title: "OnTheTop"
     excerpt: >
       <span style="font-size: 16px;">
         <i class="fa fa-calendar" aria-hidden="true"></i> 2025.03.31. ~ 2025.08.01.
       </span><br />
       "Desk 사진을 올리면 AI가 Desk Setup 사진을 추천해주는 서비스입니다."<br/>
-      <a class="btn btn--primary" href="https://github.com/100-hours-a-week/16-Hot6-wiki/wiki">GitHub Wiki</a>
+      <br/>
+      <a class="btn btn--success" href="https://onthe-top.com" target="_blank">Service Page</a>
+      <a class="btn btn--primary" href="https://github.com/100-hours-a-week/16-Hot6-wiki/wiki">Wiki</a>
       <a class="btn btn--info" href="https://github.com/100-hours-a-week/16-Hot6-ai" target="_blank">GitHub</a>
     
   - image_path: /assets/images/rice_teaser.png
@@ -64,10 +67,9 @@ feature_row:
       <span style="font-size: 16px;">
         <i class="fa fa-calendar" aria-hidden="true"></i> 2025.03.19. ~ 2025.03.30.
       </span><br />
-      "Rice Image Dataset을 이용하여 Feature Map을 토대로 CNN 계열 모델을 시각적으로 경량화 해 본 개인 프로젝트입니다."
-    url: "/project/ktb/cnn_project/"
-    btn_class: "btn--primary"
-    btn_label: "See Details"
+      "Rice Image Dataset을 이용하여 Feature Map을 토대로 CNN 계열 모델을 시각적으로 경량화 해 본 개인 프로젝트입니다."<br/>
+      <a class="btn btn--primary" href="/project/ktb/cnn_project/">Detalis</a>
+    
   - image_path: /assets/images/hackathon_4.png
     alt: "Hackathon"
     title: "노래 추천 AI 서비스"
@@ -75,10 +77,9 @@ feature_row:
       <span style="font-size: 16px;">
         <i class="fa fa-calendar" aria-hidden="true"></i> 2025.02.26. ~ 2025.02.28.
       </span><br />
-      "LLM을 활용한 노래 추천 서비스로 배포까지 완료해 본 프로젝트입니다. 프롬프트 엔지니어링과 API 설계, FastAPI 설계, 디버깅 등을 담당했습니다."
-    url: "/project/ktb/hackathon/"
-    btn_class: "btn--primary"
-    btn_label: "See Details"     
+      "LLM을 활용한 노래 추천 서비스로 배포까지 완료해 본 프로젝트입니다. 프롬프트 엔지니어링과 API 설계, FastAPI 설계, 디버깅 등을 담당했습니다."<br/>
+      <a class="btn btn--primary" href="/project/ktb/hackathon/">Detalis</a>
+
   - image_path: /assets/images/tps_teaser.png
     alt: "TPS Teaser"
     title: "TPS Project"
@@ -86,10 +87,9 @@ feature_row:
       <span style="font-size: 16px;">
         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.12.03. ~ 2024.12.13.
       </span><br />
-      "To Be Updated, TPS 게임을 만들어 본 개인 프로젝트입니다."
-    url: "/project/ajou%20university/tps_project/"
-    btn_class: "btn--primary"
-    btn_label: "See Details"
+      "Unity와 C#을 통해 TPS 게임을 만들어 본 개인 프로젝트입니다."<br/>
+      <a class="btn btn--primary" href="/project/ajou%20university/tps_project/">Detalis</a>
+
   - image_path: /assets/images/sentiment_1.png
     alt: "Sentiment"
     title: "감성분석을 활용한 언론사의 양극화 분석"
@@ -97,10 +97,9 @@ feature_row:
      <span style="font-size: 16px;">
         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.09.11. ~ 2024.12.04.
      </span><br />
-     "감성분석을 활용하여 언론사의 양극화 현상을 분석해 본 프로젝트입니다. 감성분석 모델 설계, Topic 모델 설계, 결과분석, 인사이트 분석을 담당했습니다."
-    url: "/project/ajou%20university/sentiment_analysis_with_headline/"
-    btn_class: "btn--primary"
-    btn_label: "See Details"
+     "감성분석을 활용하여 언론사의 양극화 현상을 분석해 본 프로젝트입니다. 감성분석 모델 설계, Topic 모델 설계, 결과분석, 인사이트 분석을 담당했습니다."<br/>
+     <a class="btn btn--primary" href="/project/ajou%20university/sentiment_analysis_with_headline/">Detalis</a>
+
   - image_path: /assets/images/honeybee_yolo_varroa2.png
     alt: "honeybee_varroa"
     title: "Honeybee Diease Diagnosis"
@@ -108,10 +107,9 @@ feature_row:
       <span style="font-size: 16px;">
         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.05.30. ~ 2024.06.06.
       </span><br />
-      "YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다. YOLO를 이용한 학습과 결과분석, 디벨롭을 담당했습니다."
-    url: "/project/ajou%20university/honeybee_diease_diagnosis/"
-    btn_class: "btn--primary"
-    btn_label: "See Details"   
+      "YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다. YOLO를 이용한 학습과 결과분석, 디벨롭을 담당했습니다."<br/>
+      <a class="btn btn--primary" href="/project/ajou%20university/honeybee_diease_diagnosis/">Detalis</a>
+
 ---
 
 # Projects
