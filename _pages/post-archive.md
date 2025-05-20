@@ -1,7 +1,7 @@
 ---
 layout: home
 permalink: /post/
-author_profile: true
+author_profile: false
 toc: true
 toc_sticky: true
 toc_label: Index
