@@ -68,6 +68,7 @@ feature_row:
         <i class="fa fa-calendar" aria-hidden="true"></i> 2025.03.19. ~ 2025.03.30.
       </span><br />
       "Rice Image Dataset을 이용하여 Feature Map을 토대로 CNN 계열 모델을 시각적으로 경량화 해 본 개인 프로젝트입니다."<br/>
+      <br/>
       <a class="btn btn--primary" href="/project/ktb/cnn_project/">Detalis</a>
     
   - image_path: /assets/images/hackathon_4.png
@@ -78,6 +79,7 @@ feature_row:
         <i class="fa fa-calendar" aria-hidden="true"></i> 2025.02.26. ~ 2025.02.28.
       </span><br />
       "LLM을 활용한 노래 추천 서비스로 배포까지 완료해 본 프로젝트입니다. 프롬프트 엔지니어링과 API 설계, FastAPI 설계, 디버깅 등을 담당했습니다."<br/>
+      <br/>
       <a class="btn btn--primary" href="/project/ktb/hackathon/">Detalis</a>
 
   - image_path: /assets/images/tps_teaser.png
@@ -88,6 +90,7 @@ feature_row:
         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.12.03. ~ 2024.12.13.
       </span><br />
       "Unity와 C#을 통해 TPS 게임을 만들어 본 개인 프로젝트입니다."<br/>
+      <br/>
       <a class="btn btn--primary" href="/project/ajou%20university/tps_project/">Detalis</a>
 
   - image_path: /assets/images/sentiment_1.png
@@ -98,6 +101,7 @@ feature_row:
         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.09.11. ~ 2024.12.04.
      </span><br />
      "감성분석을 활용하여 언론사의 양극화 현상을 분석해 본 프로젝트입니다. 감성분석 모델 설계, Topic 모델 설계, 결과분석, 인사이트 분석을 담당했습니다."<br/>
+     <br/>
      <a class="btn btn--primary" href="/project/ajou%20university/sentiment_analysis_with_headline/">Detalis</a>
 
   - image_path: /assets/images/honeybee_yolo_varroa2.png
@@ -108,6 +112,7 @@ feature_row:
         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.05.30. ~ 2024.06.06.
       </span><br />
       "YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다. YOLO를 이용한 학습과 결과분석, 디벨롭을 담당했습니다."<br/>
+      <br/>
       <a class="btn btn--primary" href="/project/ajou%20university/honeybee_diease_diagnosis/">Detalis</a>
 
 ---
