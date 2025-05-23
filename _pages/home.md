@@ -111,7 +111,13 @@ feature_row:
       <span style="font-size: 16px;">
         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.05.30. ~ 2024.06.06.
       </span><br />
-      "YOLO를 이용해 꿀벌의 질병과 위협을 실시간으로 감지해 본 프로젝트입니다. YOLO를 이용한 학습과 결과분석, 디벨롭을 담당했습니다."<br/>
+      "꿀벌의 질병을 실시간으로 탐지해주는 AI 모델을 만들어 본 프로젝트 입니다. 본 프로젝트는 YOLOv8을 이용하여 실시간으로 바로아 기생충, 백묵병, 말벌을 탐지하였습니다."<br/>
+      <ul style="margin: 0; padding-left: 20px;">
+        <li>CNN은 서비스 목적에 부합하지 않다고 판단하여 YOLO로 모델 변경 추진</li>
+        <li>CNN, YOLO 각 특장점 정리</li>
+        <li>CNN에 비해 Accuracy가 떨어지는 점을 극복하기 위해 FN을 줄여 모델 개선</li>
+        <li></li>
+      </ul>
       <br/>
       <a class="btn btn--primary" href="/project/ajou%20university/honeybee_diease_diagnosis/">Detalis</a>
 
