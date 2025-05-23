@@ -112,10 +112,12 @@ feature_row:
         <i class="fa fa-calendar" aria-hidden="true"></i> 2024.05.30. ~ 2024.06.06.
       </span><br />
       "꿀벌의 질병을 실시간으로 탐지해주는 AI 모델을 만들어 본 프로젝트 입니다. 본 프로젝트는 YOLOv8을 이용하여 실시간으로 바로아 기생충, 백묵병, 말벌을 탐지하였습니다."<br/>
+      <div style="padding-left: 1em;">
         <li><b>주도한 역할</b>: YOLOv8 기반 객체 탐지 모델 설계 및 학습 파이프라인 구축</li>
         <li><b>기술 스택</b>: YOLOv8, Roboflow, Python, OpenCV</li>
         <li><b>문제 해결</b>: CNN 모델의 낮은 정확도 및 과탐지 문제를 보완하기 위해 YOLO 전환 제안 및 실험 수행</li>
         <li><b>성과</b>: CNN에 비해 Accuracy 낮은 점을 극복하기 위해 YOLOv8 오탐(FN) 감소 달성</li>
+      </div>
       <br/>
       <a class="btn btn--primary" href="/project/ajou%20university/honeybee_diease_diagnosis/">Detalis</a>
 
