@@ -1,0 +1,32 @@
+.project-card {
+  background: #2a2c34; /* 어두운 배경 */
+  padding: 1.2em;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2em;
+  color: #ffffff; /* 글자색 */
+}
+
+.project-card .project-date {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 0.5em;
+}
+
+.project-card .project-summary {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0.8em;
+  line-height: 1.5;
+}
+
+.project-card .project-detail {
+  list-style: disc;
+  padding-left: 1.4em;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.project-card a.btn {
+  margin-top: 1em;
+}

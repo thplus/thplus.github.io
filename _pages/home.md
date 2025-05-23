@@ -125,6 +125,25 @@ feature_row:
 
 # Projects
 
+<div class="project-card">
+  <div class="project-date">
+    <i class="fa fa-calendar"></i> 2024.05.30. ~ 2024.06.06.
+  </div>
+
+  <div class="project-summary">
+    <strong>Honeybee Disease Diagnosis</strong><br/>
+    YOLOv8을 활용해 꿀벌 질병(바로아, 백묵병, 말벌)을 실시간으로 탐지한 프로젝트입니다.
+  </div>
+
+  <ul class="project-detail">
+    <li><strong>주요 역할:</strong> YOLOv8 탐지 모델 설계 및 학습</li>
+    <li><strong>사용 기술:</strong> YOLOv8, OpenCV, Python, Roboflow</li>
+    <li><strong>문제 해결:</strong> CNN 정확도 문제 해결을 위한 YOLO 도입</li>
+    <li><strong>성과:</strong> 실시간성 확보 및 탐지 정확도 향상</li>
+  </ul>
+
+  <a class="btn btn--primary" href="/project/ajou%20university/honeybee_diease_diagnosis/">Details</a>
+</div>
 {% include feature_row %}
 
 
