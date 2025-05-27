@@ -22,7 +22,7 @@ excerpt: >
       <p>
         저는 실용적인 AI 기술로 사용자의 문제를 해결하는 데 집중하는 개발자입니다.<br/>
         <strong>Stable Diffusion, YOLO, 모델 경량화, FastAPI 기반 MLOps 구축</strong>에 관심이 많습니다.<br/>
-        작은 개선도 놓치지 않고 서비스에 녹일 수 있는 <strong>사용자 중심 AI</strong>를 지향합니다.
+        작은 개선도 놓치지 않고 서비스에 녹일 수 있는 <strong>사용자 중심 AI</strong>를 지향합니다.<br/>
       </p>
       <p>
         📧 Email: <a href="mailto:glanz6670@naver.com">glanz6670@naver.com</a><br/>
@@ -120,6 +120,35 @@ feature_row:
 ---
 
 # Projects
+## TPS Project
+<div class="project-card">
+  <video controls class="project-video">
+    <source src="/assets/videos/TPS_Project_Play.mp4" type="video/mp4" />
+  </video>
+  <div class="project-date">
+    <i class="fa fa-calendar"></i> 2024.12.03. ~ 2024.12.13.
+  </div>
+
+  <div class="project-summary">
+    TPS 게임 개발을 통해 객체지향 프로그래밍의 핵심 개념인 캡슐화, 상속, 다형성을 실습하고 Singleton 패턴, 벡터 계산 등을 구현해 보면서 객체지향 설계의 원리를 체득한 개인 프로젝트 입니다.<br/>
+  </div>
+
+  <ul class="project-detail">
+    <li><strong>기술 스택:</strong> C#, Unity</li>
+    <li><strong>주요 기능 및 구현 내용:</strong>
+      <ul>
+        <li>캐릭터 컨트롤러: 3인칭 시점에서의 캐릭터 이동 및 조작 구현</li>
+        <li>시네마틱 카메라 시스템: 게임 플레이에 몰입감을 더하는 카메라 연출 구현</li>
+        <li>적 AI: 적 캐릭터의 행동 패턴 및 반응 구현</li>
+        <li>무기 시스템: 다양한 무기의 사용 및 전환 기능 구현</li>
+        <li>Singleton 패턴: 게임의 전체 상태 관리를 위한 Singleton 패턴 적용</li>
+        <li>벡터 계산: 무기 시스템에서의 정확한 위치 및 방향 계산을 위한 벡터 수학 활용</li>
+      </ul>
+    </li>
+  </ul>
+
+</div>
+
 ## 감성분석을 활용한 언론사의 양극화 분석
 <div class="project-card">
   <img src="/assets/images/sentiment_lda_ronegative.png" alt="sentiment_5" class="project-thumb" />
@@ -134,7 +163,7 @@ feature_row:
 
   <ul class="project-detail">
     <li><strong>주요 역할:</strong> 여러 감성 분석 기법(RoBERTa, VADER, TextBlob, Topic 모델링)을 적용하여 결과를 비교 분석 후 인사이트 도출, 언론사의 정치적 성향에 따른 감성 분석 결과를 시각화하고 해석 </li>
-    <li><strong>사용 기술:</strong> RoBERTa, VADER, TextBlob, LDA Topic Modeling, NumPy, Pandas, Matplotlib</li>
+    <li><strong>기술 스택:</strong> RoBERTa, VADER, TextBlob, LDA Topic Modeling, NumPy, Pandas, Matplotlib</li>
     <li><strong>분석 결과:</strong>
       <ul>
         <li>진보 성향 언론사는 Biden 관련 헤드라인에서 긍정적인 감성이 높게 나타남</li>
@@ -160,6 +189,9 @@ feature_row:
   <video controls class="project-video">
     <source src="/assets/videos/honeybee_video1.mp4" type="video/mp4" />
   </video>
+  <div class="project-date">
+    <i class="fa fa-calendar"></i> 2024.05.30. ~ 2024.06.06.
+  </div>
 
   <div class="project-summary">
     꿀벌의 주요 질병(백묵병), 기생충(바로아), 천적(말벌)을 실시간으로 탐지하는 AI 모델 개발을 한 팀 프로젝트입니다.<br/>
@@ -168,7 +200,7 @@ feature_row:
 
   <ul class="project-detail">
     <li><strong>주요 역할:</strong> YOLOv8 탐지 모델 설계 및 학습 파이프라인 구축</li>
-    <li><strong>사용 기술:</strong> YOLOv8, Tensorflow</li>
+    <li><strong>기술 스택:</strong> YOLOv8, Tensorflow</li>
     <li><strong>성능 평가:</strong> Confusion Matrix 및 PR Curve를 통해 성능 평가를 하였으며 백묵병 탐지 정확도 및 실시간 탐지 성능이 우수</li>
     <li><strong>모델 개발 및 개선 과정:</strong>
       <ul>
