@@ -122,7 +122,7 @@ feature_row:
 
 # Projects
 <div class="project-card">
-  <img src="/assets/images/sentiment_lda_topic_5.png" alt="sentiment_5" class="project-thumb" />
+  <img src="/assets/images/sentiment_lda_ronegative.png" alt="sentiment_5" class="project-thumb" />
   <div class="project-date">
     <i class="fa fa-calendar"></i> 2024.09.11. ~ 2024.12.04.
   </div>
@@ -157,16 +157,9 @@ feature_row:
 </div>
 
 <div class="project-card">
-  <div class="project-content">
-    <div class="left-media">
-      <img src="/assets/images/honeybee_yolo_varroa2.png" alt="honeybee_varroa" class="project-thumb" />
-    </div>
-    <div class="right-media">
-      <video controls class="project-video">
-        <source src="/assets/videos/honeybee_video1.mp4" type="video/mp4" />
-      </video>
-    </div>
-  </div>
+  <video controls class="project-video">
+    <source src="/assets/videos/honeybee_video1.mp4" type="video/mp4" />
+  </video>
 
   <div class="project-summary">
     <strong>Honeybee Disease Diagnosis</strong><br/>
@@ -183,7 +176,7 @@ feature_row:
         <li>초기 모델은 CNN을 사용 하였으나 높은 정확도 (99%)에도 불구하고 환경에 민감하여 일반화가 어려움</li>
         <li>또한 백묵병과 바로아, 말벌 등 꿀벌에게 위협이 되는 것들은 짧은 시간 내에 막대한 피해를 입히기 때문에 질병을 잘 감지하는 것만이 좋은 방향은 아님</li>
         <li>YOLO의 경우 이미지 전체를 한 번에 처리하여 객체를 감지하며 실시간 탐지가 가능, 다양한 환경에서도 높은 정확도 유지</li>
-        <li>기존 백묵병 이외에도 바로아 기생충, 말벌 등을 추가 탐지<li>
+        <li>기존 백묵병 이외에도 바로아 기생충, 말벌 등을 추가 탐지</li>
       </ul>
     </li>
   </ul>
