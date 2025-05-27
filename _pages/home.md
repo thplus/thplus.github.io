@@ -121,6 +121,7 @@ feature_row:
 ---
 
 # Projects
+## 감성분석을 활용한 언론사의 양극화 분석
 <div class="project-card">
   <img src="/assets/images/sentiment_lda_ronegative.png" alt="sentiment_5" class="project-thumb" />
   <div class="project-date">
@@ -128,9 +129,12 @@ feature_row:
   </div>
 
   <div class="project-summary">
-    <strong>감성분석을 활용한 언론사의 양극화 분석</strong><br/>
-    미국 대선 기간동안 주요 언론사의 헤드라인을 분석하여 정치적 양극화 현상을 감성분석을 통해 정량적으로 평가해 본 팀 프로젝트입니다.
-    언론의 정치적 편향성 증가로 인해 독자들은 자신과 일치하는 정보만을 소비하는 경향이 강화되고 있으며 이는 사회적 갈등을 심화시킬 수 있습니다. 따라서 해당 프로젝트에서는 언론사의 헤드라인을 감성 분석하여 정치적 성향에 따른 보도 경향을 정량적으로 분석하고자 하였습니다.
+    <p>
+      미국 대선 기간동안 주요 언론사의 헤드라인을 분석하여 정치적 양극화 현상을 감성분석을 통해 정량적으로 평가해 본 팀 프로젝트입니다.
+    </p>
+    <p>
+      언론의 정치적 편향성 증가로 인해 독자들은 자신과 일치하는 정보만을 소비하는 경향이 강화되고 있으며 이는 사회적 갈등을 심화시킬 수 있습니다. 따라서 해당 프로젝트에서는 언론사의 헤드라인을 감성 분석하여 정치적 성향에 따른 보도 경향을 정량적으로 분석하고자 하였습니다.
+    </p>
   </div>
 
   <ul class="project-detail">
@@ -156,15 +160,19 @@ feature_row:
   <a class="btn btn--primary" href="/project/ajou%20university/sentiment_analysis_with_headline/">Details</a>
 </div>
 
+## Honeybee Disease Diagnosis
 <div class="project-card">
   <video controls class="project-video">
     <source src="/assets/videos/honeybee_video1.mp4" type="video/mp4" />
   </video>
 
   <div class="project-summary">
-    <strong>Honeybee Disease Diagnosis</strong><br/>
-    꿀벌의 주요 질병(백묵병), 기생충(바로아), 천적(말벌)을 실시간으로 탐지하는 AI 모델 개발을 한 팀 프로젝트입니다.
-    꿀벌은 농작물 수분에 필수적인 화분매개자로 국내 경제에 약 6조원의 가치를 창출합니다. 최근 꿀벌의 집단 폐사가 심각해지고 있으며 주요 원인 중 하나는 질병입니다.
+    <p>
+      꿀벌의 주요 질병(백묵병), 기생충(바로아), 천적(말벌)을 실시간으로 탐지하는 AI 모델 개발을 한 팀 프로젝트입니다.
+    </p>
+    <p>
+      꿀벌은 농작물 수분에 필수적인 화분매개자로 국내 경제에 약 6조원의 가치를 창출합니다. 최근 꿀벌의 집단 폐사가 심각해지고 있으며 주요 원인 중 하나는 질병입니다.
+    </p>
   </div>
 
   <ul class="project-detail">
