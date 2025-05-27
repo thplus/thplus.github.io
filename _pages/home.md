@@ -12,7 +12,36 @@ header:
   #   - label: "<i class='fas fa-download'></i> test button"
   #     url: "/docs/quick-start-guide/"
 excerpt: >
-  {% include excerpt-profile.html %}
+  <div style="display: flex; align-items: flex-start; gap: 30px; flex-wrap: wrap;">
+    <div>
+      <img src="/assets/images/buyoung_profile.jpg" alt="김부영 프로필" width="180" style="border-radius: 10px;" />
+    </div>
+
+    <div>
+      <h3>AI 개발자 <strong>김부영</strong>입니다 😊</h3>
+      <p>
+        저는 실용적인 AI 기술로 사용자의 문제를 해결하는 데 집중하는 개발자입니다.<br/>
+        <strong>Stable Diffusion, YOLO, 모델 경량화, FastAPI 기반 MLOps 구축</strong>에 관심이 많습니다.<br/>
+        작은 개선도 놓치지 않고 서비스에 녹일 수 있는 <strong>사용자 중심 AI</strong>를 지향합니다.
+      </p>
+
+      <p>
+        📧 Email: <a href="mailto:glanz6670@naver.com">glanz6670@naver.com</a><br/>
+        💻 GitHub: <a href="https://github.com/thplus" target="_blank">github.com/thplus</a><br/>
+      </p>
+
+      <h4>🧰 Tech Stack</h4>
+      <ul style="columns: 2; font-size: 17px; padding-left: 1em;">
+        <li><strong>AI</strong>: PyTorch, TensorFlow, YOLOv8, Stable Diffusion</li>
+        <li><strong>Web</strong>: FastAPI</li>
+        <li><strong>Infra</strong>: AWS S3, Colab Pro, GitHub Actions</li>
+        <li><strong>기타</strong>: OpenCV, NumPy, Pandas, Scikit-learn</li>
+        <li><strong>Data</strong>: MySQL, JSON, Markdown</li>
+        <li><strong>툴</strong>: Jupyter, VSCode, Git</li>
+      </ul>
+    </div>
+  </div>
+
 
 feature_row:
   - image_path: /assets/images/onthetop_main.png
@@ -99,36 +128,64 @@ feature_row:
   </div>
 
   <div class="project-summary">
-    <strong>Honeybee Disease Diagnosis</strong><br/>
-    감성분석을 활용하여 언론사의 양극화 현상을 분석해 본 팀 프로젝트입니다. Transformer 계열과 Lexicon based, Topic 모델링을 이용하여 Topic별 각 언론사의 Headline에 대한 감성분석을 진행하였습니다.
+    <strong>감성분석을 활용한 언론사의 양극화 분석</strong><br/>
+    미국 대선 기간동안 주요 언론사의 헤드라인을 분석하여 정치적 양극화 현상을 감성분석을 통해 정량적으로 평가해 본 팀 프로젝트입니다.
+    언론의 정치적 편향성 증가로 인해 독자들은 자신과 일치하는 정보만을 소비하는 경향이 강화되고 있으며 이는 사회적 갈등을 심화시킬 수 있습니다. 따라서 해당 프로젝트에서는 언론사의 헤드라인을 감성 분석하여 정치적 성향에 따른 보도 경향을 정량적으로 분석하고자 하였습니다.
   </div>
 
   <ul class="project-detail">
-    <li><strong>주요 역할:</strong> RoBERTa, VADER, TextBlob, Topic 모델링, 인사이트 분석, 모델링 결과 분석</li>
-    <li><strong>사용 기술:</strong> RoBERTa, VADER, TextBlob, LDA Topic, NumPy, Pandas, Matplotlib</li>
-    <li><strong>문제 해결:</strong> CNN 정확도 문제 해결을 위한 YOLO 도입</li>
-    <li><strong>성과:</strong> 실시간성 확보 및 탐지 정확도 향상</li>
+    <li><strong>주요 역할:</strong> 여러 감성 분석 기법(RoBERTa, VADER, TextBlob, Topic 모델링)을 적용하여 결과를 비교 분석 후 인사이트 도출, 언론사의 정치적 성향에 따른 감성 분석 결과를 시각화하고 해석 </li>
+    <li><strong>사용 기술:</strong> RoBERTa, VADER, TextBlob, LDA Topic Modeling, NumPy, Pandas, Matplotlib</li>
+    <li><strong>분석 결과:</strong>
+      <ul>
+        <li>진보 성향 언론사는 Biden 관련 헤드라인에서 긍정적인 감성이 높게 나타남</li>
+        <li>보수 성향 언론사는 Trump 관련 헤드라인에서 긍정적인 감성이 높게 나타남</li>
+        <li>부정적인 감성의 경우 극단적인 성향의 언론사일수록 키워드와 무관하게 높게 나타남</li>
+        <li>TextBlob 분석결과 부정적인 감성과 주관성은 연관이 있음을 알 수 있음</li>
+        <li>편향성이 두드러질수록 부정적인 감성과 주관성이 두드러짐</li>
+      </ul>
+    </li>
+    <li><strong>성과:</strong>
+      <ul>
+        <li>정성적인 부분을 정량적으로 평가함</li>
+        <li>편향은 정치뿐만 아니라 제품군에서도 두드러지므로 부정적 리뷰를 모아 분석하면 어떤 부분에서 경쟁사 대비 선호도가 낮은지 수치적으로 분석할 수 있음</li>
+      </ul>
+    </li>
   </ul>
 
-  <a class="btn btn--primary" href="/project/ajou%20university/honeybee_diease_diagnosis/">Details</a>
+  <a class="btn btn--primary" href="/project/ajou%20university/sentiment_analysis_with_headline/">Details</a>
 </div>
 
 <div class="project-card">
-  <img src="/assets/images/honeybee_yolo_varroa2.png" alt="honeybee_varroa" class="project-thumb" />
-  <div class="project-date">
-    <i class="fa fa-calendar"></i> 2024.05.30. ~ 2024.06.06.
+  <div class="project-content">
+    <div class="left-media">
+      <img src="/assets/images/honeybee_yolo_varroa2.png" alt="honeybee_varroa" class="project-thumb" />
+    </div>
+    <div class="right-media">
+      <video controls class="project-video">
+        <source src="/assets/videos/honeybee_video1.mp4" type="video/mp4" />
+      </video>
+    </div>
   </div>
 
   <div class="project-summary">
     <strong>Honeybee Disease Diagnosis</strong><br/>
-    YOLOv8을 활용해 꿀벌 질병(바로아, 백묵병, 말벌)을 실시간으로 탐지한 팀 프로젝트입니다.
+    꿀벌의 주요 질병(백묵병), 기생충(바로아), 천적(말벌)을 실시간으로 탐지하는 AI 모델 개발을 한 팀 프로젝트입니다.
+    꿀벌은 농작물 수분에 필수적인 화분매개자로 국내 경제에 약 6조원의 가치를 창출합니다. 최근 꿀벌의 집단 폐사가 심각해지고 있으며 주요 원인 중 하나는 질병입니다.
   </div>
 
   <ul class="project-detail">
-    <li><strong>주요 역할:</strong> YOLOv8 탐지 모델 설계 및 학습</li>
+    <li><strong>주요 역할:</strong> YOLOv8 탐지 모델 설계 및 학습 파이프라인 구축</li>
     <li><strong>사용 기술:</strong> YOLOv8, Tensorflow</li>
-    <li><strong>주요 트러블:</strong> CNN은 정확도는 높으나 서비스 목적에 맞지 않음</li>
-    <li><strong>성과:</strong> YOLOv8로 추가 위협 바로아 기생충, 말벌 탐지 가능 및 실시간 검출로</li>
+    <li><strong>성능 평가:</strong> Confusion Matrix 및 PR Curve를 통해 성능 평가를 하였으며 백묵병 탐지 정확도 및 실시간 탐지 성능이 우수</li>
+    <li><strong>모델 개발 및 개선 과정:</strong>
+      <ul>
+        <li>초기 모델은 CNN을 사용 하였으나 높은 정확도 (99%)에도 불구하고 환경에 민감하여 일반화가 어려움</li>
+        <li>또한 백묵병과 바로아, 말벌 등 꿀벌에게 위협이 되는 것들은 짧은 시간 내에 막대한 피해를 입히기 때문에 질병을 잘 감지하는 것만이 좋은 방향은 아님</li>
+        <li>YOLO의 경우 이미지 전체를 한 번에 처리하여 객체를 감지하며 실시간 탐지가 가능, 다양한 환경에서도 높은 정확도 유지</li>
+        <li>기존 백묵병 이외에도 바로아 기생충, 말벌 등을 추가 탐지<li>
+      </ul>
+    </li>
   </ul>
 
   <a class="btn btn--primary" href="/project/ajou%20university/honeybee_diease_diagnosis/">Details</a>
@@ -136,31 +193,3 @@ feature_row:
 
 
 <!-- {% include feature_row %} -->
-
-
-## KaKao Tech Bootcamp - Today I Learn
-
-| Week     | Date     | Topic                                                        |
-| -------- | ------   | ------------------------------------------------------------ |
-| 1st Week - [Github](/categories/#1st-week) | 25.01.30.| [Github Page](https://github.com/100-hours-a-week/2-brix-kim-til)|
-| 2nd Week - [데이터 분석](/categories/#2nd-week)| 25.02.03.| [1주차 내용 복습](/today%20i%20learn/2nd%20week/first_week_review/)|
-|  | 25.02.04. | [NumPy & Pandas](/today%20i%20learn/2nd%20week/numpy_pandas/)|
-|  | 25.02.05. | [NumPy 심화학습](/today%20i%20learn/2nd%20week/numpy_advanced/) |
-|  | 25.02.06. | [Pandas 심화학습](/today%20i%20learn/2nd%20week/pandas_advanced/) |
-|  | 25.02.07. | [NumPy & Pandas 딥 다이브](/today%20i%20learn/2nd%20week/pandas_numpy_deepdive/) |
-| 3rd Week - [데이터 시각화](/categories/#3rd-week)| 25.02.10.| [Data 시각화](/today%20i%20learn/3rd%20week/data_visualization/)|
-|  | 25.02.11. | [Krampoline IDE 사용해보기](/today%20i%20learn/3rd%20week/krampoline/) |
-|  | 25.02.12. | [확률분포](/today%20i%20learn/3rd%20week/probability_distribution/) |
-|  | 25.02.13. | [가설검정](/today%20i%20learn/3rd%20week/hypothesis_test/) |
-|  | 25.02.14. | [데이터 시각화 딥 다이브](/today%20i%20learn/3rd%20week/data_visualization_deepdive/) |
-|  | 25.02.15. | [AI 모델링](/today%20i%20learn/3rd%20week/ai_modeling/) |
-| 4th Week - [인공지능](/categories/#4th-week)| 25.02.17.| [다변수함수의 미분](/today%20i%20learn/4th%20week/differential/)|
-|  | 25.02.18. | [인공지능 기본 정리](/today%20i%20learn/4th%20week/AI_summary/) |
-|  | 25.02.20. | [FastAPI 사용해보기](/today%20i%20learn/4th%20week/fastapi/) |
-|  | 25.02.22. | [LangChain 사용해보기](/today%20i%20learn/4th%20week/langchain/) |
-| 5th Week - [딥러닝 및 해커톤](/categories/#5th-week)| 25.02.24.| [CNN](/today%20i%20learn/5th%20week/cnn/)|
-|  | 25.02.28. | [Hackathon](/project/ktb/hackathon/) |
-| 6th Week - [모델](/categories/#6th-week)| 25.03.04.| [Pre-Trained Model](/today%20i%20learn/6th%20week/pretrainedmodel/)|
-|  | 25.03.05. | [Pre-Trained Model](/today%20i%20learn/6th%20week/addoverfitting/) |
-| 7th Week - [NLP](/categories/#7th-week)| 25.03.10.| [Natural Language Processing](/today%20i%20learn/7th%20week/nlp/)|
-|  | 25.03.11. | [Application Model](/today%20i%20learn/7th%20week/application_model/) |
