@@ -7,6 +7,14 @@
   color: #ffffff; /* 글자색 */
 }
 
+.project-thumb {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  margin-bottom: 1em;
+}
+
 .project-card .project-date {
   font-size: 14px;
   color: #bbb;

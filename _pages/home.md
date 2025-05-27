@@ -12,39 +12,7 @@ header:
   #   - label: "<i class='fas fa-download'></i> test button"
   #     url: "/docs/quick-start-guide/"
 excerpt: >
-  <div style="display: flex; align-items: flex-start; gap: 30px; flex-wrap: wrap;">
-    <!-- 프로필 이미지 -->
-    <div>
-      <img src="/assets/images/buyoung_profile.jpg" alt="김부영 프로필" width="180" style="border-radius: 10px;" />
-    </div>
-
-    <!-- 소개 및 정보 -->
-    <div>
-      <h3>AI 개발자 <strong>김부영</strong>입니다 😊</h3>
-      <p>
-        저는 실용적인 AI 기술로 사용자의 문제를 해결하는 데 집중하는 개발자입니다.<br/>
-        <strong>Stable Diffusion, YOLO, 모델 경량화, FastAPI 기반 MLOps 구축</strong>에 관심이 많습니다.<br/>
-        작은 개선도 놓치지 않고 서비스에 녹일 수 있는 <strong> 사용자 중심 AI<strong>를 지향합니다.<br/>
-        <br/>
-      </p>
-
-      <p>
-        📧 Email: <a href="mailto:glanz6670@naver.com">glanz6670@naver.com</a><br/>
-        💻 GitHub: <a href="https://github.com/thplus" target="_blank">github.com/thplus</a><br/>
-      </p>
-
-      <!-- 기술 스택 -->
-      <h4>🧰 Tech Stack</h4>
-      <ul style="columns: 2; font-size: 17px; padding-left: 1em;">
-        <li><strong>AI</strong>: PyTorch, TensorFlow, YOLOv8, Stable Diffusion</li>
-        <li><strong>Web</strong>: FastAPI</li>
-        <li><strong>Infra</strong>: AWS S3, Colab Pro, GitHub Actions</li>
-        <li><strong>기타</strong>: OpenCV, NumPy, Pandas, Scikit-learn</li>
-        <li><strong>Data</strong>: MySQL, JSON, Markdown</li>
-        <li><strong>툴</strong>: Jupyter, VSCode, Git</li>
-      </ul>
-    </div>
-  </div>
+  {% include excerpt-profile.html %}
 
 feature_row:
   - image_path: /assets/images/onthetop_main.png
@@ -124,27 +92,50 @@ feature_row:
 ---
 
 # Projects
-
 <div class="project-card">
+  <img src="/assets/images/sentiment_lda_topic_5.png" alt="sentiment_5" class="project-thumb" />
   <div class="project-date">
-    <i class="fa fa-calendar"></i> 2024.05.30. ~ 2024.06.06.
+    <i class="fa fa-calendar"></i> 2024.09.11. ~ 2024.12.04.
   </div>
 
   <div class="project-summary">
     <strong>Honeybee Disease Diagnosis</strong><br/>
-    YOLOv8을 활용해 꿀벌 질병(바로아, 백묵병, 말벌)을 실시간으로 탐지한 프로젝트입니다.
+    감성분석을 활용하여 언론사의 양극화 현상을 분석해 본 팀 프로젝트입니다. Transformer 계열과 Lexicon based, Topic 모델링을 이용하여 Topic별 각 언론사의 Headline에 대한 감성분석을 진행하였습니다.
   </div>
 
   <ul class="project-detail">
-    <li><strong>주요 역할:</strong> YOLOv8 탐지 모델 설계 및 학습</li>
-    <li><strong>사용 기술:</strong> YOLOv8, OpenCV, Python, Roboflow</li>
+    <li><strong>주요 역할:</strong> RoBERTa, VADER, TextBlob, Topic 모델링, 인사이트 분석, 모델링 결과 분석</li>
+    <li><strong>사용 기술:</strong> RoBERTa, VADER, TextBlob, LDA Topic, NumPy, Pandas, Matplotlib</li>
     <li><strong>문제 해결:</strong> CNN 정확도 문제 해결을 위한 YOLO 도입</li>
     <li><strong>성과:</strong> 실시간성 확보 및 탐지 정확도 향상</li>
   </ul>
 
   <a class="btn btn--primary" href="/project/ajou%20university/honeybee_diease_diagnosis/">Details</a>
 </div>
-{% include feature_row %}
+
+<div class="project-card">
+  <img src="/assets/images/honeybee_yolo_varroa2.png" alt="honeybee_varroa" class="project-thumb" />
+  <div class="project-date">
+    <i class="fa fa-calendar"></i> 2024.05.30. ~ 2024.06.06.
+  </div>
+
+  <div class="project-summary">
+    <strong>Honeybee Disease Diagnosis</strong><br/>
+    YOLOv8을 활용해 꿀벌 질병(바로아, 백묵병, 말벌)을 실시간으로 탐지한 팀 프로젝트입니다.
+  </div>
+
+  <ul class="project-detail">
+    <li><strong>주요 역할:</strong> YOLOv8 탐지 모델 설계 및 학습</li>
+    <li><strong>사용 기술:</strong> YOLOv8, Tensorflow</li>
+    <li><strong>주요 트러블:</strong> CNN은 정확도는 높으나 서비스 목적에 맞지 않음</li>
+    <li><strong>성과:</strong> YOLOv8로 추가 위협 바로아 기생충, 말벌 탐지 가능 및 실시간 검출로</li>
+  </ul>
+
+  <a class="btn btn--primary" href="/project/ajou%20university/honeybee_diease_diagnosis/">Details</a>
+</div>
+
+
+<!-- {% include feature_row %} -->
 
 
 ## KaKao Tech Bootcamp - Today I Learn
