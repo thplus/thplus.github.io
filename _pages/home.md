@@ -31,9 +31,9 @@ excerpt: >
 
       <h4>🧰 Tech Stack</h4>
       <ul style="columns: 2; font-size: 17px; padding-left: 1em;">
-        <li><strong>AI</strong>: PyTorch, TensorFlow, YOLOv8, Stable Diffusion</li>
+        <li><strong>AI</strong>: PyTorch, TensorFlow, Huggingface</li>
         <li><strong>Web</strong>: FastAPI</li>
-        <li><strong>Infra</strong>: AWS S3, Colab Pro, GitHub Actions</li>
+        <li><strong>Infra</strong>: AWS S3, Colab Pro, GitHub</li>
         <li><strong>기타</strong>: OpenCV, NumPy, Pandas, Scikit-learn</li>
         <li><strong>Data</strong>: MySQL, JSON, Markdown</li>
         <li><strong>툴</strong>: Jupyter, VSCode, Git</li>
@@ -43,83 +43,85 @@ excerpt: >
 
 
 feature_row:
-  - image_path: /assets/images/onthetop_main.png
-    alt: "Onthetop-main"
-    title: "OnTheTop"
-    excerpt: >
-      <span style="font-size: 16px;">
-        <i class="fa fa-calendar" aria-hidden="true"></i> 2025.03.31. ~ 2025.08.01.
-      </span><br />
-      "Desk 사진을 올리면 AI가 Desk Setup 사진을 추천해주는 서비스입니다."<br/>
-      <br/>
-      <a class="btn btn--success" href="https://onthe-top.com" target="_blank">Service Page</a>
-      <a class="btn btn--primary" href="https://github.com/100-hours-a-week/16-Hot6-wiki/wiki">Wiki</a>
-      <a class="btn btn--info" href="https://github.com/100-hours-a-week/16-Hot6-ai" target="_blank">GitHub</a>
-    
-  - image_path: /assets/images/rice_teaser.png
-    alt: "Rice Image Dataset"
-    title: "Feature Map 기반 CNN 모델 최적화: Rice Image Dataset 사례 연구"
-    excerpt: >
-      <span style="font-size: 16px;">
-        <i class="fa fa-calendar" aria-hidden="true"></i> 2025.03.19. ~ 2025.03.30.
-      </span><br />
-      "Rice Image Dataset을 이용하여 Feature Map을 토대로 CNN 계열 모델을 시각적으로 경량화 해 본 개인 프로젝트입니다."<br/>
-      <br/>
-      <a class="btn btn--primary" href="/project/ktb/cnn_project/">Detalis</a>
-    
-  - image_path: /assets/images/hackathon_4.png
-    alt: "Hackathon"
-    title: "노래 추천 AI 서비스"
-    excerpt: >
-      <span style="font-size: 16px;">
-        <i class="fa fa-calendar" aria-hidden="true"></i> 2025.02.26. ~ 2025.02.28.
-      </span><br />
-      "LLM을 활용한 노래 추천 서비스로 배포까지 완료해 본 프로젝트입니다. 프롬프트 엔지니어링과 API 설계, FastAPI 설계, 디버깅 등을 담당했습니다."<br/>
-      <br/>
-      <a class="btn btn--primary" href="/project/ktb/hackathon/">Detalis</a>
-
-  - image_path: /assets/images/tps_teaser.png
-    alt: "TPS Teaser"
-    title: "TPS Project"
-    excerpt: >
-      <span style="font-size: 16px;">
-        <i class="fa fa-calendar" aria-hidden="true"></i> 2024.12.03. ~ 2024.12.13.
-      </span><br />
-      "Unity와 C#을 통해 TPS 게임을 만들어 본 개인 프로젝트입니다."<br/>
-      <br/>
-      <a class="btn btn--primary" href="/project/ajou%20university/tps_project/">Detalis</a>
-
-  - image_path: /assets/images/sentiment_1.png
-    alt: "Sentiment"
-    title: "감성분석을 활용한 언론사의 양극화 분석"
-    excerpt: >
-     <span style="font-size: 16px;">
-        <i class="fa fa-calendar" aria-hidden="true"></i> 2024.09.11. ~ 2024.12.04.
-     </span><br />
-     "감성분석을 활용하여 언론사의 양극화 현상을 분석해 본 프로젝트입니다. 감성분석 모델 설계, Topic 모델 설계, 결과분석, 인사이트 분석을 담당했습니다."<br/>
-     <br/>
-     <a class="btn btn--primary" href="/project/ajou%20university/sentiment_analysis_with_headline/">Detalis</a>
-
-  - image_path: /assets/images/honeybee_yolo_varroa2.png
-    alt: "honeybee_varroa"
-    title: "Honeybee Diease Diagnosis"
-    excerpt: >
-      <span style="font-size: 16px;">
-        <i class="fa fa-calendar" aria-hidden="true"></i> 2024.05.30. ~ 2024.06.06.
-      </span><br />
-      "꿀벌의 질병을 실시간으로 탐지해주는 AI 모델을 만들어 본 프로젝트 입니다. 본 프로젝트는 YOLOv8을 이용하여 실시간으로 바로아 기생충, 백묵병, 말벌을 탐지하였습니다."<br/>
-      <div style="padding-left: 1em;">
-        <li><b>주도한 역할</b>: YOLOv8 기반 객체 탐지 모델 설계 및 학습 파이프라인 구축</li>
-        <li><b>기술 스택</b>: YOLOv8, Roboflow, Python, OpenCV</li>
-        <li><b>문제 해결</b>: CNN 모델의 낮은 정확도 및 과탐지 문제를 보완하기 위해 YOLO 전환 제안 및 실험 수행</li>
-        <li><b>성과</b>: CNN에 비해 Accuracy 낮은 점을 극복하기 위해 YOLOv8 오탐(FN) 감소 달성</li>
-      </div>
-      <br/>
-      <a class="btn btn--primary" href="/project/ajou%20university/honeybee_diease_diagnosis/">Detalis</a>
 
 ---
 
 # Projects
+## Feature Map 기반 CNN 모델 최적화
+<div class="project-card">
+  <img src="/assets/images/cnnproject_final_layer4.png" alt="feature_map" class="project-thumb" />
+  <div class="project-date">
+    <i class="fa fa-calendar"></i> 2025.03.19. ~ 2025.03.30.
+  </div>
+
+  <div class="project-summary">
+    CNN 기반 이미지 분류 모델의 성능을 유지하면서 연산 비용과 메모리 사용량을 줄이기 위해 경량화에 대해 연구해 본 개인 프로젝트입니다. 해당 프로젝트는 다른 연구들과는 달리 Feature Map 기반으로 모델이 어떤 특징들을 뽑아내는지 살펴보며 불필요한 Filter는 제거하거나 없애 시각적으로 경량화했습니다.
+  </div>
+
+  <ul class="project-detail">
+    <li><strong>기술 스택:</strong> CNN, VGG16, GoogLeNet</li>
+    <li><strong>주요 연구 내용: </strong></li>
+      <ul>
+        <li>모델 구성 및 비교:</li>
+          <ul>
+            <li>기본 CNN, VGG16, GoogLeNet 모델을 구현하고 성능 평가</li>
+            <li>각 모델의 Feature Map을 시각화하여 불필요한 필터나 Layer 식별</li>
+            <li>식별된 요소를 제거하여 경량화된 모델을 구성하고 성능 비교</li>
+          </ul>
+        <li>Feature Map 시각화:</li>
+          <ul>
+            <li>각 Convolution Layer를 틍과한 Feature Map을 시각화하여 정보 손실 여부 확인</li>
+            <li>깊은 Layer에서 Feature Map이 모두 0에 가까운 경우, 해당 Layer 필요성 재검토</li>
+          </ul>
+        <li>Feed Forward 및 Backpropagation 분석</li>
+          <ul>
+            <li>Feature Map이 모두 0으로 채워진 경우 ReLU 및 Pooling을 통과한 이후에도 출력값이 0이 되어 학습이 되지 않는 것을 수학적으로 해석</li>
+            <li>이러한 현상을 GoogLeNet을 통해 재현</li>
+            <li>Feature Map이 0으로 채워지는 Layer를 제거하여 모델의 효율성 향상</li>
+          </ul>
+      </ul>
+        <li><strong>성능 평가 및 결과:</strong></li>
+      <ul>
+        <li>연구 내용을 바탕으로 Rice Image Dataset에 적합한 모델 설계 및 제작</li>
+        <li>모델별 성능 비교:</li>
+          <ul>
+            <img src="/assets/images/cnnproject_final_summary.png" alt="model_summary" />
+            <img src="/assets/images/cnnproject_final_filter.png" alt="model_filter" />
+            <img src="/assets/images/cnnproject_final_flops.png" alt="model_flops" />
+            <li>기본 모델과 경량화된 모델의 정확도, 필터의 개수, 연산량을 비교</li>
+            <li>모델의 정확도와 필터, 연산량 등은 상관관계가 없고 경량화한 모델의 일반화 성능이 더욱 뛰어나며, 실제 응용 환경에서도 Feature Map을 통한 경량화는 의미가 있음</li>
+          </ul>
+      </ul>
+  </ul>
+
+  <a class="btn btn--primary" href="/project/ktb/cnn_project/">Details</a>
+</div>
+
+## HarmonAI
+<div class="project-card">
+  <img src="/assets/images/hackathon_5.png" alt="harmonai" class="project-thumb" />
+  <div class="project-date">
+    <i class="fa fa-calendar"></i> 2025.02.26. ~ 2025.02.28.
+  </div>
+
+  <div class="project-summary">
+    사용자의 위치(위도, 경도), 날씨, 감성의 정도와 함께 사용자의 기분을 입력받아 본인에게 맞는 음악을 추천해주는 서비스로 카카오테크부트캠프 해커톤에서 진행한 팀 프로젝트입니다.<br/>
+    해당 서비스에서 원하는 사용자 경험은 "이 기분, 장소, 날씨 그리고 감성"에 현재의 음악이 잘 어울린다는 느낌을 주는 것입니다.<br/>
+  </div>
+
+  <ul class="project-detail">
+    <li><strong>기술 스택:</strong> FastAPI</li>
+    <li><strong>주요 기능 및 구현 내용</strong></li>
+      <ul>
+        <li>AI 백엔드 설계: Python, FastAPI</li>
+        <li>AI 파이프라인 설계: Backend(위도, 경도) → Google Maps API(위치 정보) → 기상청 API(날씨 정보) → OpenAI API(노래 추천) → Spotify API(할루시네이션 검증 및 노래 추천 활용) → Backend(추천 노래 정보 전달)</li>
+        <li>ChatGPT 프롬프트 엔지니어링: 위치, 날씨, 기분 등을 고려한 노래를 추천해주기 위한 프롬프트 작성</li>
+      </ul>
+  </ul>
+
+  <a class="btn btn--primary" href="/project/ktb/hackathon/">Details</a>
+</div>
+
 ## TPS Project
 <div class="project-card">
   <video controls class="project-video">
@@ -147,6 +149,7 @@ feature_row:
     </li>
   </ul>
 
+  <a class="btn btn--primary" href="/project/ajou%20university/tps_project/">Details</a>
 </div>
 
 ## 감성분석을 활용한 언론사의 양극화 분석
