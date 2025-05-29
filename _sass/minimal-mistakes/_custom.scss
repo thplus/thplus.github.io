@@ -4,6 +4,7 @@
   border-radius: 12px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   max-width: 800px;
+  margin: 0 auto 2em auto;
   margin-bottom: 2em;
   color: #ffffff; /* 글자색 */
 }
@@ -57,8 +58,11 @@
 
 .project-video {
   width: 100%;
-  max-width: 800px;
+  height: auto;
+  display: block;
+  max-width: 100%;
   border-radius: 8px;
+  margin-bottom: 1em;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
