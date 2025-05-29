@@ -100,7 +100,9 @@ feature_row:
 
 ## HarmonAI
 <div class="project-card">
-  <img src="/assets/images/hackathon_5.png" alt="harmonai" class="project-thumb" />
+  <video controls class="project-video">
+    <source src="/assets/videos/harmonai_demo.mp4" type="video/mp4" />
+  </video>
   <div class="project-date">
     <i class="fa fa-calendar"></i> 2025.02.26. ~ 2025.02.28.
   </div>
