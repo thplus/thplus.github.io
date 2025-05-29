@@ -121,6 +121,7 @@ feature_row:
   </ul>
 
   <a class="btn btn--primary" href="/project/ktb/hackathon/">Details</a>
+  <a class="btn btn--info" href="https://github.com/KTB-Hackerton-24Team/HarmonAI_AI">AI Github</a>
 </div>
 
 ## TPS Project
@@ -151,7 +152,6 @@ feature_row:
   </ul>
 
   <a class="btn btn--primary" href="/project/ajou%20university/tps_project/">Details</a>
-  <a class="btn btn--info" href="https://github.com/KTB-Hackerton-24Team/HarmonAI_AI">AI Github</a>
 </div>
 
 ## 감성분석을 활용한 언론사의 양극화 분석
