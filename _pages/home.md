@@ -120,8 +120,8 @@ feature_row:
         <li>AI 백엔드 설계: Python, FastAPI</li>
         <li>AI 파이프라인 설계: Backend(위도, 경도) → Google Maps API(위치 정보) → 기상청 API(날씨 정보) → OpenAI API(노래 추천) → Spotify API(할루시네이션 검증 및 노래 추천 활용) → Backend(추천 노래 정보 전달)</li>
         <li>ChatGPT 프롬프트 엔지니어링: 위치, 날씨, 기분 등을 고려한 노래를 추천해주기 위한 프롬프트 작성</li>
-      </li>
       </ul>
+    </li>
   </ul>
 
   <a class="btn btn--primary" href="/project/ktb/hackathon/">Details</a>
