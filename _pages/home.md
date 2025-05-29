@@ -55,7 +55,8 @@ feature_row:
   </div>
 
   <div class="project-summary">
-    CNN 기반 이미지 분류 모델의 성능을 유지하면서 연산 비용과 메모리 사용량을 줄이기 위해 경량화에 대해 연구해 본 개인 프로젝트입니다. 해당 프로젝트는 다른 연구들과는 달리 Feature Map 기반으로 모델이 어떤 특징들을 뽑아내는지 살펴보며 불필요한 Filter는 제거하거나 없애 시각적으로 경량화했습니다.
+    CNN 기반 이미지 분류 모델의 성능을 유지하면서 연산 비용과 메모리 사용량을 줄이기 위해 경량화에 대해 연구해 본 개인 프로젝트입니다.<br/>
+    해당 프로젝트는 다른 연구들과는 달리 Feature Map 기반으로 모델이 어떤 특징들을 뽑아내는지 살펴보며 불필요한 Filter는 제거하거나 없애 시각적으로 경량화했습니다.
   </div>
 
   <ul class="project-detail">
@@ -150,6 +151,7 @@ feature_row:
   </ul>
 
   <a class="btn btn--primary" href="/project/ajou%20university/tps_project/">Details</a>
+  <a class="btn btn--info" href="https://github.com/KTB-Hackerton-24Team/HarmonAI_AI">AI Github</a>
 </div>
 
 ## 감성분석을 활용한 언론사의 양극화 분석
