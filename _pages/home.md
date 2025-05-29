@@ -100,7 +100,7 @@ feature_row:
 
 ## HarmonAI
 <div class="project-card">
-  <video controls class="project-video">
+  <video controls style="width: 800px; max-width: 100%; height: auto; display: block; margin: 0 auto;">
     <source src="/assets/videos/harmonai_demo.mp4" type="video/mp4" />
   </video>
   <div class="project-date">
