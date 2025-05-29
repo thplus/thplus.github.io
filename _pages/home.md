@@ -99,7 +99,7 @@ feature_row:
 </div>
 
 ## HarmonAI
-<div class="project-card" style="max-width: 800px; margin: 0 auto;">
+<div class="project-card">
   <video controls class="project-video">
     <source src="/assets/videos/harmonai_demo.mp4" type="video/mp4" />
   </video>
@@ -114,16 +114,19 @@ feature_row:
 
   <ul class="project-detail">
     <li><strong>기술 스택:</strong> FastAPI</li>
-    <li><strong>주요 기능 및 구현 내용</strong></li>
+    <li>
+      <strong>주요 기능 및 구현 내용</strong>
       <ul>
         <li>AI 백엔드 설계: Python, FastAPI</li>
         <li>AI 파이프라인 설계: Backend(위도, 경도) → Google Maps API(위치 정보) → 기상청 API(날씨 정보) → OpenAI API(노래 추천) → Spotify API(할루시네이션 검증 및 노래 추천 활용) → Backend(추천 노래 정보 전달)</li>
         <li>ChatGPT 프롬프트 엔지니어링: 위치, 날씨, 기분 등을 고려한 노래를 추천해주기 위한 프롬프트 작성</li>
+      </li>
       </ul>
   </ul>
 
   <a class="btn btn--primary" href="/project/ktb/hackathon/">Details</a>
   <a class="btn btn--info" href="https://github.com/KTB-Hackerton-24Team/HarmonAI_AI">AI Github</a>
+
 </div>
 
 ## TPS Project
