@@ -100,7 +100,7 @@ feature_row:
 
 ## HarmonAI
 <div class="project-card">
-  <video controls style="width: 800px; max-width: 100%; height: auto; display: block; margin: 0 auto;">
+  <video controls style="width: 1200px; max-width: 100%; height: auto; display: block; margin: 0 auto;">
     <source src="/assets/videos/harmonai_demo.mp4" type="video/mp4" />
   </video>
   <div class="project-date">
@@ -131,7 +131,7 @@ feature_row:
 
 ## TPS Project
 <div class="project-card">
-  <video controls class="project-video">
+  <video controls style="width: 1200px; max-width: 100%; height: auto; display: block; margin: 0 auto;">
     <source src="/assets/videos/TPS_Project_Play.mp4" type="video/mp4" />
   </video>
   <div class="project-date">
@@ -196,7 +196,7 @@ feature_row:
 
 ## Honeybee Disease Diagnosis
 <div class="project-card">
-  <video controls class="project-video">
+  <video controls style="width: 1200px; max-width: 100%; height: auto; display: block; margin: 0 auto;">
     <source src="/assets/videos/honeybee_video1.mp4" type="video/mp4" />
   </video>
   <div class="project-date">
