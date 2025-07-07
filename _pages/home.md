@@ -47,6 +47,22 @@ feature_row:
 ---
 
 # Projects
+## OnTheTop
+<div class="project-card">
+  <img src="/assets/images/OTT_AI_Architect_v1.drawio.png" alt="onthetop_main" class="project-thumb" />
+  <div class="project-date">
+    <i class="fa fa-calendar"></i> 2025.04.01. ~ 2025.08.01.
+  </div>
+
+  <div class="project-summary">
+    Desksetup 사진을 올리면
+  </div>
+  <a class="btn btn--primary" href="/project/ktb/onthetop/">Details</a>
+  <a class="btn btn--Success" href="https://onthe-top.com">Services Link</a>
+  <a class="btn btn--info" href="https://github.com/100-hours-a-week/16-Hot6-wiki/wiki/AI-Wiki">Gihub Wiki</a>
+  <a class="btn btn--Inverse" href="https://github.com/100-hours-a-week/16-Hot6-ai">AI Repo</a>
+</div>
+
 ## Feature Map 기반 CNN 모델 최적화
 <div class="project-card">
   <img src="/assets/images/cnnproject_final_layer4.png" alt="feature_map" class="project-thumb" />
@@ -96,6 +112,7 @@ feature_row:
   </ul>
 
   <a class="btn btn--primary" href="/project/ktb/cnn_project/">Details</a>
+  <a class="btn btn--info" href="https://github.com/100-hours-a-week/2-brix-kim-personal-project?tab=readme-ov-file">MySQL</a>
 </div>
 
 ## HarmonAI
@@ -157,6 +174,7 @@ feature_row:
   </ul>
 
   <a class="btn btn--primary" href="/project/ajou%20university/tps_project/">Details</a>
+  <a class="btn btn--success" href="https://drive.google.com/file/d/13pQfE7MHxG-DHtxnUWtvNgebXMDKbohJ/view?usp=sharing">Source Code</a>
 </div>
 
 ## 감성분석을 활용한 언론사의 양극화 분석
