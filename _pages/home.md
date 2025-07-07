@@ -14,7 +14,7 @@ header:
 excerpt: >
   <div style="display: flex; align-items: flex-start; gap: 30px; flex-wrap: wrap;">
     <div>
-      <img src="/assets/images/buyoung_profile.jpg" alt="김부영 프로필" width="180" style="border-radius: 10px;" />
+      <img src="/assets/images/buyoung_profile.png" alt="김부영 프로필" width="180" style="border-radius: 10px;" />
     </div>
 
     <div>
