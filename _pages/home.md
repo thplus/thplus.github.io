@@ -57,8 +57,9 @@ feature_row:
   <div class="project-summary">
     Desksetup 사진을 올리면
   </div>
+  
   <a class="btn btn--primary" href="/project/ktb/onthetop/">Details</a>
-  <a class="btn btn--Success" href="https://onthe-top.com">Services Link</a>
+  <a class="btn btn--success" href="https://onthe-top.com">Services Link</a>
   <a class="btn btn--info" href="https://github.com/100-hours-a-week/16-Hot6-wiki/wiki/AI-Wiki">Gihub Wiki</a>
   <a class="btn btn--Inverse" href="https://github.com/100-hours-a-week/16-Hot6-ai">AI Repo</a>
 </div>
