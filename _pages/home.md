@@ -4,7 +4,7 @@ title: Buyoung's Profile
 permalink: /
 hidden: true
 header:
-  overlay_color: "#5e616c"
+  overlay_color: "#ffffff"
   overlay_image: /assets/images/home_page.jpg
   # actions:
   #   - label: "<i class='fas fa-download'></i> Install now"
