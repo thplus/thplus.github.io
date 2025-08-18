@@ -5,7 +5,7 @@ permalink: /
 hidden: true
 header:
   overlay_color: "#5e616c"
-  overlay_image: /assets/images/mm-home-page-feature.jpg
+  overlay_image: /assets/images/home_page.jpg
   # actions:
   #   - label: "<i class='fas fa-download'></i> Install now"
   #     url: "/docs/quick-start-guide/"
@@ -102,7 +102,7 @@ feature_row:
 
   <div class="project-summary">
     CNN 기반 이미지 분류 모델의 성능을 유지하면서 연산 비용과 메모리 사용량을 줄이기 위해 경량화에 대해 연구해 본 개인 프로젝트입니다.<br/>
-    해당 프로젝트는 다른 연구들과는 달리 Feature Map 기반으로 모델이 어떤 특징들을 뽑아내는지 살펴보며 불필요한 Filter는 제거하거나 없애 시각적으로 경량화했습니다.
+    해당 프로젝트는 다른 연구들과는 달리 Feature Map 기반으로 모델이 어떤 특징들을 뽑아내는지 살펴보며 불필요한 Filter 및 Layer는 제거하거나 없애 시각적으로 경량화했습니다.
   </div>
 
   <a class="btn btn--primary" href="/project/ktb/cnn_project/">Details</a>
@@ -122,13 +122,13 @@ feature_row:
           <ul>
             <li>각 Convolution Layer를 틍과한 Feature Map을 시각화하여 정보 손실 여부 확인</li>
             <li>깊은 Layer에서 Feature Map 활성화가 희소해지고 의미있는 특징이 소실되는 현상을 관찰</li>
-            <li>사람이 직접 확인했을 때도 특정 Layer에서는 Feature Map이 점 몇 개 수준으로만 남아 활용도가 낮을 수 있음을 확인</li>
+            <li>사람이 직접 확인했을 때도 특정 Filter 및 Layer에서는 Feature Map이 점 몇 개 수준으로만 남아 활용도가 낮을 수 있음을 확인</li>
           </ul>
         <li>설명 가능한 경량화</li>
           <ul>
-            <li>기존의 무작위 기반 pruning과 달리, Feature Map 시각화를 통해 제거 대상 Layer를 선정</li>
+            <li>기존의 무작위 기반 pruning과 달리, Feature Map 시각화를 통해 제거 대상 Filter 및 Layer를 선정</li>
             <li>직관적으로 설명 가능한 근거에 기반한 pruning 수행</li>
-            <li>GoogLeNet 구조에서 해당 현상을 재현하고, 불필요한 Layer 제거를 통해 효율성 향상</li>
+            <li>GoogLeNet 구조에서 해당 현상을 재현하고, 불필요한 Filter 및 Layer 제거를 통해 효율성 향상</li>
           </ul>
       </ul>
         <li><strong>성능 평가 및 결과:</strong></li>
