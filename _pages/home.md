@@ -50,6 +50,16 @@ feature_row:
 ## OnTheTop
 <div class="project-card">
   <img src="/assets/images/OTT_AI_Architect_v1.drawio.png" alt="onthetop_main" class="project-thumb" />
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <iframe width="1200" height="675" 
+            src="https://www.youtube.com/embed/muK_FWTBECk" 
+            title="AI Presentation" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen 
+            style="width: 100%; height: auto; aspect-ratio: 16/9; display: block; margin: 0 auto;">
+    </iframe>
+  </div>
   <div class="project-date">
     <i class="fa fa-calendar"></i> 2025.04.01. ~ 2025.08.01.
   </div>
