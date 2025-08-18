@@ -4,7 +4,7 @@ title: Buyoung's Profile
 permalink: /
 hidden: true
 header:
-  overlay_color: "#ffffff"
+  overlay_color: "#fff"
   overlay_image: /assets/images/home_page.jpg
   # actions:
   #   - label: "<i class='fas fa-download'></i> Install now"
@@ -12,7 +12,7 @@ header:
   #   - label: "<i class='fas fa-download'></i> test button"
   #     url: "/docs/quick-start-guide/"
 excerpt: >
-  <div style="display: flex; align-items: flex-start; gap: 30px; flex-wrap: wrap;">
+  <div style="display: flex; align-items: flex-start; gap: 30px; flex-wrap: wrap; color: white;">
     <div>
       <img src="/assets/images/buyoung_profile.png" alt="김부영 프로필" width="180" style="border-radius: 10px;" />
     </div>
