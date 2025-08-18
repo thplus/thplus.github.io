@@ -21,7 +21,7 @@ excerpt: >
       <h3>AI 개발자 <strong>김부영</strong>입니다 😊</h3>
       <p>
         저는 실용적인 AI 기술로 사용자의 문제를 해결하는 데 집중하는 개발자입니다.<br/>
-        <strong>Stable Diffusion, YOLO, 모델 경량화, FastAPI 기반 MLOps 구축</strong>에 관심이 많습니다.<br/>
+        <strong>AI Solution 설계, LLM 기반 Pipeline 설계, 이미지 처리, 모델 경량화, FastAPI 기반 MLOps 구축</strong>에 관심이 많습니다.<br/>
         작은 개선도 놓치지 않고 서비스에 녹일 수 있는 <strong>사용자 중심 AI</strong>를 지향합니다.<br/>
       </p>
       <p>
@@ -31,12 +31,12 @@ excerpt: >
 
       <h4>🧰 Tech Stack</h4>
       <ul style="columns: 2; font-size: 17px; padding-left: 1em;">
-        <li><strong>AI</strong>: PyTorch, TensorFlow, Huggingface</li>
-        <li><strong>Web</strong>: FastAPI</li>
-        <li><strong>Infra</strong>: AWS S3, Colab Pro, GitHub</li>
-        <li><strong>기타</strong>: OpenCV, NumPy, Pandas, Scikit-learn</li>
-        <li><strong>Data</strong>: MySQL, JSON, Markdown</li>
-        <li><strong>툴</strong>: Jupyter, VSCode, Git</li>
+        <li><strong>AI 개발</strong>: PyTorch, TensorFlow, Huggingface 기반 모델 학습 및 Fine-tuning</li>
+        <li><strong>서비스 구현</strong>: FastAPI를 활용한 AI 모델 서빙 및 API 설계</li>
+        <li><strong>클라우드 및 협업</strong>: AWS S3 기반 데이터 관리, Google Colab 실험 환경, GitHub 버전 관리</li>
+        <li><strong>데이터 분석</strong>: OpenCV, NumPy, Pandas, Scikit-learn을 통한 전처리 및 모델링</li>
+        <li><strong>데이터베이스</strong>: MySQL을 활용한 데이터 저장 및 조회, JSON/Markdown 데이터 포맷 활용</li>
+        <li><strong>개발환경</strong>: Jupyter Notebook, VSCode 중심 개발</li>
       </ul>
     </div>
   </div>
@@ -57,7 +57,7 @@ feature_row:
   <div class="project-summary">
     해당 서비스는 Desk Setup 이미지를 기반으로 AI가 맞춤형 데스크테리어를 제안하는 서비스 입니다.<br/>
     사용자가 추가적인 자료 탐색 과정 없이도 자신만의 최적화된 작업 공간을 빠르고 간편하게 구축할 수 있으며, 추천된 제품은 바로 구매할 수 있도록 연결되어 실제 구매까지 이어질 수 있습니다.<br/>
-    사진을 올리면 AI가 공간에 맞는 Desk Setup을 제안하고 곧바로 구매까지 이어지는 **'번거로움 없이 나만의 공간을 완성할 수 있는 경험'**이 해당 서비스가 제공하는 핵심 가치입니다.
+    사진을 올리면 AI가 공간에 맞는 Desk Setup을 제안하고 곧바로 구매까지 이어지는 <strong>'번거로움 없이 나만의 공간을 완성할 수 있는 경험'</strong>이 해당 서비스가 제공하는 핵심 가치입니다.
   </div>
   
   <a class="btn btn--primary" href="https://youtu.be/muK_FWTBECk">AI Presentation</a>
