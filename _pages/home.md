@@ -55,13 +55,31 @@ feature_row:
   </div>
 
   <div class="project-summary">
-    Desksetup 사진을 올리면
+    해당 서비스는 Desk Setup 이미지를 기반으로 AI가 맞춤형 데스크테리어를 제안하는 서비스 입니다.<br/>
+    사용자가 추가적인 자료 탐색 과정 없이도 자신만의 최적화된 작업 공간을 빠르고 간편하게 구축할 수 있으며, 추천된 제품은 바로 구매할 수 있도록 연결되어 실제 구매까지 이어질 수 있습니다.<br/>
+    사진을 올리면 AI가 공간에 맞는 Desk Setup을 제안하고 곧바로 구매까지 이어지는 **'번거로움 없이 나만의 공간을 완성할 수 있는 경험'**이 해당 서비스가 제공하는 핵심 가치입니다.
   </div>
   
-  <a class="btn btn--primary" href="/project/ktb/onthetop/">Details</a>
-  <a class="btn btn--success" href="https://onthe-top.com">Services Link</a>
+  <a class="btn btn--primary" href="https://youtu.be/muK_FWTBECk">AI Presentation</a>
+  <a class="btn btn--danger" href="https://onthe-top.com">Services Link</a>
   <a class="btn btn--info" href="https://github.com/100-hours-a-week/16-Hot6-wiki/wiki/AI-Wiki">Gihub Wiki</a>
   <a class="btn btn--Inverse" href="https://github.com/100-hours-a-week/16-Hot6-ai">AI Repo</a>
+
+  <ul class="project-detail">
+    <li><strong>주요 역할</strong></li>
+      <ul>
+        <li><strong>이미지 생성 Pipeline 설계:</strong> CNN 도입 및 제작, Inpainting 모델 설계, Masking 자동화 설계 및 구현, LoRA 설계 및 제작</li>
+        <li><strong>아이템 추천 Pipeline 설계:</strong> OpenAI API를 활용한 Desk Setup 맞춤형 아이템 추천 설계, Naver API를 활용한 구매링크 연결</li>
+        <li><strong>AI Model Serving:</strong> FastAPI 기반 AI 서버 제작, CNN 서버 분리, Redis Streams을 활용한 Multi-GPU 구현</li>
+      </ul>
+    <li><strong>기술 스택</strong></li>
+      <ul>
+        <li><strong>Vison:</strong> CNN, Gronding DINO, SAM2, Open CV</li>
+        <li><strong>Generation:</strong> SDXL Inpainting, LoRA</li>
+        <li><strong>Serving:</strong> FastAPI, PyTorch, Diffusers</li>
+        <li><strong>Supporting Services:</strong> Redis Streams/Sentinel, AWS S3</li>
+      </ul>
+  </ul>
 </div>
 
 ## Feature Map 기반 CNN 모델 최적화
@@ -76,6 +94,9 @@ feature_row:
     해당 프로젝트는 다른 연구들과는 달리 Feature Map 기반으로 모델이 어떤 특징들을 뽑아내는지 살펴보며 불필요한 Filter는 제거하거나 없애 시각적으로 경량화했습니다.
   </div>
 
+  <a class="btn btn--primary" href="/project/ktb/cnn_project/">Details</a>
+  <a class="btn btn--info" href="https://github.com/100-hours-a-week/2-brix-kim-personal-project?tab=readme-ov-file">MySQL</a>
+
   <ul class="project-detail">
     <li><strong>기술 스택:</strong> CNN, VGG16, GoogLeNet</li>
     <li><strong>주요 연구 내용: </strong></li>
@@ -89,13 +110,14 @@ feature_row:
         <li>Feature Map 시각화:</li>
           <ul>
             <li>각 Convolution Layer를 틍과한 Feature Map을 시각화하여 정보 손실 여부 확인</li>
-            <li>깊은 Layer에서 Feature Map이 모두 0에 가까운 경우, 해당 Layer 필요성 재검토</li>
+            <li>깊은 Layer에서 Feature Map 활성화가 희소해지고 의미있는 특징이 소실되는 현상을 관찰</li>
+            <li>사람이 직접 확인했을 때도 특정 Layer에서는 Feature Map이 점 몇 개 수준으로만 남아 활용도가 낮을 수 있음을 확인</li>
           </ul>
-        <li>Feed Forward 및 Backpropagation 분석</li>
+        <li>설명 가능한 경량화</li>
           <ul>
-            <li>Feature Map이 모두 0으로 채워진 경우 ReLU 및 Pooling을 통과한 이후에도 출력값이 0이 되어 학습이 되지 않는 것을 수학적으로 해석</li>
-            <li>이러한 현상을 GoogLeNet을 통해 재현</li>
-            <li>Feature Map이 0으로 채워지는 Layer를 제거하여 모델의 효율성 향상</li>
+            <li>기존의 무작위 기반 pruning과 달리, Feature Map 시각화를 통해 제거 대상 Layer를 선정</li>
+            <li>직관적으로 설명 가능한 근거에 기반한 pruning 수행</li>
+            <li>GoogLeNet 구조에서 해당 현상을 재현하고, 불필요한 Layer 제거를 통해 효율성 향상</li>
           </ul>
       </ul>
         <li><strong>성능 평가 및 결과:</strong></li>
@@ -111,9 +133,6 @@ feature_row:
           </ul>
       </ul>
   </ul>
-
-  <a class="btn btn--primary" href="/project/ktb/cnn_project/">Details</a>
-  <a class="btn btn--info" href="https://github.com/100-hours-a-week/2-brix-kim-personal-project?tab=readme-ov-file">MySQL</a>
 </div>
 
 ## HarmonAI
@@ -130,6 +149,9 @@ feature_row:
     해당 서비스에서 원하는 사용자 경험은 "이 기분, 장소, 날씨 그리고 감성"에 현재의 음악이 잘 어울린다는 느낌을 주는 것입니다.<br/>
   </div>
 
+  <a class="btn btn--primary" href="/project/ktb/hackathon/">Details</a>
+  <a class="btn btn--info" href="https://github.com/KTB-Hackerton-24Team/HarmonAI_AI">AI Github</a>
+
   <ul class="project-detail">
     <li><strong>기술 스택:</strong> FastAPI</li>
     <li>
@@ -141,10 +163,6 @@ feature_row:
       </ul>
     </li>
   </ul>
-
-  <a class="btn btn--primary" href="/project/ktb/hackathon/">Details</a>
-  <a class="btn btn--info" href="https://github.com/KTB-Hackerton-24Team/HarmonAI_AI">AI Github</a>
-
 </div>
 
 ## TPS Project
@@ -160,6 +178,8 @@ feature_row:
     TPS 게임 개발을 통해 객체지향 프로그래밍의 핵심 개념인 캡슐화, 상속, 다형성을 실습하고 Singleton 패턴, 벡터 계산 등을 구현해 보면서 객체지향 설계의 원리를 체득한 개인 프로젝트 입니다.<br/>
   </div>
 
+  <a class="btn btn--success" href="https://drive.google.com/file/d/13pQfE7MHxG-DHtxnUWtvNgebXMDKbohJ/view?usp=sharing">Source Code</a>
+
   <ul class="project-detail">
     <li><strong>기술 스택:</strong> C#, Unity</li>
     <li><strong>주요 기능 및 구현 내용:</strong>
@@ -173,9 +193,6 @@ feature_row:
       </ul>
     </li>
   </ul>
-
-  <a class="btn btn--primary" href="/project/ajou%20university/tps_project/">Details</a>
-  <a class="btn btn--success" href="https://drive.google.com/file/d/13pQfE7MHxG-DHtxnUWtvNgebXMDKbohJ/view?usp=sharing">Source Code</a>
 </div>
 
 ## 감성분석을 활용한 언론사의 양극화 분석
@@ -189,6 +206,8 @@ feature_row:
     미국 대선 기간동안 주요 언론사의 헤드라인을 분석하여 정치적 양극화 현상을 감성분석을 통해 정량적으로 평가해 본 팀 프로젝트입니다.<br/>
     언론의 정치적 편향성 증가로 인해 독자들은 자신과 일치하는 정보만을 소비하는 경향이 강화되고 있으며 이는 사회적 갈등을 심화시킬 수 있습니다. 따라서 해당 프로젝트에서는 언론사의 헤드라인을 감성 분석하여 정치적 성향에 따른 보도 경향을 정량적으로 분석하고자 하였습니다.<br/>
   </div>
+
+  <a class="btn btn--primary" href="/project/ajou%20university/sentiment_analysis_with_headline/">Details</a>
 
   <ul class="project-detail">
     <li><strong>주요 역할:</strong> 여러 감성 분석 기법(RoBERTa, VADER, TextBlob, Topic 모델링)을 적용하여 결과를 비교 분석 후 인사이트 도출, 언론사의 정치적 성향에 따른 감성 분석 결과를 시각화하고 해석 </li>
@@ -209,8 +228,6 @@ feature_row:
       </ul>
     </li>
   </ul>
-
-  <a class="btn btn--primary" href="/project/ajou%20university/sentiment_analysis_with_headline/">Details</a>
 </div>
 
 ## Honeybee Disease Diagnosis
@@ -227,6 +244,8 @@ feature_row:
     꿀벌은 농작물의 수분을 담당하는 필수적인 화분매개자로 국내 농업 경제에 약 6조 원의 가치를 창출하고 있습니다. 그러나 최근 꿀벌의 집단 폐사가 심각한 문제로 대두되고 있으며 그 주요 원인 중 하나로 각종 질병이 지목되고 있습니다. 따라서 우리는 이러한 질병을 조기에 감지하고 대응하기 위한 시스템을 개발하고자 하였습니다.<br/>
   </div>
 
+  <a class="btn btn--primary" href="/project/ajou%20university/honeybee_diease_diagnosis/">Details</a>
+
   <ul class="project-detail">
     <li><strong>주요 역할:</strong> YOLOv8 탐지 모델 설계 및 학습 파이프라인 구축</li>
     <li><strong>기술 스택:</strong> YOLOv8, Tensorflow</li>
@@ -240,8 +259,6 @@ feature_row:
       </ul>
     </li>
   </ul>
-
-  <a class="btn btn--primary" href="/project/ajou%20university/honeybee_diease_diagnosis/">Details</a>
 </div>
 
 
