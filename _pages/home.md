@@ -70,10 +70,11 @@ feature_row:
     사진을 올리면 AI가 공간에 맞는 Desk Setup을 제안하고 곧바로 구매까지 이어지는 <strong>'번거로움 없이 나만의 공간을 완성할 수 있는 경험'</strong>이 해당 서비스가 제공하는 핵심 가치입니다.
   </div>
   
-  <a class="btn btn--primary" href="https://youtu.be/muK_FWTBECk">AI Presentation</a>
+  <a class="btn btn--primary" href="https://youtu.be/6sqmKsrexIE">Demo Video</a>
+  <a class="btn btn--primary" href="https://youtu.be/kv849T0BPTM">Ad Video</a>
   <a class="btn btn--danger" href="https://onthe-top.com">Services Link</a>
   <a class="btn btn--info" href="https://github.com/100-hours-a-week/16-Hot6-wiki/wiki/AI-Wiki">Gihub Wiki</a>
-  <a class="btn btn--Inverse" href="https://github.com/100-hours-a-week/16-Hot6-ai">AI Repo</a>
+  <a class="btn btn--success" href="https://github.com/100-hours-a-week/16-Hot6-ai">AI Repo</a>
 
   <ul class="project-detail">
     <li><strong>주요 역할</strong></li>
