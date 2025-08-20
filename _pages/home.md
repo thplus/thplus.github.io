@@ -75,6 +75,7 @@ feature_row:
   <a class="btn btn--danger" href="https://onthe-top.com">Services Link</a>
   <a class="btn btn--info" href="https://github.com/100-hours-a-week/16-Hot6-wiki/wiki/AI-Wiki">Gihub Wiki</a>
   <a class="btn btn--success" href="https://github.com/100-hours-a-week/16-Hot6-ai">AI Repo</a>
+  <a class="btn btn--info" href="https://www.figma.com/design/TGhjX9ctN4EEODK1Jr5TUc/On-The-Top-1.0.0?node-id=7223-21707&p=f">Figma</a>
 
   <ul class="project-detail">
     <li><strong>주요 역할</strong></li>
