@@ -80,9 +80,24 @@ feature_row:
   <ul class="project-detail">
     <li><strong>주요 역할</strong></li>
       <ul>
-        <li><strong>이미지 생성 Pipeline 설계:</strong> CNN 도입 및 제작, Inpainting 모델 설계, Masking 자동화 설계 및 구현, LoRA 설계 및 제작</li>
-        <li><strong>아이템 추천 Pipeline 설계:</strong> OpenAI API를 활용한 Desk Setup 맞춤형 아이템 추천 설계, Naver API를 활용한 구매링크 연결</li>
-        <li><strong>AI Model Serving:</strong> FastAPI 기반 AI 서버 제작, CNN 서버 분리, Redis Streams을 활용한 Multi-GPU 구현</li>
+        <li><strong>이미지 생성 Pipeline 설계:</strong></li>
+          <ul>
+            <li>CNN 도입 및 제작: 서비스 특성상 사용자가 책상과 무관한 이미지를 업로드할 가능성이 있어 초기 입력 단계에서 BLIP 기반 캡셔닝으로 판별하였으나 평균 응답시간이 3초대로 길어져 CPU환경에서도 0.2초 수준으로 판별할 수 있도록 경량 CNN을 설계하여 도입</li>
+            <li>Inpainting 모델 설계: img2txt → txt2img 기반으로 이미지를 생성하였으나 생성된 이미지가 원본 사진과의 괴리감이 있다는 피드백을 받아 원본 이미지를 유지하기 위해 Inpainting 모델 도입</li>
+            <li>Masking 자동화 설계 및 구현: Inpainting 과정 중 원본 이미지에서 유지하고자 하는 부분을 Grounding DINO와 SAM2를 활용하여 Masking 이미지 생성 및 자동화</li>
+            <li>LoRA 설계 및 제작: OnTheTop 서비스 특유의 톤을 유지하기 위해 GPT에서 생성한 121장의 DeskSetup이미지를 통해 서비스 특화 LoRA 설계 및 제작, 서비스의 재미를 느끼기 위한 각종 Style LoRA 도입</li>
+          </ul>
+        <li><strong>아이템 추천 Pipeline 설계:</strong></li>
+          <ul>
+            <li>Desk Setup 맞춤형 아이템 추천 설계: 원본 이미지를 Grounding DINO로 탐색한 이후 OpenAI API(GPT-4o)를 활용하여 아이템 추천하여 SDXL Inpainting Prompt로 활용할 수 있도록 설계</li>
+            <li>추천 아이템 구매링크 연결: 생성된 이미지를 Grounding DINO로 재탐색한 이후 해당 아이템의 정보를 Naver API를 활용하여 구매링크 생성 및 연결</li>
+          </ul>
+        <li><strong>AI Model Serving:</strong></li>
+          <ul>
+            <li>AI 서버 제작: FastAPI 기반 AI 모델 서빙</li>
+            <li>CNN 서버 분리: 이미지 생성을 단일 메서드처럼 활용하고 불필요한 서버 통신을 제거하기 위해 데스크 분류만 백엔드와 통신하도록 CNN 서버 분리</li>
+            <li>Multi-GPU 구현: 트래픽 급증에 대비해 Redis Stremas 기반 작업 큐를 설계하고 GCP, AWS, Google Colab의 GPU를 Consumer Group으로 묶어 Multi-GPU 병렬처리 구현</li>
+          </ul>
       </ul>
     <li><strong>기술 스택</strong></li>
       <ul>
