@@ -14,7 +14,7 @@ header:
 excerpt: >
   <div style="display: flex; align-items: flex-start; gap: 30px; flex-wrap: wrap; color: white;">
     <div>
-      <img src="/assets/images/buyoung_profile.png" alt="김부영 프로필" width="180" style="border-radius: 10px;" />
+      <img src="" alt="김부영 프로필" width="180" style="border-radius: 10px;" />
     </div>
 
     <div>
@@ -25,8 +25,8 @@ excerpt: >
         작은 개선도 놓치지 않고 서비스에 녹일 수 있는 <strong>사용자 중심 AI</strong>를 지향합니다.<br/>
       </p>
       <p>
-        📧 Email: <a href="mailto:glanz6670@naver.com">glanz6670@naver.com</a><br/>
-        💻 GitHub: <a href="https://github.com/thplus" target="_blank">github.com/thplus</a><br/>
+        📧 Email: <br/>
+        💻 GitHub: <br/>
       </p>
 
       <h4>🧰 Tech Stack</h4>
@@ -89,7 +89,7 @@ feature_row:
           </ul>
         <li><strong>아이템 추천 Pipeline 설계:</strong></li>
           <ul>
-            <li>Desk Setup 맞춤형 아이템 추천 설계: 원본 이미지를 Grounding DINO로 탐색한 이후 OpenAI API(GPT-4o)를 활용하여 아이템 추천하여 SDXL Inpainting Prompt로 활용할 수 있도록 설계</li>
+            <li>Desk Setup 맞춤형 아이템 추천 설계: 원본 이미지를 Grounding DINO로 탐색한 이후 OpenAI API(GPT-4o)를 활용하여 아이템 추천하고 SDXL Inpainting Prompt로 활용할 수 있도록 설계</li>
             <li>추천 아이템 구매링크 연결: 생성된 이미지를 Grounding DINO로 재탐색한 이후 해당 아이템의 정보를 Naver API를 활용하여 구매링크 생성 및 연결</li>
           </ul>
         <li><strong>AI Model Serving:</strong></li>
